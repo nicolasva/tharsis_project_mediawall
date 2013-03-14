@@ -1,0 +1,8 @@
+<% form_for :translations, :url=>{:controller=>"javascript", :action=>"valid_update_new_translations"} do |f| %>
+	<%= f.hidden_field :id, :value=>@translation_id %>
+	<%= f.hidden_field :floor_id, :value=>@floor_id %>
+	<%= render(:partial => "javascript/partial_javascript/form_add_namestranslations", :locals =>{:f =>f}) %>
+	<p>
+		<%= f.submit "Mettre à jour" %>
+	</p>
+<% end %>

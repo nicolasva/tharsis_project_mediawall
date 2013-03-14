@@ -1,0 +1,25 @@
+<div class='div_class_fichiercompression_to_apps'>
+	<h1>Liste des versions</h1>
+<table border='0' width='510' class='tab_class_fichiercompression' cellpadding='0' cellspacing='0'>
+	<tr class='colonne_titre'>
+		<td class='colonne_general_first' width='55'>Version</td>
+		<td class='colonne_general' width='90'>Description</td>
+		<td class='colonne_general' width='315'>Applications</td>
+		<td class='colonne_general_last' width='50'>Supression</td>
+	</tr>
+<% @fichiercompressions.each{ |fichiercompression| %>
+	<tr class='class_contenu_colonne_user'>
+		<td class='contenu_colonne_general_first'><%= fichiercompression.id %></td>
+		<td class='contenu_colonne_general'><%= fichiercompression.description %></td>
+		<td class='contenu_colonne_general'>
+			<%= 
+				link_to "Voir les applications associés à cette version", edit_fichiercompression_path(fichiercompression.id)
+			%>
+		</td>
+		<td class='contenu_colonne_general'>
+			<%= link_to image_tag("img_general/close.gif", :class=>"class_liens_drop"), fichiercompression, :confirm => "Etes vous sur de vouloir supprimer totalement cette version", :method => :delete  %>
+		</td>
+	</tr>
+<% } %>
+</table>
+</div>

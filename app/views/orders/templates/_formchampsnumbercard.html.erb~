@@ -1,0 +1,33 @@
+  <% unless galerieimages.empty? %>
+	<div class='div_class_produits_choice'>
+	<%= f.label(:galerieimage_id, "Selectionner un produit de cette vente regroupé") %>
+	<ul class='ul_class_produits_choice'>
+		<% content_tag_for :li, Galerieimage.find(params[:id]) do %>	
+			<%= Galerieimage.find(params[:id]).title  %> <%= image_tag(Galerieimage.find(params[:id]).imageheader.url(:thumb), :size=>"50x50") %> <%= f.radio_button(:galerieimage_id, Galerieimage.find(params[:id]).id, :checked=>true) %>
+	        <% end %>
+	     <% galerieimages.each{ |galerieimage| %>
+	        <% content_tag_for :li, galerieimage do %> 
+			<%= galerieimage.title %> <%= image_tag(galerieimage.imageheader.url(:thumb), :size=>"50x50") %> <%= f.radio_button(:galerieimage_id, galerieimage.id) %>
+		<% end %>
+	     <% } %>
+          </ul>
+        </div>
+  <% else %>
+	  <%= f.hidden_field(:galerieimage_id) %>
+  <% end %>
+  <%= f.hidden_field(:typeorder) %>
+  <%= f.hidden_field(:user_id) %>
+  <p>
+ 	<%= f.label(:card_nbr) %><br>	 
+	<%= f.password_field :card_nbr %>
+  </p>
+
+  <p>
+  	<%= f.label(:expire) %><br>
+	<%= f.text_field :expire %>
+  </p>
+
+  <p>
+  	<%= f.label(:cvv2) %><br>
+	<%= f.password_field(:cvv2) %>
+  </p>

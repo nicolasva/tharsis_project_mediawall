@@ -1,0 +1,125 @@
+<h1>Detail de l'application recherché</h1>
+
+<div class='div_class_groupapps'>
+   <% unless params[:groupapp_id].nil? && params[:arrow].nil? %>
+    <div class='class_back_all_apps'>
+		<%= link_to(t("applications.return_all_apps"), applications_url) %>
+    </div>
+   <% end %>
+    <div class='class_select_group_apps'>
+	<span class='span_class_select_groups'><%= t("applications.select_group") %></span>
+	<% if params[:role_id].nil? %>
+		<ul class='ul_class_groupapps'>
+				<% Role.find(:all, :conditions=>"role_id=#{params[:role_id].nil? ? current_user.role_id : params[:role_id]}").each{ |role| %>	
+					<%= render(:partial => "/applications/templates/tab_liste_role", :locals =>{ :role => role}) %>
+				<% } %>
+	</ul>
+	<% else %>
+		<%= set_parent_home_applications(current_user.role_id,params[:role_id]) %>
+	<% end %>
+    </div>
+</div>
+
+<div class='div_class_all_apps'>
+<div class='div_class_search_motor'>
+	<% form_for :search_borne, :url => {:controller=>"applications", :action=>"show"} do |f| %>
+		Recherche : 
+		<%= f.text_field :contenu_search %>
+		<div id='id_result_search_bornes' class='autocomplete'></div>
+		<%= f.submit("valider") %>
+	<% end %>
+</div>
+      <% unless @application.nil? %>
+	<table width='<%=get_size_tab_applications(current_user.role_id)%>px' class='table_class_liste_application' cellpadding='0' cellspacing='0'>
+		<tr class='colonne_titre'>
+			<%= current_user.role_id == 1 ? "<td class='colonne_general_first' width='34'></td>" : "" %>
+			<td class='<%= current_user.role_id == 1 ? 'colonne_general' : 'colonne_general_first' %>' width='60'><%= t("tab_app.etat") %>	
+				<ul class='class_liste_arrow'>
+					<li>
+						<%= link_to image_tag("img_general/arrow_up_bis.png"), :controller=>"applications", :action=>"index", :arrow=>"up" %></li>
+					<li> 
+					<%= link_to image_tag("img_general/arrow_down_bis.png"), :controller=>"applications", :action=>"index", :arrow=>"down" %>
+					</li>
+			 	</ul>
+			</td>	
+	  		<td class='colonne_general' width='95'><%= t("tab_app.nom_application") %></td>	
+			<td class='colonne_general' width='85'><%= t("tab_app.type") %></td>
+			<td class='colonne_general' width='85'><%= t("tab_app.fichiers") %></td>	
+	  		<td class='colonne_general' width='110'><%= t("tab_app.pings") %></td>
+	  		<td class='colonne_general' width='140'><%= t("tab_app.mac") %></td>
+			<td class='colonne_general' width='135'><%= t("tab_app.update")%>
+			
+				<ul class='class_liste_arrow'>
+					<li>
+					<%= link_to image_tag("img_general/arrow_up_bis.png"), :controller=>"applications", :action=>"index", :datetime=>"up" %></li>
+					<li> 
+					<%= link_to image_tag("img_general/arrow_down_bis.png"), :controller=>"applications", :action=>"index", :datetime=>"down" %>
+					</li>
+			 	</ul>
+			</td>
+			<%= "<td class='colonne_general' width='50'>€</td>" if current_user.role_id == 1 %>
+			<td class='colonne_general_fin' width='40'>
+				Stats
+			</td>
+        	</tr>
+	<% form_for :choix_edit_application, :url=>{:controller=>"applications", :action=>"edit_select"} do |choix_edit_application| %>
+			<%	
+				last_ping = @application.pings.find :last
+			%>
+		<tr class='contenu_colonne_titre'>
+			<%= current_user.role_id == 1 ? "<td class='contenu_colonne_general_first' style='text-align:center;' width='34px'>#{check_box_tag("choix_edit_application[application_id][]", @application.id)}</td>" : "" %>
+
+		<td class='<%= current_user.role_id == 1 ? 'contenu_colonne_general' : 'contenu_colonne_general_first' %>' style='text-align:center;' width='60px'>
+		  <% if @application.activate %>	
+		      <% unless last_ping.nil? %>
+			  <%= image_tag("img_general/#{(Time.now - last_ping.created_at ) < 600 ? 'green.png' : 'red.png'}") %>
+		      <% else %>
+			  <%= image_tag("img_general/red.png") %>
+		      <% end %>
+	         <% else %>
+			  <%= image_tag("img_general/gris.png") %>
+		 <% end %>
+	  	</td>
+
+		<td class='contenu_colonne_general' width='120px'><%= current_user.role_id == 1 ? link_to(@application.name.empty? ? t("tab_app.no_name") : @application.name, edit_application_path(@application), :class=>"class_link_apps_name") : @application.name.empty? ? "pas de nom" : @application.name %><br><span class='span_class_application_serial'><%= @application.serial %></span><%= current_user.role_id == 1 ? link_to("+", {:controller=>"javascript", :action=>"show_get_name_value", :id=>@application.id}, :popup => [ "namevalue", "height=600,width=600"]) : "" %></td>
+
+		<td class='contenu_colonne_general' width='118px'><%= link_to @application.groupapp.name, {:controller=>"applications", :action=>"index", :groupapp_id=>@application.groupapp.id}, :class=>"class_liens_trie_grouapp_apps" %><%= link_to image_tag("applications/plus.png", :size=>"20x20", :style=>"border:0px;float:right;"), edit_groupapp_path(@application.groupapp.id)  %></td>		
+
+		<td  class='contenu_colonne_general' width='114px'><%= @application.avoirs.find(:first, :conditions=>"currentversion=1").nil? ? t("tab_app.any_file") : @application.avoirs.find(:first, :conditions=>"currentversion=1").fichiercompression.description.nil? ?  @application.avoirs.find(:first, :conditions=>"currentversion=1").fichiercompression.file_file_name : @application.avoirs.find(:first, :conditions=>"currentversion=1").fichiercompression.description %><%= link_to image_tag("applications/plus.png", :size=>"20x20", :style=>"border:0px;float:right;"), {:controller=>"fichiercompressions", :action=>"index", :id=>@application.id} %></td>		
+	  		<td class='contenu_colonne_general' style='text-align:center;' width='139px'><%= @application.mac.nil? ? image_tag("img_general/red.png") : @application.mac %></td>
+
+			<td class='<%= current_user.role_id == 1 ? "contenu_colonne_general" : "contenu_colonne_general_fin" %>' width='137px'><%= @application.updated_at.strftime(I18n.locale == :fr ? '%d-%m-%Y %H:%M:%S' : '%Y-%m-%d %I:%M:%S') %></td>
+
+			<% if current_user.role_id == 1 %>
+			    <td class='contenu_colonne_general' width='59px' style='text-align:center;'>
+				<%= 
+					link_to (@application.statpaiement == false ? image_tag("img_general/red.png") : image_tag("img_general/green.png")) , :controller=>"applications", :action=>"statpaiement", :id=>@application.id, :statpaiement=>@application.statpaiement == false ? 0 : 1
+					#choix_edit_application.select(:statpaiement, options_for_select([["Paiement en attente", 0],["Paiement confirme", 1]], application.statpaiement)) 
+				%>
+			    </td>
+		        <% end %>
+
+			<td class='contenu_colonne_general'>
+				<%= link_to t("general.edition"), edit_application_path(@application) %>
+			</td>
+
+                       <td class='contenu_colonne_general_fin' width='90px' style='text-align:center;'>
+			       <%= link_to image_tag("img_general/arrow_to_right.png"), :controller=>"statistics", :action=>"show", :application_id=>@application.id %>
+		       </td>
+	       </tr>
+           <% end %>	       
+   </table>
+   <% else %>
+	   <p><%= t("applications.result_not_apps_search") %></p>
+   <% end %>
+
+<%= javascript_include_tag "applications/ajaxautocomplete" %>
+	<%= 
+		#link_to "Retour", applications_url 
+	%>
+	<%= 
+		#render :partial=>"/applications/templates/dock_app" 
+	%>
+	<%= 
+		#javascript_include_tag "dock/listener" 
+	%>

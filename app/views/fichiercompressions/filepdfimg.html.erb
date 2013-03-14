@@ -1,0 +1,3 @@
+<% %x[ls #{RAILS_ROOT}/public/zip/#{@fichiercompression.id}/#{@fichiercompression.file_file_name.scan(/^(.{1,}).pdf$/)[0][0]}].each_line do |line_img| %>
+	<%=link_to  image_tag("/zip/#{@fichiercompression.id}/#{@fichiercompression.file_file_name.scan(/^(.{1,}).pdf$/)[0][0]}/#{line_img.to_s.strip}", :size=>"200x200"), {:controller=>"fichiercompressions", :action=>"detailimgpdf", :img=>line_img.to_s.strip, :id=>@fichiercompression.id}, :popup => ["Apercu de la photo", "scrollbars=yes"] %>
+<% end %>

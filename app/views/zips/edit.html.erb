@@ -1,0 +1,11 @@
+<h1>Editer ce zip</h1>
+
+<% form_for(@zip) do |f| %>
+	<%= render(:partial => 'form', :locals => { :f => f }) %>	
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Retour', zips_path %>

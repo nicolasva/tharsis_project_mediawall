@@ -1,0 +1,54 @@
+	      <% if @controller.control_acces_user_controller("users","edit") %>
+		  <li>
+		  <% unless controller_name == "users" && controller.action_name == "edit" && params[:id].to_i == current_user.id %>
+					<%= link_to image_tag("users/user_blank.png", :size=>"90x90"), edit_user_path(current_user.id) %>
+				<div class='class_liens_username'>
+					<%= current_user.username %>
+				</div>
+			<% else %>
+					<%= image_tag("users/user_blank.png", :size=>"90x90") %>
+				<div class='class_liens_username'>
+					<%= current_user.username %>
+				</div>
+			<% end %>
+		   </li>
+                <% end %>
+
+	     <% if @controller.control_acces_user_controller("users","index") %>
+		<li>
+		<% unless controller_name == "users"  %>
+						<%= link_to image_tag("users/#{t('user.user_logos')}", :size=>"90x90"), :controller=>"users" %>
+		<% else %>
+			  		<% if controller.action_name == "edit" && params[:id].to_i == current_user.id %>
+						<%= link_to image_tag("users/#{t('user.user_logos')}", :size=>"90x90"), :controller=>"users" %>
+					<% else %>
+						<%= image_tag("users/#{t('user.user_logos_select')}", :size=>"90x90") %>
+					<% end %>
+		<% end %>
+		</li>
+	     <% end %>
+
+	     <% if @controller.control_acces_user_controller("roles","index") %>
+		<li>
+		<% unless controller_name == "roles" %>
+				     <%= link_to image_tag("roles/#{t('roles.roles_logos')}", :size=>"90x90"), :controller=>"roles" %>
+ 	        <% else %>
+
+	              <% unless controller.action_name == "edit" || !flash[:password].nil? %>
+			<%= image_tag("roles/#{t('roles.roles_logos_select')}", :size=>"90x90") %>
+		      <% else %>
+			<%= link_to image_tag("roles/#{t('roles.roles_logos')}", :size=>"90x90"), :controller=>"roles" %>
+		      <% end %>
+		<% end %>		
+		</li>
+	      <% end %>
+
+	      <% if @controller.control_acces_user_controller("controllersdroits", "index") %>
+		<li>
+			<% unless controller_name == "controllersdroits" %>
+				<%= link_to image_tag("controllersdroits/#{t('controllersdroits.controllersdroits_logos')}", :size=>"90x90"), :controller=>"controllersdroits" %>
+			<% else %>
+				<%= image_tag("controllersdroits/#{t('controllersdroits.controllersdroits_logos_select')}", :size=>"90x90") %>
+			<% end %>	
+	       </li>
+	      <% end %>

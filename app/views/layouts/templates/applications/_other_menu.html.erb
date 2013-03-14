@@ -1,0 +1,61 @@
+	    <li class='class_menu_left_presentations_first'>
+	    <% if controller_name == "presentations" %> 
+			 <%= image_tag("presentations/#{t('header.menu_select')}", :size=>"74x74") %>
+	    <% else %>
+		     	<%= link_to "#{image_tag("presentations/#{t('header.menu')}", :size=>"74x74")}", presentations_url %>			
+	    <% end %>
+	    </li>
+
+	    
+	    <% if @controller.control_acces_user_controller("applications","index") %>
+	    <li class='class_menu_left_presentations'>
+	    <% if controller_name == "applications" && controller.action_name == "index" %>  
+		    <%= image_tag("presentations/#{t('header.app_select')}", :size=>"74x74") %>	
+	    <% else %>
+		    <%= link_to image_tag("presentations/#{t("header.app")}", :size=>"74x74"), applications_url %> 
+	    <% end %>
+	    </li>
+    	    <% end %>
+
+    	    <% if current_user.role_id == 1 %> 
+		<li class='class_menu_left_presentations'>
+			<% if controller_name == "users" %>
+				<%= image_tag("presentations/#{t('header.user_select')}", :size=>"74x74") %>	
+			<% else %>
+				<%= link_to image_tag("presentations/#{t('header.user')}", :size=>"74x74"), users_url %>
+			<% end %>
+		</li>
+	    <% end %>
+
+
+	    <% if @controller.control_acces_user_controller("statistics","index") %>
+	    <li class='class_menu_left_presentations'>
+	    <% if controller_name == "statistics" && controller.action_name == "index" %> 
+		    <%= image_tag("presentations/#{t('header.stat_select')}", :size=>"74x74") %>
+	    <% else %>
+		    <%= link_to "#{image_tag("presentations/#{t('header.stat')}", :size=>"74x74")}", {:controller=>"statistics"}, :class=>'liens_menu_bar_bis' %>
+	    <% end %>
+	    </li>
+    	    <% end %>
+
+
+	    <% if @controller.control_acces_user_controller("applications","new") %>
+	    <li class='class_menu_left_presentations'>
+	    <% if controller_name == "applications" && controller.action_name == "new"  %>
+		    <%= image_tag("presentations/#{t("header.new_apps_select")}", :size=>"74x74") %>
+	    <% else %>
+		    <%= link_to image_tag("presentations/#{t("header.new_apps")}", :size=>"74x74"), new_application_path %> 
+	    <% end %>	 
+	    </li>  
+    	    <% end %> 
+
+
+	     <%  if @controller.control_acces_user_controller("fichiercompressions","new") %>
+	     <li class='class_menu_left_presentations'>
+	     <% if controller_name == "fichiercompressions" && controller.action_name == "new" %>
+		 	<%= image_tag("presentations/#{t('header.title_update_select')}", :size=>"74x74") %>
+	     <% else %>
+			<%= link_to image_tag("presentations/#{t('header.title_update')}", :size=>"74x74"), new_fichiercompression_path %>
+	     <% end %>
+	     </li>
+     	    <% end %>

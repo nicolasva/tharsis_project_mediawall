@@ -1,0 +1,7 @@
+<div class='div_class_form_fichiercompressions'>
+
+	<% form_for(@fichiercompression, :html => { :multipart => true }) do |f| %>
+	<%= render(:partial => 'form', :locals => { :f => f }) %>	
+	<% end %>
+</div>
+

@@ -1,0 +1,7 @@
+<h1>Prix à fixer pour cette enchère <%= @order.galerieimage.title %></h1>
+
+<%= render(:partial => "/user/templates/menuleft") %>
+
+<%= form_for(@order) do |f| %>
+	<%= render(:partial => "/orders/templates/form_edit_order_ench_automatique", :locals => {:f => f, :order=>@order}) %>
+<% end %>

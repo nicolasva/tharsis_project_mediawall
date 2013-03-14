@@ -1,0 +1,171 @@
+	<div class='div_class_map'>
+		<ul>
+			<% @tab_liste_floor.each{ |liste_floor| %>
+			<li <%= liste_floor[0].to_i == params[:imgflooractuel].to_i ? "style='background-color:silver;color:black;'" : "" %> >	
+			<% file_write(liste_floor[12], "#{RAILS_ROOT}/public/img_sqlite/mini_floor/floor_#{liste_floor[0]}.png", "wb") %>
+			<%= link_to "<p>#{t("editfilepublic.etages")} #{liste_floor[0]}</p>#{image_tag("/img_sqlite/mini_floor/floor_#{liste_floor[0]}.png", :size=>"40x40")}", :controller=>"fichiercompressions", :action=>"floor", :floor=>liste_floor[0], :id=>params[:id] %>
+			</li>
+		<% } %>
+		</ul>
+		<br>
+	<% 0.upto(@tab_result_floor.length-1){ |i| %>
+			     <%= 
+				@controller.svg_zone(@tab_result_floor[i][0],@tab_result_floor[i][3],@tab_result_floor[i][4],@tab_result_floor[i][11],@tab_result_floor[i][12])	
+			     %>
+
+	<% } %>
+	</div>
+
+	<%
+	#<div style='margin-left:80%;background-color:silver;'>
+	%>
+
+	<div class='div_class_list_marque'>
+	<div class='div_class_theme_logos'>
+	 <div class='div_class_theme'>
+	 <p class='class_titre'>
+		<%= t("editfilepublic.titletheme") %>
+	 </p>
+	 <span class='span_class_add_first'><%= link_to t("editfilepublic.addtheme"), {:controller=>"javascript", :action=>"addnamestranslations"}, :class=>"id_liens_box", :id=>"id_liens_box_add_first" %></span><br>
+	 <ul class='class_liste_marques' id='id_liste_marques'>
+	     <% compteur = 0 %>
+	     <% 0.upto(@tab_result_marque.length-1) do |i| %>
+	     <% unless @tab_result_marque[i].nil? %>
+             <% if @controller.get_verif_non_exist_soustheme(@tab_result_marque[i][22]) == true %> 
+	     <li id='id_theme_<%= @tab_result_marque[i][22] %>' style="background-color:<%= compteur == 0 ? 'white' : '#aaa' %>;">
+	     <table class='tab_class_user' border='0' width='450' cellpadding='0' cellspacing='0'>
+		    <tr class='class_contenu_colonne_user'>
+			<td width='90' class='contenu_colonne_user' style='text-align:left;'><%= link_to (I18n.locale == :fr ? @tab_result_marque[i][2] : @tab_result_marque[i][4]), "#", :class=>"class_liens_topics_marques", :id=>"id_marque_#{@tab_result_marque[i][0]}" %></td>
+			<td width='5' class='contenu_colonne_general'><%= link_to image_tag("img_general/add.png"), :controller=>"fichiercompressions", :action=>"addtranslationmap", :id=>@tab_result_marque[i][0], :floor_id=>params[:imgflooractuel] %></td>
+			<td width='5' class='contenu_colonne_general'><%= link_to image_tag("img_general/ok.gif"), {:controller=>"javascript", :action=>"updatetranslationmap", :id=>@tab_result_marque[i][0], :floor_id=>params[:imgflooractuel]}, :class=>"id_liens_box" %></td>
+			<td width='90' class='contenu_colonne_general'>
+			<%= link_to "Ajouter un sous-thème", {:controller=>"javascript", :action=>"addsoustheme", :id=>@tab_result_marque[i][0], :floor_id=>params[:imgflooractuel]}, :class=>"id_liens_box" %>
+			</td>
+			<td width='5' class='contenu_colonne_general'><%= link_to image_tag("img_general/close.gif"), {:controller=>"fichiercompressions", :action=>"suptranslationmap", :id=>@tab_result_marque[i][0], :floor_id=>params[:imgflooractuel]}, :confirm=>t("editfilepublic.confirm_sup_marque") %></td>
+		   </tr>
+               </table>
+		    <ol id='oltopicsmarques_<%= @tab_result_marque[i][0] %>' style='display:none;' class='ol_topicsmarques'>
+		    <% unless @tab_result_marque[i][42].nil? %>
+		    <% @controller.get_list_topics_marques(@tab_result_marque[i][42]).each{ |topics_marques| %>
+			<li class='topics_names' id='oltopicsmarques_<%= @tab_result_marque[i][0] %>_<%= topics_marques[23] %>'>
+			    <table border='0' class='tab_class_user' width='270' cellpadding='0' cellspacing='0'>
+				<tr class='class_contenu_colonne_user'>
+					<td width='70' class='contenu_colonne_user' style='text-align:left;'>
+					<%=  (I18n.locale == :fr ? topics_marques[25] : topics_marques[27]) %>
+					</td>
+					<td width='5' class='contenu_colonne_general'><%= link_to image_tag("img_general/add.png"), {:controller=>"fichiercompressions", :action=>"addtranslationmap", :id=>topics_marques[23], :floor_id=>params[:imgflooractuel]}, :class=>"link_sous_theme" %></td>
+					<td width='5' class='contenu_colonne_general'>
+					<%= link_to image_tag("img_general/ok.gif"), {:controller=>"javascript", :action=>"updatetranslationmap", :id=>topics_marques[23], :floor_id=>params[:imgflooractuel]}, :class=>"id_liens_box" %>
+					</td>
+					<td width='5' class='contenu_colonne_general'>
+					<%= link_to image_tag("img_general/close.gif"), {:controller=>"fichiercompressions", :action=>"sup_topics_blocks", :id=>topics_marques[0], :floor_id=>params[:imgflooractuel]}, :class=>"link_sous_theme", :confirm=>t("editfilepublic.confirm_sup_traduction") %>
+					</td>
+				</tr>
+			    </table>
+			</li>
+		   <% } %>
+		   <% else %>
+			<li class='topics_names' id='oltopicsmarques_null_<%= @tab_result_marque[i][0] %>'><%= t("editfilepublic.not_sousthemeasociate") %></li>
+                   <% end %>
+		   </ol>
+	    </li>
+		<% compteur = (compteur == 0 ? 1 : 0) %>
+            <% end %>
+	    <% end %>
+	    <% end %>
+    	</ul>
+	</div>
+
+		<p>
+		<%= t("editfilepublic.titlelogos") %>
+		</p>
+		<%= link_to t("editfilepublic.addlogos"), {:controller=>"javascript", :action=>"add_logos"}, :class=>"id_liens_box" %>
+		<ul class='class_list_logos' id='id_liste_logos'>
+			<% @tab_result_logos.each{ |result_logos| %>
+				<li id='id_logos_<%= result_logos[0] %>'>
+					<table border='0' class='tab_class_user' cellpadding='0' cellspacing='0'>
+					     <tr class='class_contenu_colonne_user'>
+						<td class='contenu_colonne_user' width='200' style='text-align:left;'>
+							<%=  image_tag(file_write(result_logos[7],"#{RAILS_ROOT}/public/img_sqlite/logos/logos_#{result_logos[0]}.png","wb").scan(/^.{1,}public(.{1,})$/).to_s) %>
+						</td>
+						<td class='contenu_colonne_general' width='25'>
+							<%=  link_to image_tag("img_general/ok.gif"), {:controller=>"javascript", :action=>"updatelogos", :id=>result_logos[0]}, :class=>"id_liens_box" %> 
+						</td>
+						<td class='contenu_colonne_general' width='25'>
+							<%= link_to image_tag("img_general/close.gif"),  {:controller=>"fichiercompressions", :action=>"suplogos", :id=>result_logos[0]}, :confirm=>"Etes-vous sur de vouloir supprimer ce logo ?" %>
+						</td>
+					    </tr>
+					</table>
+				</li>
+			<% } %>
+		</ul>
+	</div>
+
+		<div class='div_class_marque'>
+	 		<p class='class_titre' id='p_id_mark'>
+				<%= t("editfilepublic.titlemark") %>
+		  	</p>
+		  <span class='span_class_add_first'><%= link_to t("editfilepublic.addblock"), {:controller=>"javascript", :action=>"add_block"}, :class=>"id_liens_box" %></span>
+		  <div class='div_class_ul_marque'>
+		  <ul class='ul_class_blocks' id='ul_id_blocks'>
+			<% compteur = 0 %>
+		   <% @tab_result_blocks.each{ |result_blocks| %>
+			<li class='class_li_blocks' style='background-color:<%= compteur == 0 ? "white" : "#aaa" %>;' id='id_blocks_<%= result_blocks[0] %>'>
+			<table class='tab_class_user' width='353.3'cellpadding='0' cellspacing='0' border='0'>
+				<tr class='class_contenu_colonne_user'>
+					<td width='200' class='contenu_colonne_user' style='text-align:left'><span style='float:left;'><%=  I18n.locale == :fr ? result_blocks[6] : result_blocks[8] %></span><span style='font-size:8pt;'><%= link_to "Ajouter des logos", {:controller=>"javascript", :action=>"popup_logos_for_mark", :id=>result_blocks[0].to_i}, :class=>"class_logos_for_mark" %></span>
+						<ul class='class_topics_blocks' id='ul_id_block_<%= result_blocks[0] %>'>
+							<% 
+							topics_blocks =  @controller.get_topics_blocks(result_blocks[0])
+							#@controller.get_topics_blocks(result_blocks[0]).each{ |topics_blocks| 
+							0.upto(topics_blocks.length-1) do |i|
+							%>
+								<% if i < 6 %>
+								<li>
+									<%= link_to (I18n.locale == :fr ? topics_blocks[i][2] : topics_blocks[i][4]), :controller=>"fichiercompressions", :action=>"sup_topics_blocks", :id=>topics_blocks[i][40] %>
+								</li>
+								<% else %>
+									<li>
+										<%= link_to "etc...", {:javascript=>"fichiercompressions", :action=>"see_all_topics_blocks", :id=>result_blocks[0]}, :class=>"id_liens_box" %>
+									</li>
+								<% end %>
+							<% end %>
+						</ul>
+					</td>
+					<td class='contenu_colonne_general'>
+						<ol class='class_logos_block' id='ul_id_logos_<%= result_blocks[0] %>'>
+							<%
+								logos_blocks = @controller.get_logos_blocks(result_blocks[0])
+								0.upto(logos_blocks.length-1) do |i|
+									if i < 6 
+							%>
+									<li id='li_id_logos_<%= logos_blocks[i][0] %>'>
+										<%= link_to image_tag("/img_sqlite/logos/logos_#{logos_blocks[i][5]}.png", :size=>"20x20"), {:controller=>"fichiercompressions", :action=>"sup_logos_blocks", :id=>logos_blocks[i][0]}, :confirm=>"Etes-vous sur de vouloir supprimer ce logo du block ?" %>
+										<div class='div_class_test'>
+										</div>	
+									</li>
+									<% else %>
+										<li id='li_id_logos_<%= logos_blocks[i][0] %>'>
+											<%= link_to "etc...", {:javascript=>"fichiercompressions", :action=>"see_all_logos_blocks", :id=>result_blocks[0]}, :class=>"id_liens_box" %>
+											<div class='div_class_test'>
+											</div>	
+										</li>
+									<% end %>
+								<% end %>
+						</ul>
+					</td>
+					<td class='contenu_colonne_general' width='25'><%= link_to image_tag("img_general/add.png"), {:controller=>"fichiercompressions", :action=>"addblocksplans", :id=>result_blocks[0], :floor_id=>params[:imgflooractuel]} %></td>
+					<td class='contenu_colonne_general' width='25'><%= link_to image_tag("img_general/ok.gif"), {:controller=>"javascript", :action=>"updatetranslationmap", :id=>result_blocks[1], :floor_id=>params[:imgflooractuel]}, :class=>"id_liens_box" %></td>
+					<td class='contenu_colonne_general' width='25'><%= link_to image_tag("img_general/close.gif"), {:controller=>"fichiercompressions", :action=>"sup_blocks", :id=>result_blocks[0], :floor_id=>params[:imgflooractuel]}, :confirm=>t("editfilepublic.confirm_sup_block") %></td>
+				</tr>
+				</table>
+				</li>
+			<% compteur = (compteur == 0 ? 1 : 0) %>
+		  <% } %>
+	  	    </ul>
+		   </div>
+	       </div>
+
+       </div>
+
+	<%= javascript_include_tag "fichiercompressions/editfilepublic/fichiercompressions" %>	

@@ -1,0 +1,103 @@
+<% form_for(@application) do |f| %>
+	<div id='div_id_result_new_application' style='display:none;'>
+	</div>
+<div id='div_id_form_add_apps'>
+  <div id='div_id_new_apps'>
+	<ul id='ul_id_form_new_apps'>
+  		<li <%= !flash[:notice].nil? && !flash[:applicationrecap].nil? ? "" : "style='color:#98CC54;font-weight:bold;'" %> >
+			<div class='span_class_etape1'><%= t("applications.etape1") %></div>
+  		</li>
+  		<li class='class_etape_suivante'>
+			<div class='span_class_etape'><%= t("applications.etape2") %></div>
+		</li>
+		<li class='class_etape_suivant'>
+			<div class='span_class_etape'><%= t("applications.etape3") %></div>
+		</li>
+		<li <%= !flash[:notice].nil? && !flash[:applicationrecap].nil? ? "style='color:#98CC54;font-weight:bold;'" : "" %> class='class_etape_suivante_fin'>
+			<div class='span_class_etape2'><%= t("applications.etape4") %></div>
+		</li>
+	</ul>
+  </div>
+
+<div class='form_detail_apps_edit'>
+ <ul id='main'>
+  <% if flash[:notice].nil? || flash[:applicationrecap].nil? %>
+    <li id='etape1'>
+    	<h3>1. <%= t("applications.define_licence_type") %></h3>
+	<div class='div_class_height_contenu'>
+		<%= f.select(:groupapp_id, Groupapp.find(:all, :conditions=>{:roles=>{:id=>current_user.role_id}}, :joins=>[:roles]).collect{|p| [p.name, p.id]}) %>
+		<% 
+			#link_to "Ajouter un nouveau type d'application", :controller=>"groupapps", :action=>"new" 
+		%>
+		<%=
+			link_to(t("applications.add_new_type_apps"), {:controller=>"javascript", :action=>"add_new_groupapps"}, :class=>"class_link_add_type_apps") if @controller.control_acces_user_controller("groupapps","index") 
+		%>
+	</div>
+	<div class='div_class_bouton_suivant'>
+		<%= button_to_function t("header.next"), :name=>"buton_suivant", :class=>"class_buton_name_apps", :id=>"id_buton_next_1_to_2" %>
+	</div>
+    </li>
+
+    <li id='etape2'>
+    	<h3>2. <%= t("applications.choose_name_licence") %></h3> 
+	<div class='div_class_height_contenu_etape2'>
+		<%= f.label(:name, t("activerecord.attributes.application.name")) %>	
+		<%= f.text_field :name %>
+
+	      <p>
+		<%= f.label(:role_id, t("activerecord.attributes.application.role_id")) %>
+		<div class='div_class_choix_roles_apps'>
+		       <ol>
+			   <li>
+			   <%= radio_button(:application, :role_id, current_user.role_id, :checked=>true) %> <%= current_user.role.name %>	
+			   	<%= get_roles_applications(current_user.role_id) unless get_roles_applications(current_user.role_id) == 0 %>
+			   </li>
+		       </ol>
+		</div>
+	     </p>
+	</div>
+
+
+	<div class='div_class_bouton_suivant'>
+		<%= button_to_function t("header.previous"), :name=>"buton_retour", :class=>"class_buton_name_apps", :id=>'id_buton_retour_2_to_1' %>
+		<%= 
+			#f.submit t("general.submit") 
+		button_to_function t("header.next"), :name=>"buton_suivant", :class=>"class_buton_name_apps", :id=>"id_buton_next_2_to_3"
+		%>
+	</div>
+   </li>
+   <li id='etape3'>
+   	<div class='div_class_height_contenu_etape3'>
+		<%= t("applications.phrase_reception_facturation") %>
+	</div>
+	<div class='div_class_bouton_suivant'>
+		<%= button_to_function t("header.previous"), :name=>"buton_retour", :class=>"class_buton_name_apps", :id=>"id_buton_retour_3_to_2" %><%= f.submit t("general.submit") %>
+	</div>
+   </li>
+  <% else %>
+  <li id='etape4'>
+  	<h3>3. <%= flash[:notice] %></h3>
+	<ol>
+		<li>
+			<%= t("applications.licence") %> : <%= @application_recap.id %>
+		</li>
+
+		<li>
+			<%= t("applications.type") %> : <%= @application_recap.groupapp.name %>
+		</li>
+		<li>
+			<%= t("applications.name") %> : <%= @application_recap.name %>
+		</li>
+		<li>
+			<%= t("applications.serial") %> : <%= @application_recap.serial %>
+		</li>
+		<li>	
+			<%= link_to "Retourner aux dispositifs", applications_url %>
+		</li>
+	</ol>	
+  </li>
+  <% end %>
+ </ul>
+</div>
+</div>
+<% end %>

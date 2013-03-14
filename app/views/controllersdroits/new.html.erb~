@@ -1,0 +1,8 @@
+<h1><%= t("title.new_controllersdroit") %></h1>
+<% form_for(@controllersdroit) do |f| %>
+	<%= render(:partial => "form", :locals => { :f => f}) %>
+  <p class='p_class_bouton_valid_register'>
+    <%= f.submit t("controllersdroit.submit_create")  %>
+  </p>
+<% end %>
+

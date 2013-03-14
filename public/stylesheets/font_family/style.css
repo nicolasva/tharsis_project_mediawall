@@ -1,0 +1,30 @@
+@font-face {
+ font-family: gautami;
+ src: url("../../stylesheets/font_family/gautami.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: gautami;
+ src: url("../../stylesheets/font_family/gautami.ttf") /* TTF file for CSS3 browsers */
+}
+
+body {
+ margin: auto;
+ margin-top: 0px;
+ margin-bottom: 0px;
+ width: 1136px;
+ font-family: "gautami";
+ padding: 0px;
+ /*margin-left: 14%;*/
+ border-left: 2px solid #aaa;
+ border-right: 2px solid #aaa;
+ background-color: #404040;
+}
+
+div.div_class_corps_total
+{
+ padding: 0px;
+ margin: 0px;
+ min-height: 550px;
+ background-color: white;
+ padding-top:10px;
+}

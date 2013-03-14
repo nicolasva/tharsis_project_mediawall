@@ -1,0 +1,12 @@
+<p>
+<%= label_tag("Selectionner des bornes à associés à cette version :") %>
+    <div class='div_class_apps_to_versions'>
+      <ul>
+	<% Application.find(:all, :conditions=>{:groupapp_id=>groupapp_id, :avoirs=>{:fichiercompression_id=>@fichiercompression.id}}, :include=>[:avoirs]).collect{ |application| %>
+	  <% content_tag_for :li, application do %>
+		<%= check_box_tag("fichiercompression[application_ids][]", application.id, application.avoirs.find(:first, :conditions=>{:fichiercompression_id=>@fichiercompression.id, :currentversion=>true}).nil? ? false : true) %> <%= label_tag(application.serial) %>
+	  <% end %>
+        <% } %>
+     </ul>
+   </div>
+</p>

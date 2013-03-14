@@ -1,0 +1,12 @@
+@font-face {
+ font-family: gautami;
+ src: url("../../stylesheets/svg_css/gautami.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: gautami;
+ src: url("../../stylesheets/svg_css/gautami.ttf") /* TTF file for CSS3 browsers */
+}
+
+text{ 
+ font-family: "gautami";
+}

@@ -1,0 +1,11 @@
+<%= javascript_include_tag "multiplecheckboxjs/js.js" %>
+<% form_for :role, :url=>{:controller=>"applications", :action=>"valid_all_edit"} do |role| %>
+	<ul>
+		<% Role.all.collect{ |role| %>
+			<li>		
+				<%= check_box_tag("application[role_ids][]", role.id, @application.roles.include?(role)) %> <%= label_tag(role.name) %>
+			</li>
+		<% } %>
+	</ul>
+<% end %>
+

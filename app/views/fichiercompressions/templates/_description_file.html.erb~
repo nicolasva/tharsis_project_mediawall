@@ -1,0 +1,4 @@
+	<p>
+		<%= f.label(:description, "Description du fichier") %><br> 
+		<%= f.text_field :description %>
+	</p>

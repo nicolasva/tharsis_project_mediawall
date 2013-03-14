@@ -1,0 +1,42 @@
+div.class_url_home
+{
+	margin-left: 10px;
+	height: 70px;
+}
+
+div.class_url_home ul
+{
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+}
+
+div.class_url_home ul li
+{
+	margin: 0px;
+	padding: 0px;
+	float: left;
+}
+
+div.class_url_home ul li div.span_class_url_home
+{
+	border: 1px solid silver;
+	-webkit-border-radius: 5px;
+  	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding-top: 9px;
+	padding-left: 10px;
+	padding-right: 119px;
+	color: #878787;
+}
+
+div.class_url_home ul li  div.span_class_url_home a
+{
+	color: #878787;
+	text-decoration: none;
+}
+
+div.class_url_home ul li div.span_class_url_home a:hover
+{
+	text-decoration: underline;
+}

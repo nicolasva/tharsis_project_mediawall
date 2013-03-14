@@ -1,0 +1,29 @@
+<div class='class_liste_groupapp'>
+<table class='tab_class_groupapp' cellpadding='0' border='0' cellspacing='0'>
+  <tr class='colonne_titre'>
+	<td class='colonne_general_first'>
+		<%= t("groupapps.tab_phrase_nom_group") %>
+	</td>
+
+	<td>
+		<%= t("groupapps.tab_phrase_edit_group") %>
+	</td>
+	
+	<td class='colonne_general_last'>
+		<%= image_tag("img_general/bin.png") %>
+	</td>
+  </tr>
+
+<% @groupapps.each do |groupapp| %>
+  <tr class='class_contenu_colonne_groupapp'>
+    <td class='contenu_general_first'><%= groupapp.name %></td>
+    <td class='contenu_colonne_general'><%= link_to 'Editer', edit_groupapp_path(groupapp) %></td>
+    <td class='contenu_colonne_general'><%= link_to image_tag("img_general/close.gif", :class=>"class_liens_drop"), groupapp, :confirm => t("groupapps.confirm_sup_groupapps"), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<br />
+
+<%= link_to t("groupapps.nouveau_groupe"), new_groupapp_path %>

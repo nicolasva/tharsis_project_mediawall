@@ -1,0 +1,54 @@
+class User < ActiveRecord::Base
+  attr_accessor :pays, :regions
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  validates_presence_of :name, :message=>"Veuillez entrer un nom"
+  validates_presence_of :prenom, :message=>"Veuillez entrer un prénom"
+  #validates_presence_of :numeropostal, :message=>"Veuillez entrer le numéro correspondant à votre adresse"
+  #validates_presence_of :adressepostal, :message=>"Veuillez entrer l'adresse de cette utilisateur"
+  #validates_presence_of :ville_id, :message=>"Veuillez séléctionner une ville"
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  validates_uniqueness_of :name, :email
+  #attr_accessible :name, :prenom, :numeropostal, :adressepostal, :ville_id, :birthdaydate, :email, :password, :password_confirmation
+  attr_accessible :name, :prenom, :email, :password, :password_confirmation, :category_ids
+  #attr_accessor :region_id, :pay_id
+  belongs_to :ville
+  has_many :orders, :dependent => :destroy
+  has_many :encherirs, :dependent => :destroy
+  has_many :avoiralertnewsletters, :dependent => :destroy
+  #has_and_belongs_to_many :category
+  has_and_belongs_to_many :galerieimages
+
+  def set_newsletter_alert_user(newsletter_category_id, alert_category_id)
+ 	if avoiralertnewsletters_destroy?
+		#0.upto(newsletter_category_id.length-1){ |i|
+
+		#}
+		Category.joins(:menu).where(:menus=>{:categorie_or_contenu=>0}).all.each{ |categorie|
+			if (!newsletter_category_id.nil? && newsletter_category_id.include?(categorie.id.to_s)) || ( !alert_category_id.nil? &&alert_category_id.include?(categorie.id.to_s))
+				avoiralertnewsletter = Avoiralertnewsletter.new(:user_id=>self.id, :category_id=>categorie.id, :newsletter=>newsletter_category_id.nil? ? false : newsletter_category_id.include?(categorie.id.to_s), :alert=>alert_category_id.nil? ? false : alert_category_id.include?(categorie.id.to_s))
+				avoiralertnewsletter.save
+			end
+		}
+	end
+  end
+
+  private
+  def avoiralertnewsletters_destroy?
+  	#Avoiralertnewsletter.where(:user_id=>self.id, :category_id=>category_id).first.nil?
+	
+	#avoiralertnewsletters = Avoiralertnewsletter.where(:user_id=>self.id).all
+	#if avoiralertnewsletters.nil? || avoiralertnewsletters.empty?
+	#	true 
+  	#else
+	#	avoiralertnewsletters.destroy_all
+	#end
+
+	Avoiralertnewsletter.destroy_all(:user_id=>self.id)
+  end
+
+
+end

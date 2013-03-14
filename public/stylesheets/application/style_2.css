@@ -1,0 +1,181 @@
+div.class_choix_applications
+{
+  width: 250px; /* will be adjusted by script.aculo.us */
+  height: 20em; /* 8 × 1.6em */
+  overflow: auto;
+  background-color: white; border: 1px solid #888;
+  margin: 0px; padding: 0px;
+}
+
+div.class_choix_applications ul.ul_class_liste_application{
+  list-style-type: none; margin: 0px; padding: 0px;
+}
+
+div.class_choix_applications ul.ul_class_liste_application li:hover { background-color:  #ff9;}
+
+div.class_choix_applications ul.ul_class_liste_application li{
+  list-style-type: none; display: block; position: relative;
+  font-family: sans-serif; font-size: smaller; color: #444;
+  margin: 0; padding: 0.1em;
+  cursor: pointer; overflow: hidden;
+}
+
+div.comparaison1_comparaison2
+{
+	height: 700px;
+}
+
+div.comparaison1
+{
+	float: left;
+}
+
+div.comparaison2
+{
+	margin-left: 500px;	
+}
+
+div.div_class_gestion_application
+{
+}
+
+div.div_class_gestion_application ul
+{
+	list-style-type: none;
+}
+
+div.div_class_gestion_application ul li
+{
+	margin-left: 40px;
+	float: left;
+}
+
+div.div_class_gestion_application ul li a
+{
+	text-decoration: none;
+	background-color: transparent;
+	cursor: move;
+}
+
+div.div_class_gestion_application ul li a:hover
+{
+	color: black;
+	text-decoration: underline;
+}
+
+ol.class_liste_application
+{
+	height: 20px;
+	padding: 0px;
+	margin: 0px;
+}
+
+ul.applications_css
+{
+  width: 1130px;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+ul.applications_css li
+{
+  cursor: move;
+  color: black;
+}
+
+
+ul.applications_css li:hover
+{
+  background-color: #F1F574;
+  color: gray;
+}
+
+ol.class_liste_application li
+{
+	float: left;
+}
+
+ol.class_liste_application li.class_sous_application
+{
+	list-style-type: none;
+        width: 110px;
+}
+
+a.liens_menu_bar
+{	
+	background: url('/images/img_general/applications/style_1/other_colonne.png');
+}
+
+table.table_class_liste_application tr.colonne_titre td.colonne_general
+{
+	font-weight: bold;
+	background: url('/images/img_general/applications/style_2/other_colonne.png');
+	color: white;
+}
+
+table.table_class_liste_application tr.colonne_titre td.colonne_general_serial
+{
+	font-weight: bold;
+	background: url('/images/img_general/applications/style_2/tab_colonne_serial.png');
+	color: white;
+}
+
+table.table_class_liste_application tr.colonne_titre td.colonne_mac
+{
+	font-weight: bold;
+	background: url('/images/img_general/applications/style_2/other_colonne.png');
+	color: white;
+}
+
+table.table_class_liste_application tr.contenu_colonne_titre td.contenu_colonne_general
+{
+	border-left: 2px groove silver;
+	border-top: 2px groove silver;
+	background-color: #d0d5c6;	
+}
+
+table.table_class_liste_application tr.contenu_colonne_titre td.contenu_colonne_mac
+{
+	border-left: 2px groove silver;
+	border-top: 2px groove silver;
+	background-color: #d0d5c6;
+	height: 30px;	
+}
+
+table.table_class_liste_application tr.contenu_colonne_titre td.contenu_colonne_serial
+{
+	border-left: 2px groove silver;
+	border-top: 2px groove silver;
+	background-color: #b0b5a5;
+}
+
+input.class_edit_applications_select
+{
+	background: url('/images/img_general/applications/style_1/Yes.png');
+	height: 16px;
+	width: 16px;
+	border: 0px;
+}
+
+
+input.class_sup_applications_select
+{
+	background: url('/images/img_general/applications/style_1/No.png');
+	height: 16px;
+	width: 16px;
+	border: 0px;
+}
+
+ul.class_submit_form_apps
+{
+	float:right;
+	width:15px;
+	margin-right:370px;
+	padding: 0px;
+}
+
+ul.class_submit_form_apps li
+{
+	list-style-type: none;
+}

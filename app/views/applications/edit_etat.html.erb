@@ -1,0 +1,10 @@
+<h1>Etat de l'application</h1>
+<% form_for :edit_etat_application, @application_edit_etat, :url=>{:controller=>"applications", :action=>"valid_edit_etat"}, :html=>{:method=>:get} do |f| %>
+	<%= f.text_field :serial %>
+	<p>
+		<%= f.label(:enregistrement, "enregistrement") %>
+		<%= f.check_box(:enregistrement) %>
+	</p>
+
+	<%= f.submit "Enregistrer" %>
+<% end %>

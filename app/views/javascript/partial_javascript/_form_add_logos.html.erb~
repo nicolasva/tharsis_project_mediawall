@@ -1,0 +1,25 @@
+        <p>     
+                <%= f.label(:name_id, "Nom du logo") %><br>                   
+                <%= f.text_field(:name_id, :value=>(@name_translation.nil? ? "" : @name_translation)) %>                                 
+        </p>                                                                  
+                
+	<p>
+		<%= f.label(:size_x, "Taille de la photo (x)") %><br>
+		<%= f.text_field(:size_x, :value=>(@size_x.nil? ? "" : @size_x)) %>
+	</p>
+
+	<p>
+		<%= f.label(:size_y, "Taille de la photo (y)") %><br>
+		<%= f.text_field(:size_y, :value=>(@size_y.nil? ? "" : @size_y)) %>
+	</p>
+
+        <p>
+
+		<% unless @image.nil? %>
+			logo actuel : <br>
+			<%= image_tag("/img_sqlite/logos/#{@image}") %>
+			<br>
+		<% end %>
+                <%= f.label(:logo, "Logo") %><br>                             
+                <%= f.file_field(:logo) %>                                    
+        </p> 

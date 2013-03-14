@@ -1,0 +1,44 @@
+div.class_url_home ul li.class_message_flash
+{
+	margin-left: 100px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+}
+
+div.div_class_notice_user_sessions
+{
+	margin-top: 20px;
+	margin-left: 30%;
+}
+
+#flash
+{
+	margin: 0px;
+	padding: 0px;
+	width: 600px;
+}
+
+#flash .message {
+	font-size:12pt;
+	left:0;
+	width:100%;
+	text-align:center;
+	color:red;
+}
+
+#flash .error {
+	border:1px solid #fbb;
+	background-color:#fdd;
+}
+
+#flash .warning {
+	border:1px solid#fffaaa;
+	background-color:#ffffcc;
+}
+
+#flash .notice {
+	/*border:1px solid #8fcb5f;*/
+	background-color: #8fcb5f;
+}
+

@@ -1,0 +1,8 @@
+class ViewStatMigrate < ActiveRecord::Migration
+  def self.up
+	  create_view :stat_widgetids, "select contenu,idinsert from stat_contenus where colonne_id = (select id from stat_colonnes where name LIKE 'widgetreference' and table_id=3)" do |t|
+	  	t.column :contenu
+		t.column :idinsert
+	  end
+  end
+end

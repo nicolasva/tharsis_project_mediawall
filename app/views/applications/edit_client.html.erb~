@@ -1,0 +1,15 @@
+<h1>Information sur le client</h1>
+<% form_for :application_client, @application_client , :url=>{:controller=>"applications", :action=>"edit_etat"} do |f| %>
+  		<%= f.error_messages %>
+		<p>
+		<%= f.label(:serial) %> : <br>
+		<%= f.text_field :serial %>
+		</p>
+
+		<p>
+		<%= f.label(:mac, "Adresse Mac") %> : <br>
+		<%= f.text_field :mac %>
+		</p>
+
+		<%= f.submit "valider" %>
+<% end %>

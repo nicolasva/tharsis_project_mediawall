@@ -1,0 +1,71 @@
+div.div_menu_connect
+{
+	margin-top: 0px;
+	margin-bottom: 25px;
+	background-color: #dfdfdf;
+	height: 70px;
+	width: 100%;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect
+{
+	margin: 0px;
+	padding: 0px;
+	height: 85px;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li{
+
+	position: block;
+	margin-top: -2px;
+	float: right;
+	margin-left: 0px;
+	list-style-type: none;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li div.class_liens_username{
+	color: #505050;
+	margin-top: -25px;
+	margin-left: 24%;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li div.class_logo_profil{
+	position: block;
+	height: 73px;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li a.class_liens_deconnect
+{
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li.class_menu_left_presentations_first
+{
+	float: left;
+}
+div.div_menu_connect ul.ul_class_menu_connect li.class_menu_left_presentations
+{
+	float: left;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li a
+{
+
+	font-size: 12pt;
+	text-decoration: underline;
+	color: #4169aa;
+	padding: 6px;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li a img
+{
+	border: 0px;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li a.liens_menu_bar_bis
+{
+	font-size: 12pt;
+	text-decoration: none;
+	color: black;
+	padding: 6px;
+}
+

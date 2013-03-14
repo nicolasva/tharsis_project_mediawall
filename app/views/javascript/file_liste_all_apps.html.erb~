@@ -1,0 +1,15 @@
+<ul>
+	<li>
+	<%= "#{check_box_tag("fichiercompression_roles", current_user.role_id, true, :class=>"checkbox_roles", :onclick=>"check_apps(this.checked, '#{current_user.role_id}');", :id=>"checkbox_roles_#{current_user.role_id}")} #{link_to current_user.role.name, "#ancre_#{current_user.role.id}", :onclick=>"display_apps_roles('#{current_user.role_id}');", :class=>"class_liens_roles", :id=>"id_liens_roles_#{current_user.role_id}"}" %>
+		<% unless current_user.role.applications.empty? %>	
+			<ol id='ol_role_apps_<%= current_user.role_id %>' style='display:none;' name='ancre_<%= current_user.role_id %>'>
+				<% current_user.role.applications.find(:all, :conditions=>"groupapp_id=#{current_user.groupapp_id}").each{ |application| %>
+					<li>
+					<%= "#{check_box_tag("fichiercompression_avoir[application_id][]", application.id, true, {:class=>"application_cb", :onclick=>"check_sub_apps();"})} #{application.name}" %>
+					</li>
+				<% } %>
+			</ol>
+		<% end %>
+	<%= get_roles_apps(current_user.role_id,params[:id_type],false,true) %>
+	</li>
+</ul>

@@ -1,0 +1,189 @@
+class Viewtotal < ActiveRecord::Migration
+  def self.up
+	  #view table widgets_consulted 
+	   create_view :stat_widgetids, "select contenu,idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Widgets_Consulted' and stat_colonnes.name LIKE 'Widgetreference')" do |t|
+	        t.column :contenu
+	        t.column :idinsert
+	   end
+
+	   create_view :stat_widgetserials, "select stat_widgetids.contenu as widgetid, stat_contenus.contenu as serial, stat_widgetids.idinsert from stat_contenus,stat_widgetids where stat_contenus.idinsert=stat_widgetids.idinsert and colonne_id=(select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Widgets_Consulted' and stat_colonnes.name LIKE 'application_serial')" do |t|
+		t.column :widgetid
+		t.column :serial
+		t.column :idinsert
+	   end
+
+	   create_view :stat_widgetdates, "select stat_contenus.contenu as date, widgetid from stat_widgetserials, stat_contenus where stat_contenus.idinsert=stat_widgetserials.idinsert and colonne_id=(select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Widgets_Consulted' and stat_colonnes.name LIKE 'time' group by 'time')" do |t|
+		t.column :date
+		t.column :widgetid
+	   end
+
+	   create_view :stat_serials, "select `roles`.`id` AS `roleid`,`roles`.`name` AS `rolename`,`groupapps`.`id` AS `groupid`,`groupapps`.`name` AS `groupname`,`applications`.`id` AS `applicationid`,`applications`.`name` AS `applicationame`,`applications`.`serial` AS `serial` from ((`roles` join `groupapps`) join `applications`) where ((`applications`.`role_id` = `roles`.`id`) and (`applications`.`groupapp_id` = `groupapps`.`id`))" do |t|
+  		t.column :roleid
+		t.column :rolename
+		t.column :groupid
+		t.column :groupname
+		t.column :applicationid
+		t.column :applicationname
+		t.column :serial
+  	   end
+
+	create_view :stat_widgetserialsessions, "select stat_widgetserials.widgetid, stat_contenus.contenu as sessionid, stat_widgetserials.serial, stat_widgetserials.idinsert  from stat_contenus,stat_widgetserials where stat_contenus.idinsert=stat_widgetserials.idinsert and colonne_id=(select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_colonnes.name LIKE 'userSessionId' and stat_tables.name LIKE 'Widgets_Consulted')" do |t|
+       		t.column :widgetid
+		t.column :sessionid
+		t.column :serial
+		t.column :idinsert
+        end
+
+	create_view :stat_widgetnames, "select stat_widgetserialsessions.widgetid, stat_contenus.contenu as widgetname, stat_widgetserialsessions.serial, stat_widgetserialsessions.idinsert, stat_widgetserialsessions.sessionid from stat_contenus,stat_widgetserialsessions where stat_contenus.idinsert=stat_widgetserialsessions.idinsert and colonne_id=(select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_colonnes.name LIKE 'widgetName' and stat_tables.name LIKE 'Widgets_Consulted')" do |t|
+		t.column :widgetid
+		t.column :widgetname
+		t.column :serial
+		t.column :idinsert
+		t.column :sessionid
+	end
+
+	  create_view :stat_mediasessions, "select stat_serials.roleid, stat_serials.rolename, stat_serials.groupid, stat_serials.groupname, stat_serials.applicationid, stat_serials.applicationname, stat_widgetnames.serial, stat_widgetnames.widgetid, stat_widgetnames.widgetname, stat_widgetnames.sessionid from stat_serials,stat_widgetnames where stat_widgetnames.serial=stat_serials.serial" do |t|
+	  	t.column :roleid
+		t.column :rolename
+		t.column :groupid
+		t.column :groupname
+		t.column :applicationid
+		t.column :applicationname
+		t.column :serial
+		t.column :widgetid
+		t.column :widgetname
+		t.column :sessionid
+	  end
+
+	   create_view :stat_mediasessiondates, "select stat_mediasessions.roleid, stat_mediasessions.rolename, stat_mediasessions.groupid, stat_mediasessions.groupname, stat_mediasessions.applicationid, stat_mediasessions.applicationname, stat_mediasessions.serial, stat_mediasessions.widgetid, stat_mediasessions.widgetname, stat_mediasessions.sessionid, stat_widgetdates.date from stat_mediasessions,stat_widgetdates where stat_mediasessions.widgetid=stat_widgetdates.widgetid group by stat_widgetdates.date" do |t|
+  		t.column :roleid
+		t.column :rolename
+		t.column :groupid
+		t.column :groupname
+		t.column :applicationid
+		t.column :applicationname
+		t.column :serial
+		t.column :widgetid
+		t.column :widgetname
+		t.column :sessionid
+		t.column :date
+  	   end
+
+	   #create view Users_Sessions
+	  create_view :stat_widgetidusers, "select contenu as duration, idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Users_Sessions' and stat_colonnes.name LIKE 'duration')" do |t|
+	  	t.column :duration
+		t.column :idinsert
+	  end
+
+	  create_view :stat_widgetusersessionids, "select contenu as sessionid, idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Users_Sessions' and stat_colonnes.name LIKE 'userSessionId')" do |t|
+	  	t.column :sessionid
+		t.column :idinsert
+	  end
+
+	  create_view :stat_widgetusersessionserials, "select contenu as serial, idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Users_Sessions' and stat_colonnes.name LIKE 'application_serial');" do |t|
+	  	t.column :serial
+		t.column :idinsert
+	  end
+
+	  create_view :stat_widgetusertimes, "select contenu as date, idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Users_Sessions' and stat_colonnes.name LIKE 'time')" do |t|
+		  t.column :date
+		  t.column :idinsert
+  	  end
+
+	  create_view :stat_widgettotalusers, "select stat_widgetidusers.duration, stat_widgetusersessionids.sessionid, stat_widgetusersessionserials.serial, stat_widgetusertimes.date from stat_widgetidusers, stat_widgetusersessionids, stat_widgetusersessionserials, stat_widgetusertimes where stat_widgetidusers.idinsert=stat_widgetusersessionids.idinsert and stat_widgetidusers.idinsert=stat_widgetusersessionserials.idinsert and stat_widgetidusers.idinsert=stat_widgetusertimes.idinsert and stat_widgetusersessionids.idinsert=stat_widgetusersessionserials.idinsert and stat_widgetusersessionids.idinsert=stat_widgetusertimes.idinsert and stat_widgetusersessionserials.idinsert=stat_widgetusertimes.idinsert" do |t|
+	  	t.column :duration
+		t.column :sessionid
+		t.column :serial
+		t.column :date
+	  end
+
+
+	create_view :stat_widgettotalusersapps, "select stat_serials.roleid, stat_serials.rolename, stat_serials.groupid, stat_serials.groupname, stat_serials.applicationid, stat_widgettotalusers.duration, stat_widgettotalusers.sessionid, stat_widgettotalusers.serial, stat_widgettotalusers.date from stat_serials,stat_widgettotalusers where stat_serials.serial=stat_widgettotalusers.serial" do |t|
+		t.column :roleid
+		t.column :rolename
+		t.column :groupid
+		t.column :groupname
+		t.column :applicationid
+		t.column :duration
+		t.column :sessionid
+		t.column :serial
+		t.column :date
+	end
+
+	#view table widgets_categorie
+	#drop_view :stat_categoriewidgetids
+        create_view :stat_categoriewidgetids, "select contenu,idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Categories_Consulted' and stat_colonnes.name LIKE 'categoryName')" do |t|
+	  	t.column :contenu
+		t.column :idinsert
+	end
+
+	#drop_view :stat_categoriewidgetserials
+	create_view :stat_categoriewidgetserials, "select stat_categoriewidgetids.contenu as widgetid, stat_contenus.contenu as serial, stat_categoriewidgetids.idinsert from stat_contenus,stat_categoriewidgetids where stat_contenus.idinsert=stat_categoriewidgetids.idinsert and colonne_id=(select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Categories_Consulted' and stat_colonnes.name LIKE 'application_serial')" do |t|
+		t.column :widgetid
+		t.column :serial
+		t.column :idinsert
+	end
+
+	#drop_view :stat_categoriewidgetdates
+	create_view :stat_categoriewidgetdates, "select stat_contenus.contenu as date, widgetid from stat_categoriewidgetserials, stat_contenus where stat_contenus.idinsert=stat_categoriewidgetserials.idinsert and colonne_id=(select stat_colonnes.id from stat_tables,stat_colonnes where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Categories_Consulted' and stat_colonnes.name LIKE 'time')" do |t|
+		t.column :date
+		t.column :widgetid
+	end
+
+	#drop_view :stat_categoriewidgetserialsessions
+	create_view :stat_categoriewidgetserialsessions, "select stat_categoriewidgetserials.widgetid, stat_contenus.contenu as sessionid, stat_categoriewidgetserials.serial, stat_categoriewidgetserials.idinsert from stat_contenus,stat_categoriewidgetserials where stat_contenus.idinsert=stat_categoriewidgetserials.idinsert and colonne_id=(select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_colonnes.name LIKE 'userSessionId' and stat_tables.name LIKE 'Categories_Consulted')" do |t|
+		t.column :widgetid
+		t.column :sessionid
+		t.column :serial
+		t.column :idinsert
+	end
+
+	#problem
+	#drop_view :stat_categoriesessions
+	create_view :stat_categoriesessions, "select stat_serials.roleid, stat_serials.rolename, stat_serials.groupid, stat_serials.groupname, stat_serials.applicationid, stat_serials.applicationname, stat_categoriewidgetserialsessions.serial, stat_categoriewidgetserialsessions.widgetid, stat_categoriewidgetserialsessions.sessionid from stat_serials,stat_categoriewidgetserialsessions where stat_categoriewidgetserialsessions.serial=stat_serials.serial" do |t|
+		t.column :roleid
+		t.column :rolename
+		t.column :groupid
+		t.column :groupname
+		t.column :applicationid
+		t.column :applicationname
+		t.column :serial
+		t.column :widgetid
+		t.column :sessionid
+	end
+	#fin problem
+
+	#drop_view :stat_categoriesessiondates
+	create_view :stat_categoriesessiondates, "select stat_categoriesessions.roleid, stat_categoriesessions.rolename, stat_categoriesessions.groupid, stat_categoriesessions.groupname, stat_categoriesessions.applicationid, stat_categoriesessions.applicationname, stat_categoriesessions.serial, stat_categoriesessions.widgetid, stat_categoriesessions.sessionid, stat_categoriewidgetdates.date from stat_categoriesessions,stat_categoriewidgetdates where stat_categoriesessions.widgetid=stat_categoriewidgetdates.widgetid group by stat_categoriewidgetdates.date" do |t|
+		t.column :roleid
+		t.column :rolename
+		t.column :groupid
+		t.column :groupname	
+		t.column :applicationid
+		t.column :applicationname
+		t.column :serial
+	        t.column :widgetid
+	        t.column :sessionid
+	        t.column :date	
+	end
+
+	create_view :stat_viewdurationsessions, "select sessionid,groupid,roleid,applicationid, count(stat_tablemediasessiondates.widgetid) as 'countwidgetid', min(date) as 'startsession', TIME_TO_SEC(TIMEDIFF(max(date),min(date))) as 'duration' from stat_tablemediasessiondates group by sessionid" do |t|
+	  	t.column :sessionid
+		t.column :groupid
+		t.column :roleid
+		t.column :applicationid
+		t.column :countwidgetid
+		t.column :startsession
+		t.column :duration
+	end
+
+	create_view :stat_viewdurationwidgettotalusersapps, "select sessionid,groupid,roleid,applicationid, min(date) as 'startsession', TIME_TO_SEC(TIMEDIFF(max(date),min(date))) as 'duration' from stat_tablewidgettotalusersapps group by sessionid" do |t|
+	  	t.column :sessionid
+		t.column :groupid
+		t.column :roleid
+		t.column :applicationid
+		t.column :startsession
+		t.column :duration
+	end
+  end
+end

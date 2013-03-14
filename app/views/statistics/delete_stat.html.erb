@@ -1,0 +1,31 @@
+<h1>Choix des contenus des tables à supprimer</h1>
+<%= calendar_date_select_includes "red" %>	
+<% form_for :table, :url => {:controller=>"statistics", :action=>"destroy_contenu_table"} do |f| %>
+	<%= f.hidden_field :id, :value=>params[:id] %>
+	<p>
+		Supprimer la table qui va avec :
+		<%= f.check_box(:remove_table, :id=>"id_remove_table", :class=>"id_remove_table_column") %>
+	</p>
+
+	<p>
+		Supprimer les colonnes qui vont avec : <%= f.check_box(:remove_column, :id=>"id_remove_column", :class=>"id_remove_table_column") %>
+	</p>
+
+     <div id='div_delete_sup_contenu' style='display:block;'>
+	<p>
+		<%= link_to "Spécifier une date pour la supression du contenu", "#", :id=>"id_calendar_contenu" %> Tout supprimer : <%= f.check_box(:all_contenu) %>		
+	</p>
+	<div id='div_calendar_delete_contenu' style='display:none;'> 
+	    <p>
+		Date de début de la supression du contenu de cette table <br>
+		<%= calendar_date_select_tag "fromdate", 7.days.ago, :embedded => true, :time => true %>	
+	    </p>
+
+	    <p>
+		Date de fin de la supression du contenu de cette table<br>
+		<%= calendar_date_select_tag "todate", Time.now, :embedded => true, :time => true %>	
+	    </p>
+        </div>
+     </div>
+	<%= f.submit "Supprimer le contenu de cette table à la date séléctionné" %>
+<% end %>

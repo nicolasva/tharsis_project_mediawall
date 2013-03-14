@@ -1,0 +1,7 @@
+<h1>Inscription automatique à une enchère</h1>
+
+<div class="automat">
+<table border='1' class='class_list_order_inscription'>
+<%= render(:partial => "/orders/templates/tab_list_inscriptions_enchere", :locals => {:orders => @orders}) %>
+</table>
+</div>

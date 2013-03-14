@@ -1,0 +1,6 @@
+<% form_for :categoriecolonnetable, @categoriecolonnetable, :url=>{:controller=>"statistics", :action=>"createnewcategoriecolonnetables"} do |categoriecolonnetable| %>
+		<%= render(:partial => '/statistics/templates/form_categorie_colonne', :locals => { :categoriecolonnetable => categoriecolonnetable }) %>	
+		<p>
+			<%= categoriecolonnetable.submit "Enregistrer cette nouvelle rubrique" %>
+		</p>
+<% end %>

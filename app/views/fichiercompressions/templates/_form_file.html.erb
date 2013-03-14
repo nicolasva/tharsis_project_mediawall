@@ -1,0 +1,20 @@
+	<ul id="ul_id_choix_file" class="ul_class_choix_file">
+	    <li>
+		<%= radio_button_tag("choixfile[file]", "http", true, :class=>"class_check_choixfile") %>
+  		<%= f.label(:file, t("activerecord.attributes.zip.file")) %><br>
+		<%= f.file_field(:file) %>
+		
+	    </li>
+
+            <li class='class_choix_file_ftp'>
+		<%= radio_button_tag("choixfile[file]", "ftp", false, :class=>"class_check_choixfile") %>	
+        	<%= f.label(:file_file_name, "FTP") %><br>
+		<ol class='ul_class_liste_file_ftp'>
+            	<% @tab_list_ftp.collect{|list_ftp| %>
+				<li>
+				<%= radio_button_tag("fichiercompression[file_file_name]", "#{RAILS_ROOT}/public/ftp/#{current_user.username}/#{list_ftp.to_s.strip}", false, :disabled => true, :class=>"class_file_check_ftp") %> <%= list_ftp %>
+				</li>
+		<% } %>
+		</ol>
+	    </li>
+        </ul>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
+         'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd'>
+<svg xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'
+  version='1.1' width='900' height='700'>
+<image x='0' y='0' height='700' width='900' xlink:href='http://localhost:3000/img_sqlite/floor/floor.png'/>
+<polyline points='200.5 120 10 220 390 220 400 300' stroke="#22ee88" stroke-width="3" fill="none"/>
+</svg>

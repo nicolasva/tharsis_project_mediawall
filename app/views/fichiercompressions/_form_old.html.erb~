@@ -1,0 +1,82 @@
+  <div id='id_notice_fichiercompressions' style='display:none;height:40px;'>
+  </div>
+  <%= f.error_messages %>
+  <div class='class_edit_version_fichiercompression'>
+	  <ul id='main'>
+	<li id='etape0'>
+	<h3>1. <%= t("fichiercompressions.h3_select_type_apps") %></h3>
+
+		<div class='div_class_height_contenu'>
+			Type : <%= select_tag("type", options_from_collection_for_select(Groupapp.find(:all), 'id', 'name' )) %>
+			<ol>
+				<li>
+				<%= radio_button_tag("choix_update", "all", true, :id=>"id_choix_update_all") %> <%= label_tag(:all, t("fichiercompressions.deploy_all_apps")) %>
+				</li>	
+
+				<li>
+				<%= radio_button_tag("choix_update", "select_machines", false, :id=>"id_choix_update_select_machines") %> <%= label_tag(:select_machines, t("fichiercompressions.choose_apps")) %>
+				</li>
+			</ol>
+			<p>
+			<%= f.label(:update_file, t("fichiercompressions.update_file")) %> <%= f.check_box :update_file  %><br> <%= link_to_remote(t("fichiercompressions.select_file_ref"), :url=>{:controller=>"fichiercompressions", :action=>"select_files_apps_update"}, :with => "'id_type='+$F('type')" ) %>
+				<div id='div_id_files_apps_update' style='display:none;'>
+				</div>
+			</p>
+		</div>
+		<div class='div_class_bouton_suivant'>
+		<%= button_to_function t("header.next"), :name=>"buton_suivant_etape1_etape0", :class=>"class_buton_name_fichiercompressions", :id=>"id_buton_suivant_etape1_etape0" %>
+		</div>	
+	</li>
+	<li id='etape1'>
+		<h3>2. <%= t("statistics.select_apps") %></h3>
+		<div class='div_class_height_contenu'>
+  		<%= render(:partial => "/fichiercompressions/templates/select_apps", :locals => { :f => f}) %>
+		</div>
+		<div class='div_class_bouton_suivant'>
+		<%= button_to_function t("header.previous"), :name=>"buton_retour_etape1_etape0", :class=>"class_buton_name_fichiercompressions" %>
+		<%= button_to_function t("header.next"), :name=>"buton_suivant_etape2_etape1", :class=>"class_buton_name_fichiercompressions", :id=>"id_buton_suivant_etape2_etape1", :style=>"display:none;" %>
+		</div>
+	</li>
+
+	<%= 
+		#<li class='class_next_etape' id='etape2'> 
+	%>
+  		<%= 
+			#render(:partial => "/fichiercompressions/templates/description_file", :locals => { :f => f}) 
+		%>
+		<%= 
+			#button_to_function t("header.previous"), :name=>"buton_retour_etape1_etape2", :class=>"class_buton_name_fichiercompressions" 
+		%>
+		<%= 
+			#button_to_function t("header.next"), :name=>"buton_suivant_etape3_etape2", :class=>"class_buton_name_fichiercompressions" 
+		%>
+	<%= 
+		#</li>
+	%>
+
+	<li class='class_next_etape' id='etape2'>
+		<h3>3. <%= t("fichiercompressions.h3_select_update_file") %></h3>
+		<div class='div_class_height_contenu'>
+  		<%= render(:partial => "/fichiercompressions/templates/form_file", :locals => { :f => f}) %>
+		</div>
+		<div class='div_class_bouton_suivant'>
+		<%= button_to_function t("header.previous"), :name=>"buton_retour_etape1_etape2", :class=>"class_buton_name_fichiercompressions" %>
+		<%= button_to_function t("header.next"), :name=>"buton_suivant_etape3_etape2", :class=>"class_buton_name_fichiercompressions" %>
+		</div>
+	</li>
+
+	<li class='class_next_etape' id='etape3'>
+	<h3>3. <%= t("fichiercompressions.h3_apps_next_update") %></h3>
+		<div class='div_class_height_contenu'>
+			<div id='div_id_apps_update'>
+			</div>
+
+		<%= render(:partial => "/fichiercompressions/templates/description_file", :locals => { :f => f}) %>
+		</div>
+		<div class='div_class_bouton_suivant'>
+		<%= button_to_function t("header.previous"), :name=>"buton_retour_etape2_etape3", :class=>"class_buton_name_fichiercompressions" %>	
+    		<%= f.submit t("header.next") %>
+		</div>
+	</li>
+     </ul>
+  </div>

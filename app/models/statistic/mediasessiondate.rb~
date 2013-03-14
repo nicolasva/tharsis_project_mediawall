@@ -1,0 +1,4 @@
+class Statistic::Mediasessiondate < Statistic
+	self.table_name = "stat_mediasessiondates"
+	attr_accessor :id
+end

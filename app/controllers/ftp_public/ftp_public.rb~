@@ -1,0 +1,30 @@
+class Ftp
+  attr_reader :chemin_ftp
+  def initialize(username)
+	@username = username
+	@chemin_ftp = "#{RAILS_ROOT}/public/ftp/#{@username}"
+  end
+
+  def list
+    	%x[ls #{@chemin_ftp}] 
+  end
+
+  def copy_file(file,fichiercompression_id)
+	#create_dir(num_version)
+	create_dir(fichiercompression_id)
+	Rails.logger.info "-=-=-=-=-=-=-=-#{fichiercompression_id}-=-=-=-=-"
+	
+		Rails.logger.info "rsync -r #{@chemin_ftp}/#{file.to_s.strip} #{RAILS_ROOT}/public/zip/#{fichiercompression_id}/"
+	unless system("rsync -r #{@chemin_ftp}/#{file} #{RAILS_ROOT}/public/zip/#{fichiercompression_id}/")	
+		false
+		Rails.logger.info "rsync -r #{@chemin_ftp}/#{file} #{RAILS_ROOT}/public/zip/#{fichiercompression_id}/"
+	else
+		true
+	end
+  end
+
+  private
+  def create_dir(fichiercompression_id)
+	Dir.mkdir("#{RAILS_ROOT}/public/zip/#{fichiercompression_id}") if File.directory?("/Users/nicolas/ruby/prj/newproject/public/zip/#{fichiercompression_id}") == false
+  end
+end

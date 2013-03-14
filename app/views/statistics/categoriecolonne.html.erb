@@ -1,0 +1,15 @@
+<%= link_to "Enregistrer une nouvelle catégorie", :controller=>"statistics", :action=>"newcategoriecolonnetables" %>
+<% unless @categoriecolonnetables.empty? %>
+<ul id='categoriecolonnetables' class='categoriecolonnetables'>
+	<% @categoriecolonnetables.each{ |categoriecolonnetable| %>
+		<% content_tag_for :li, categoriecolonnetable do %>
+			<span class='deplacer'>[Deplacer]</span> <%= link_to (I18n.locale == "fr" ? categoriecolonnetable.name : categoriecolonnetable.nameen), :controller=>"statistics", :action=>"update_colonne_table", :id=>categoriecolonnetable.id %> <%= link_to "Supprimer", {:controller=>"statistics", :action=>"destroycategoriecolonnetables", :id=>categoriecolonnetable.id}, :confirm=>"Etes-vous sur de vouloir supprimer cette categorie ?" %>			
+		<% end %>
+	<% } %>
+</ul>
+<%= sortable_element("categoriecolonnetables", :url=>{:controller=>"statistics", :action=>"sort"}) %>
+<% else %>
+	<br>Il n'y a pas de catégories enregistrés
+<% end %>
+
+	<%= render :partial=>"/statistics/templates/dock_categorie_colonne" %>

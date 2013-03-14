@@ -1,0 +1,20 @@
+  <div class='div_class_user'>
+  <%= f.error_messages %>
+  <p class='p_class_first_form_user'>
+	<%= f.label(:name, t("activerecord.attributes.controllersdroit.name")) %><br>
+	<%= f.text_field(:name) %>
+  </p>
+
+  <p>
+  	<%= t("controllersdroits.choix_groupes") %> <br>
+  	<ul>
+		<% @roles.each do |role| %>
+		<li>
+		<%= check_box_tag("controllersdroit[role_ids][]", role.id, (role.id == 1 ? true : @controllersdroit.roles.include?(role)), :disabled=>(role.id == 1 ? true : false)) %> <%= label_tag(role.name) %>
+		</li>
+		<% end %>
+	</ul>
+  </p>
+  </div>
+	
+

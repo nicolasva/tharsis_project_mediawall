@@ -1,0 +1,14 @@
+class UsersController < ApplicationController
+	respond_to :html
+	def edit
+		#render :text=>"nicolas"
+		@user = User.find(params[:id])
+	end
+
+	def update
+		params[:user][:category_ids] ||= []
+		@user = User.find(params[:id])
+
+		redirect_to(edit_user_path(@user), :notice=> @user.update_attributes(params[:user]) ? "La mise à jour de votre profil s'est bien déroulé, il est désormais disponible" : "La mise à jour de votre profil ne s'est pas déroulé  correctement il n'est pas disponible")
+	end
+end

@@ -1,0 +1,1 @@
+page.insert_html :bottom, "id_liste_translations" 

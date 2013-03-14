@@ -1,0 +1,22 @@
+@font-face {
+ font-family: gautami;
+ src: url("../../stylesheets/font_family/gautami.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: gautami;
+ src: url("../../stylesheets/font_family/gautami.ttf") /* TTF file for CSS3 browsers */
+}
+
+body {
+ font-family: "gautami";
+ padding: 0px;
+ /*margin-left: 14%;*/
+ background-color: #404040;
+}
+
+div.div_class_corps_total
+{
+ padding: 0px;
+ margin: 0px;
+ background-color: white;
+}

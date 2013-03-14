@@ -1,0 +1,403 @@
+require "#{RAILS_ROOT}/app/models/database_filesqlite.rb"
+class GestionTimePing
+  	CONF_PATH = "#{RAILS_ROOT}/config/ping_time.yml"
+	def initialize(application_id)
+		@application_id = application_id
+		@time_now = Time.now
+    		@configuration = YAML::load_file(CONF_PATH)
+	end
+
+	def supression_ping
+		tab_liste_ping = Ping.find :all, :conditions=>"application_id=#{@application_id}"
+		tab_liste_ping.each{ |liste_ping|
+			calcul_ping(liste_ping.created_at) ? Ping.delete(liste_ping.id) : ""
+		}
+	end
+
+	private
+	def calcul_ping(time_ping)
+		time_difference_sec = ( time_ping > @time_now ? time_ping - @time_now : @time_now - time_ping )
+		time_minute = time_difference_sec / 60
+		time_heure = time_minute / 60
+		time_jour = time_heure / 24
+		time_jour_conf = @configuration["delete"]
+		time_jour.round > time_jour_conf ? true : false
+	end
+end
+
+class JavascriptController < ApplicationController
+	def index
+		render :text => "sqfdsqdfqsfqsfd"
+	end
+
+	def show
+	end
+
+	def add_new_groupapps
+		#render :text=>"1"
+	end
+
+	def valid_add_new_groupapps	
+		@groupapp = Groupapp.new(params[:groupapp])
+	end
+
+	def search_bornes
+		@applications = Application.find(:all, :conditions=>"name like '#{params[:search_borne][:contenu_search]}%' or serial like '#{params[:search_borne][:contenu_search]}%' or mac like '#{params[:search_borne][:contenu_search]}%' or ville like '#{params[:search_borne][:ville]}%' and role_id in (#{current_user.role_id}#{get_parent_home_applications(current_user.role_id)})")
+		#@applications = Application.all
+	end
+
+	def valid_add_roles_ajax
+		@roles = Role.new(params[:roles])
+		render(:update){ |page|
+			if @roles.save
+				resultat_save_new_roles = "L'enregistrement de ce nouveau groupe s'est bien déroulé s'est bien déroulé il est désormais disponible"
+				page.insert_html :top, "user_role_id", content_tag('option', @roles.name, :value => @roles.id)
+			else
+				resultat_save_new_roles = "L'enregistrement de ce groupe ne s'est pas déroulé correctement il n'est pas disponible"
+				@roles.errors.each{ |attr, msg|
+					resultat_save_new_roles += "<p>#{msg}</p>"
+				}
+			end
+			page.replace_html "div_resultat_add_roles", resultat_save_new_roles
+			page.visual_effect(:grow, "div_resultat_add_roles")
+		}
+	end
+
+	def get_info_fichiercompressions
+		fichiercompression = Fichiercompression.find(params[:fichiercompression_id].to_i)
+		render :text=>fichiercompression.file_file_name
+	end
+
+	def get_groupapp_name
+		groupapp = Groupapp.find(params[:groupapp_id])
+		render :text=>groupapp.name
+	end
+
+	def snatch_close_window
+		#Rails.logger.info "fichiercompression_id-=-=-=-=-=-=-=-=-=-#{params[:fichiercompression_id]}-=-=-=-=-=-=-=-"
+		
+		ftp = Net::FTP.new(CONFIG_FTP["identifiant"]["hostname"],CONFIG_FTP["identifiant"]["username"],CONFIG_FTP["identifiant"]["password"])
+			fichiercompression = Fichiercompression.find(params[:fichiercompression_id].to_i)
+			fichiercompression.send_file_ftp(ftp)
+		ftp.close
+
+		system("rm -r #{RAILS_ROOT}/public/temp_map/*")
+
+		#render :text=>"nicolas oups"
+	end
+
+	def show_get_name_value
+		@application = Application.find(params[:id])
+	end
+
+	def apps_javascript_periodicalupdater
+		#@application = Application.	
+		#render :text => ByPage.new("application").page
+		#render :text => params[:application_id]
+		@tab_applications = params[:application_id].split(",")
+	end
+
+	def popup_logos_for_mark
+		sessionfiledb = session["sessionfiledb"]
+		filedb = sessionfiledb.filedb
+
+		Rails.logger.info "-=-=-=-=-=-filedb-=-=-=-=-=-#{filedb}-=-=-=-=-=-=-"
+		@connectionsqlite = ConnectionSqlite.new(filedb)
+		@tab_result_info_marques = @connectionsqlite.execute("select * from blocks,translations where blocks.name_id=translations.id and blocks.id=#{params[:id]}")
+		@tab_result_logos = @connectionsqlite.execute("select * from logos")
+	end
+        
+	def get_roles_apps(current_user_role_id,groupapps_id)	
+		roles = Role.find(:all, :conditions=>"role_id=#{current_user_role_id}")
+
+		unless roles.empty?
+			result_ul_role_apps = "<ul>"
+				roles.each do |role|
+					result_ul_role_apps += "<li>#{check_box_tag("fichiercompression_roles", role.id, false, :class=>"checkbox_roles", :id=>"checkbox_roles_#{role.id}")}#{link_to role.name, "#ancre_#{role.id}", :class=>"class_liens_roles", :id=>"id_liens_roles_#{role.id}"}"
+						unless role.applications.empty?
+						result_ul_role_apps += "<ol id='ol_role_apps_#{role.id}' style='display:none;' name='ancre_#{role.id}'>"	
+						role.applications.find(:all, :conditions=>"groupapp_id=#{groupapps_id}").each{ |application|
+							result_ul_role_apps += "<li>#{check_box_tag("fichiercompression_avoir[application_id][]", application.id, false, {:class=>"application_cb"})} #{application.name}</li>" 
+						}
+						result_ul_role_apps += "</ol>"
+						end
+						unless get_roles_apps(role.id,groupapps_id) == 0
+							result_ul_role_apps += get_roles_apps(role.id,groupapps_id)
+						end
+					result_ul_role_apps += "</li>"
+				end
+			result_ul_role_apps += "</ul>"
+			result_ul_role_apps
+		else
+			0
+		end
+	end
+
+	def tab_select_apps
+	end
+
+	def addnamestranslations
+	end
+
+	def see_all_topics_blocks
+		sessionfiledb = session["sessionfiledb"]
+		filedb = sessionfiledb.filedb
+		connectdatabasesqlite = ConnectionSqlite.new(filedb)
+		@tab_topics_blocks = connectdatabasesqlite.execute("select * from translations,topics,link,blocks where translations.id=topics.name_id and topics.id=link.id_1 and blocks.id=link.id_2 and type_1='blocks' and type_2='topics' and blocks.id=#{params[:id]}")
+	end
+
+	def valid_add_soustheme
+	     id_params_translations = params[:addsoustheme][:id]
+	     if params[:addsoustheme][:name].empty? || params[:addsoustheme][:text0].empty? || params[:addsoustheme][:text1].empty?
+	     	flash[:notice] = t("controller.notice.fichiercompressions.valid_add_soustheme.negatif")
+	     else
+		sessionfiledb = session["sessionfiledb"]
+		filedb = sessionfiledb.filedb
+		connectdatabasesqlite = ConnectionSqlite.new(filedb)
+		tab_topics = connectdatabasesqlite.execute("select * from topics where name_id=#{id_params_translations}")
+		id_2_link = tab_topics[0][0]
+		id_translations = connectdatabasesqlite.insert("translations", "'name','text0','text1'", "'#{params[:addsoustheme][:name]}','#{params[:addsoustheme][:text0]}','#{params[:addsoustheme][:text1]}'")
+	        id_topics = connectdatabasesqlite.insert("topics", "'name_id','description_id','color_r','color_g','color_b','color_a','apply_color'", "#{id_translations},#{id_translations+1},1,1,1,1,0")	
+		connectdatabasesqlite.insert("link","","#{id_topics},#{id_2_link},'topics','topics'")
+	    	flash[:notice] = t("controller.notice.fichiercompressions.valid_add_soustheme.positif")
+	    end
+	    redirect_to(:back)
+	end
+
+	def check_number_apps
+		@groupapp = Groupapp.find(params[:application_groupapp_id])
+		@count_application = Application.count(:id, :conditions=>"groupapp_id=#{params[:application_groupapp_id]}")
+		
+	end
+
+	def valid_add_new_translations
+	     if params[:translations][:name].empty? || params[:translations][:text0].empty? || params[:translations][:text1].empty?
+			flash[:notice] = t("controller.notice.fichiercompressions.valid_add_soustheme.negatif")
+	     else
+		sessionfiledb = session["sessionfiledb"]
+		filedb = sessionfiledb.filedb	
+
+		connectdatabasesqlite = ConnectionSqlite.new(filedb)
+		id_translations = connectdatabasesqlite.insert("translations", "'name','text0','text1'", "'#{params[:translations][:name]}','#{params[:translations][:text0]}','#{params[:translations][:text1]}'")
+		if params[:translations][:add_block]
+			connectdatabasesqlite.insert("blocks", "'name_id','description_id','picture'","#{id_translations},#{id_translations + 1},'#{params[:translations][:picture]}'")
+		else
+			id_topics = connectdatabasesqlite.insert("topics","'name_id','description_id','color_r','color_g','color_b','color_a','apply_color'","#{id_translations},#{id_translations + 1},1,1,1,1,0")
+		end
+			flash[:notice] = t("controller.notice.fichiercompressions.valid_add_new_translations.positif")
+	     end
+		redirect_to(:back)	
+	end
+
+	def updatetranslationmap
+		@translation_id = params[:id]
+	        @floor_id = params[:floor_id]
+		sessionfiledb = session["sessionfiledb"]
+		filedb = sessionfiledb.filedb 
+		connectdatabasesqlite = ConnectionSqlite.new(filedb)
+		tab_info_translations = connectdatabasesqlite.select_total("translations", "id", @translation_id)	
+		@name = tab_info_translations[0][1]
+		@text0 = tab_info_translations[0][2]
+		@text1 = tab_info_translations[0][4]
+	end
+
+	def valid_update_new_translations
+		if params[:translations][:name].nil? && params[:translations][:text0].nil? && params[:translations][:text1].nil?
+		else
+		        sessionfiledb = session["sessionfiledb"]
+		        filedb = sessionfiledb.filedb 
+			connectdatabasesqlite = ConnectionSqlite.new(filedb)
+			if connectdatabasesqlite.update("translations", "name='#{params[:translations][:name]}',text0='#{params[:translations][:text0]}',text1='#{params[:translations][:text1]}'", "id=#{params[:translations][:id]}")
+				flash[:notice] = t("controller.notice.fichiercompressions.valid_update_new_translations.positif")
+			else
+				flash[:notice] = t("controller;notice.fichiercompressions.valid_update_new_translations.negatif")
+			end
+		end
+		tab_filedb = filedb.split("/")
+        	num_file = tab_filedb[9]
+
+		redirect_to :controller=>"fichiercompressions", :action=>"editfilepublic", :id=>num_file, :imgflooractuel=>params[:translations][:floor_id]	
+	end
+
+ 	def valid_add_blog
+		sessionfiledb = session["sessionfiledb"]
+		filedb = sessionfiledb.filedb
+		image = params[:add_logos][:logo]
+		name = params[:add_logos][:name_id]
+		size_x = params[:add_logos][:size_x] 
+		size_y = params[:add_logos][:size_y]
+	
+		connectdatabasesqlite = ConnectionSqlite.new(filedb)	
+		name_id = get_name_id_update_blog(name)
+		connectdatabasesqlite.insert("logos","'name_id','description_id','size_x','size_y','logo'","#{name_id},#{name_id+1},#{size_x},#{size_y},'#{image}'")
+		flash[:notice] = "L'enregistrement de cette nouvelle translation s'est bien déroulé elle est désormais disponible"
+		redirect_to(:back)
+        end
+	
+	def updatelogos
+		sessionfiledb = session["sessionfiledb"]
+		filedb = sessionfiledb.filedb
+		
+		connectdatabasesqlite = ConnectionSqlite.new(filedb)
+		Rails.logger.info "select * from translations,logos where logos.id=#{params[:id]}"
+		tab_logos = connectdatabasesqlite.execute("select * from translations,logos where translations.id=logos.name_id and logos.id=#{params[:id]}")
+		@name_translation = tab_logos[0][1]
+		@size_x = tab_logos[0][26]
+		@size_y = tab_logos[0][27]
+		@image = "logos_#{tab_logos[0][22]}.png"
+        end
+
+        def valid_update_blog
+		sessionfiledb = session["sessionfiledb"]
+		filedb = sessionfiledb.filedb
+		connectdatabasesqlite = ConnectionSqlite.new(filedb)
+		image = params[:updatelogos][:logo]
+		name = params[:updatelogos][:name_id]
+                size_x = params[:updatelogos][:size_x]
+		size_y = params[:updatelogos][:size_y] 
+
+		name_id = get_name_id_update_blog(name)
+		#connectdatabasesqlite.update("translations", "name='#{params[:translations][:name]}',text0='#{params[:translations][:text0]}',text1='#{params[:translations][:text1]}'", "id=#{params[:translations][:id]}")
+		if connectdatabasesqlite.update("logos", "name_id=#{name_id},description_id=#{description_id},size_x=#{size_x},size_y=#{size_y},logo='#{image}'","id=#{params[:updatelogos][:id]}")	
+			flash[:notice] = "La mise à jour de ce logo s'est bien déroulé il est désormais disponible"
+		else
+			flash[:notice] = "La mise à jour de ce logo ne s'est pas déroulé correctement il n'est pas disponible"
+		end
+		redirect_to(:back)
+        end
+
+	def message_popup_affichage
+		choix = params[:choix].to_s
+
+		case choix.to_s
+			when "themes"
+				render :text=>t("editfilepublic.popup_themes")
+			when "logos"
+				render :text=>t("editfilepublic.popup_logos")
+			when "add_logos"
+				render :text=>t("editfilepublic.popup_add_logos")
+			when "add_logo_plan"
+				render :text=>t("editfilepublic.popup_add_logos_plan")
+			when "update_marque"
+				render :text=>t("editfilepublic.popup_update_marque")
+			when "remove_marque"
+				render :text=>t("editfilepublic.popup_remove_marque")
+			when "add_theme_plan"
+				render :text=>t("editfilepublic.popup_add_theme_plans")
+			when "update_logo"
+				render :text=>t("editfilepublic.popup_update_logo")
+			when "sup_logo"
+				render :text=>t("editfilepublic.popup_sup_logo")
+			when "see_sous_theme"
+				render :text=>t("editfilepublic.popup_see_sous_theme")
+			when "add_sous_theme_plan"
+				render :text=>t("editfilepublic.popup_add_sous_theme_plans")
+			when "update_sous_theme_plan"
+				render :text=>t("editfilepublic.popup_update_sous_theme_plan")
+		end
+	end
+
+	def edit_all
+		render :text=>"sqdsqdqsf"
+	end
+
+        def liste_applications_groupapps
+		@role = Role.find(params[:role_id])	
+        end
+
+        def detail_apps
+		application_id = params[:application_id]
+		@application = Application.find(application_id)
+	end
+
+	def tableau_recapitulatif_fichiercompressions
+		#ul_liste_apps = "<ul>"
+		hash_group = Hash.new
+		@groupapps = Groupapp.find(:all)	
+		@params_tab_apps = params[:tab_application]	
+		@application = Application.find(@params_tab_apps[0])
+		#render :text=>application.groupapp.name
+	end
+
+  	def get_roles(role_id)
+  		roles = Role.find(:all, :conditions=>"role_id=#{role_id}")
+		tab_roles = role_id.to_s
+		unless roles.empty?
+			roles.each{ |role|	
+				tab_roles += "-#{get_roles(role.id).to_s}"
+			}
+		end
+		tab_roles
+  	end
+
+	def tableau_recapitulatif_all_apps
+		@tab_roles = get_roles(current_user.role_id).to_s.split("-")
+		@type = params[:type]
+	end
+
+	def pings
+    	       Ping.destroy_all("created_at < '#{(Time.now - (86400 * 31)).strftime("%Y-%m-%d %H:%M:%S")}'")
+    	       GestionTimePing.new(params[:id]).supression_ping
+               @application = Application.find(params[:id])
+        end
+
+	private
+	def get_name_id_update_blog(name)
+		sessionfiledb = session["sessionfiledb"]
+		filedb = sessionfiledb.filedb
+		
+		connectdatabasesqlite = ConnectionSqlite.new(filedb)
+	
+			
+		tab_translations = connectdatabasesqlite.execute("select * from translations where name LIKE '%#{name}%'")
+		unless tab_translations.empty?
+			name_id = tab_translations[0][0]
+		else
+			name_id = connectdatabasesqlite.insert("translations", "'name'","'#{name}'")
+		end
+		name_id
+	end
+
+
+  	def get_array_parent_home_applications(string_get_parent_home)
+	  #tab_string = Array.new
+	  tab_array_parent_home_applications = Array.new
+	  #tab_string = string_get_parent_home.split("-")
+	  string_get_parent_home.split("-").each{ |value_get_parent_home|
+	  	tab_array_parent_home_applications.push(value_get_parent_home.to_i)
+	  }
+	  tab_array_parent_home_applications
+	  
+	  #0.upto(tab_string.length-1){ |i|
+	  #	tab_array_parent_home_applications.push(tab_string[i])
+	  #}
+
+	  #tab_array_parent_home_applications
+	  #get_array_parent_home_applications(user_role_id)
+	  
+	  #value_role_id_all = "#{user_role_id.to_s}#{get_array_parent_home_applications(user_role_id)}"
+  	end
+
+  	def get_parent_home_applications(user_role_id)	
+	#while user_role_id != params_role_id do 
+	#	role = Role.find(params_role_id)
+	#	tab_role.push(role.role_id)
+	#	params_role_id = role.role_id
+	#end
+      
+	roles = Role.find(:all, :conditions=>"role_id=#{user_role_id}")
+      unless roles.empty?
+	      tab_roles = ""
+	roles.each{ |role|
+		tab_roles += ",#{role.id}" 
+
+		unless get_parent_home_applications(role.id) == 0
+			tab_roles += "#{get_parent_home_applications(role.id)}"
+		end		
+	}
+	tab_roles
+      else 
+	      0
+      end
+  	end
+end

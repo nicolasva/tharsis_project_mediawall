@@ -1,0 +1,28 @@
+<div class='automat'>
+<table border='1'> 
+ <tr>
+    <td>Titre de l'article</td>
+    <td>Apperçu de l'article</td>
+    <td>Prix associé à l'enchère automatique en (€)</td>
+    <td>Enchère automatique</td>
+  </tr>
+
+  <% orders.each do |order| %>
+   <tr style="color:<%= order.galerieimage.timerestant > Time.now ? 'black' : 'silver' %>;">
+    <td>
+		<%= order.galerieimage.title %>
+    </td>
+
+    <td>
+	        <%= image_tag(order.galerieimage.imageheader.url(:small), :size=>"50x50") %>
+    </td>
+
+    <td>
+	    <%= order.amount.nil? ? "Pas de prix associé à cette enchère automatique" : "#{order.amount} €" %> 
+    </td>
+
+    <td><%= order.galerieimage.timerestant > Time.now ? link_to("Fixer un prix à cette enchère", edit_order_path(order)) : "Fixer un prix à cette enchère" %></td>
+  </tr>
+  <% end %>
+</table> 
+</div>

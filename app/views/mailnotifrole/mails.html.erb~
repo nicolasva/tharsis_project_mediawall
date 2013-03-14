@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>
+			Facturation - Activation licence
+		</title>
+	</head>
+	<body>
+		Un nouveau groupe d'utilisateur a été crée par <%= @currentuser.username %><br>
+
+		Nom du nouveau groupe d'utilisateur : <%= @role.name %>
+		Information sur le nouvelle utilisateur crée pour ce groupe : <br>
+		Login d'identification : <%= @user.username %><br>
+	        Mot de passe d'identification : <%= @password %>	
+	</body>
+</html>

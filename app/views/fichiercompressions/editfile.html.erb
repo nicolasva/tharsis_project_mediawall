@@ -1,0 +1,9 @@
+<% form_for :editfile, :url=>{:controller=>"fichiercompressions", :action=>"updatefile"} do |f| %>
+	<%= f.hidden_field(:fichiercompression_id, :value=>params[:id]) %>
+	<%= f.hidden_field(:file, :value=>params[:file]) %>
+	<p>
+		<%= f.label(:contenu, "contenu du fichier") %><br>
+		<%= f.text_area(:contenu, :value=>@fichierzip.edit_file(params[:file])) %>	
+	</p>
+	<%= f.submit "Sauvegarder" %>
+<% end %>

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='utf-8'?>
+<?xml-stylesheet type="text/css" href="../stylesheets/svg_css/style.css" charset="utf-8"?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
+         'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd'>
+<svg xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'
+  version='1.1' width='800.0' height='800.0' 
+	onload='Init(evt)'
+  	onmousedown='Grab(evt)'
+  	onmousemove='Drag(evt)'
+  	onmouseup='Drop(evt)' id='svgplan'>
+	<script xlink:href="/ecmascripts/plans.es" type="text/ecmascript"/>
+<image x='0' y='0.0' height='600.0' width='600.0' xlink:href='/img_sqlite/floor/floor.png' id="BackDrop"/>
+<path d='M 408.956428527832 726.560485839843 455.465023040771 571.829292297363' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='408.956428527832' cy='726.560485839843' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_42" transform="translate(-300.0 -300.0)"/>
+<circle cx='455.465023040771' cy='571.829292297363' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_44" transform="translate(-300.0 -300.0)"/>
+<path d='M 455.465023040771 571.829292297363 485.549766540527 464.599571228027' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='455.465023040771' cy='571.829292297363' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_44" transform="translate(-300.0 -300.0)"/>
+<circle cx='485.549766540527' cy='464.599571228027' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_65" transform="translate(-300.0 -300.0)"/>
+<path d='M 455.465023040771 571.829292297363 545.88166809082 538.366218566894' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='455.465023040771' cy='571.829292297363' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_44" transform="translate(-300.0 -300.0)"/>
+<circle cx='545.88166809082' cy='538.366218566894' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_64" transform="translate(-300.0 -300.0)"/>
+<path d='M 632.206375122069 507.172599792481 668.697235107423 561.915321350098' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='632.206375122069' cy='507.172599792481' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_45" transform="translate(-300.0 -300.0)"/>
+<circle cx='668.697235107423' cy='561.915321350098' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_46" transform="translate(-300.0 -300.0)"/>
+<path d='M 668.697235107423 561.915321350098 791.883590698242 517.093322753906' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='668.697235107423' cy='561.915321350098' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_46" transform="translate(-300.0 -300.0)"/>
+<circle cx='791.883590698242' cy='517.093322753906' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_63" transform="translate(-300.0 -300.0)"/>
+<path d='M 589.481575012207 523.676216125488 611.837539672851 514.558662414551' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='589.481575012207' cy='523.676216125488' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_48" transform="translate(-300.0 -300.0)"/>
+<circle cx='611.837539672851' cy='514.558662414551' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_51" transform="translate(-300.0 -300.0)"/>
+<path d='M 668.697235107423 561.915321350098 626.681739807129 580.88875579834' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='668.697235107423' cy='561.915321350098' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_46" transform="translate(-300.0 -300.0)"/>
+<circle cx='626.681739807129' cy='580.88875579834' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_49" transform="translate(-300.0 -300.0)"/>
+<path d='M 626.681739807129 580.88875579834 698.842437744141 705.347946166992' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='626.681739807129' cy='580.88875579834' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_49" transform="translate(-300.0 -300.0)"/>
+<circle cx='698.842437744141' cy='705.347946166992' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_62" transform="translate(-300.0 -300.0)"/>
+<path d='M 589.481575012207 523.676216125488 626.681739807129 580.88875579834' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='589.481575012207' cy='523.676216125488' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_48" transform="translate(-300.0 -300.0)"/>
+<circle cx='626.681739807129' cy='580.88875579834' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_49" transform="translate(-300.0 -300.0)"/>
+<path d='M 611.837539672851 514.558662414551 632.206375122069 507.172599792481' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='611.837539672851' cy='514.558662414551' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_51" transform="translate(-300.0 -300.0)"/>
+<circle cx='632.206375122069' cy='507.172599792481' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_45" transform="translate(-300.0 -300.0)"/>
+<path d='M 611.837539672851 514.558662414551 617.405914306641 510.587768554688' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='611.837539672851' cy='514.558662414551' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_51" transform="translate(-300.0 -300.0)"/>
+<circle cx='617.405914306641' cy='510.587768554688' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_34" transform="translate(-300.0 -300.0)"/>
+<path d='M 698.842437744141 705.347946166992 731.043182373048 760.845657348633' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='698.842437744141' cy='705.347946166992' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_62" transform="translate(-300.0 -300.0)"/>
+<circle cx='731.043182373048' cy='760.845657348633' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_50" transform="translate(-300.0 -300.0)"/>
+<path d='M 791.883590698242 517.093322753906 843.082122802734 498.168113708496' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='791.883590698242' cy='517.093322753906' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_63" transform="translate(-300.0 -300.0)"/>
+<circle cx='843.082122802734' cy='498.168113708496' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_47" transform="translate(-300.0 -300.0)"/>
+<path d='M 545.88166809082 538.366218566894 589.481575012207 523.676216125488' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='545.88166809082' cy='538.366218566894' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_64" transform="translate(-300.0 -300.0)"/>
+<circle cx='589.481575012207' cy='523.676216125488' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_48" transform="translate(-300.0 -300.0)"/>
+<path d='M 485.549766540527 464.599571228027 510.361289978027 382.92470741272' fill="transparent" class="class_chemin" stroke="yellow" stroke-width="1" transform="translate(-300.0 -300.0)"/>
+<circle cx='485.549766540527' cy='464.599571228027' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_65" transform="translate(-300.0 -300.0)"/>
+<circle cx='510.361289978027' cy='382.92470741272' r='4.0' fill="red" class="circle_point_red" stroke="yellow" id="id_circle_point_red_43" transform="translate(-300.0 -300.0)"/>
+<path d='M 101.565811157227 423.765930175782 10.5960288047791 362.310791015625 82.6051712036133 137.90682220459 200.316856384277 95.2248630523683 101.565811157227 423.765930175782' fill="black" opacity="0.3" class="zone_shapes" stroke="red" stroke-width="1" id="zone_shapes_id_0"/>
+<text x='99.3299357414247' y='288.594867324829' class="class_theme_map" font-size="12.0pt" text="Jeux Ado" id="0" transform="">Jeux Ado</text>
+<a xlink:href='/fichiercompressions/supnameshapes?shapes_id=0' class="class_liens_sup_shapes" id="id_sup_shapes_0">
+<image x='99.3299357414247' y='288.594867324829' height='20' width='20' xlink:href='/images/img_general/close.gif' class="class_sup_shapes" id="id_shapes_sup_0"/>
+</a>
+<path d='M 179.443176269531 250.07608795166 228.875610351562 84.4881248474121 430.556076049806 14.7832360267639 534.658081054686 188.00919342041 374.236450195314 244.735496520996 339.203796386718 192.15673828125 179.443176269531 250.07608795166' fill="black" opacity="0.3" class="zone_shapes" stroke="red" stroke-width="1" id="zone_shapes_id_1"/>
+<text x='323.773766653878' y='174.903566428593' class="class_theme_map" font-size="12.0pt" text="Jeux de Société" id="1" transform="">Jeux de Société</text>
+<a xlink:href='/fichiercompressions/supnameshapes?shapes_id=1' class="class_liens_sup_shapes" id="id_sup_shapes_1">
+<image x='323.773766653878' y='174.903566428593' height='20' width='20' xlink:href='/images/img_general/close.gif' class="class_sup_shapes" id="id_shapes_sup_1"/>
+</a>
+<path d='M 168.037353515625 287.766059875488 287.853286743164 242.062614440918 423.070129394532 471.688110351564 341.094383239746 577.956893920899 121.689685821533 437.286575317383 168.037353515625 287.766059875488' fill="black" opacity="0.3" class="zone_shapes" stroke="red" stroke-width="1" id="zone_shapes_id_2"/>
+<text x='251.630365371704' y='384.087718963623' class="class_theme_map" id="2" transform=""></text>
+<path d='M 348.816535949706 288.843132019043 551.748321533202 214.957511901856 584.104064941407 272.452377319336 442.820251464843 448.464431762694 348.816535949706 288.843132019043' fill="black" opacity="0.3" class="zone_shapes" stroke="red" stroke-width="1" id="zone_shapes_id_3"/>
+<text x='455.261141967774' y='302.712117004395' class="class_theme_map" font-size="12.0pt" text="Jouet Educatif" id="3" transform="">Jouet Educatif</text>
+<a xlink:href='/fichiercompressions/supnameshapes?shapes_id=3' class="class_liens_sup_shapes" id="id_sup_shapes_3">
+<image x='455.261141967774' y='302.712117004395' height='20' width='20' xlink:href='/images/img_general/close.gif' class="class_sup_shapes" id="id_shapes_sup_3"/>
+</a>
+<image x='155.465023040771' y='271.829292297363' height='30.0' width='30.0' xlink:href='/img_sqlite/logos/logos_5.png' class="logos_image" id="id_logos_44"/>
+<circle cx='155.465023040771' cy='271.829292297363' r='4.0' fill="yellow" class="circle_point" stroke="yellow" id="id_point_logo_44"/>
+<text x='155.465023040771' y='311.829292297363' fill="orange" class="class_text_block_logos" font-size="9" text="SAV" id="id_text_block_44" transform="">SAV</text>
+<a xlink:href='/fichiercompressions/suplogosplans?point_id=44~block_id=4' class="class_liens_sup_logos" id="id_liens_sup_logo_44">
+<image x='158.465023040771' y='257.829292297363' height='15' width='15' xlink:href='/images/img_general/close.gif' class="class_sup_logos" id="id_logos_sup_44"/>
+</a>
+<image x='289.481575012207' y='223.676216125488' height='30.0' width='30.0' xlink:href='/img_sqlite/logos/logos_2.png' class="logos_image" id="id_logos_48"/>
+<circle cx='289.481575012207' cy='223.676216125488' r='4.0' fill="yellow" class="circle_point" stroke="yellow" id="id_point_logo_48"/>
+<text x='289.481575012207' y='263.676216125488' fill="orange" class="class_text_block_logos" font-size="9" text="Restaurant" id="id_text_block_48" transform="">Restaurant</text>
+<a xlink:href='/fichiercompressions/suplogosplans?point_id=48~block_id=12' class="class_liens_sup_logos" id="id_liens_sup_logo_48">
+<image x='292.481575012207' y='209.676216125488' height='15' width='15' xlink:href='/images/img_general/close.gif' class="class_sup_logos" id="id_logos_sup_48"/>
+</a>
+<image x='185.549766540527' y='164.599571228027' height='30.0' width='30.0' xlink:href='/img_sqlite/logos/logos_6.png' class="logos_image" id="id_logos_65"/>
+<circle cx='185.549766540527' cy='164.599571228027' r='4.0' fill="yellow" class="circle_point" stroke="yellow" id="id_point_logo_65"/>
+<text x='185.549766540527' y='204.599571228027' fill="orange" class="class_text_block_logos" font-size="9" text="Carte de fidélité" id="id_text_block_65" transform="">Carte de fidélité</text>
+<a xlink:href='/fichiercompressions/suplogosplans?point_id=65~block_id=1' class="class_liens_sup_logos" id="id_liens_sup_logo_65">
+<image x='188.549766540527' y='150.599571228027' height='15' width='15' xlink:href='/images/img_general/close.gif' class="class_sup_logos" id="id_logos_sup_65"/>
+</a>
+</svg>

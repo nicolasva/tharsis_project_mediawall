@@ -1,0 +1,7 @@
+<% form_for :translations, :url=>{:controller=>"javascript", :action=>"valid_add_new_translations"} do |f| %>
+	<%= f.hidden_field :add_block, :value=>false %>	
+	<%= render(:partial => "javascript/partial_javascript/form_add_namestranslations", :locals =>{:f =>f}) %>
+	<p>
+		<%= f.submit "Enregistrer" %>
+	</p>
+<% end %>

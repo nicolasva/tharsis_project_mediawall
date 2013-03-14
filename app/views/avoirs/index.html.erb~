@@ -1,0 +1,47 @@
+<div class='class_all_zip'>
+<h1><%= Application.find(params[:id]).groupapp.name == "PDF Reader" ? t("fichiercompressions.pdf_list") : t("title.list_zip") %></h1>
+
+<%= link_to("Ajouter un PDF", {:controller=>"newpdfreader"}, :class=>"class_link_add_pdf") if Application.find(params[:id]).groupapp.name == "PDF Reader" %>
+
+<% form_for :fichiercompressions_version, :url=>{:controller=>"fichiercompressions", :action=>"validate_version_actuelle"} do |f| %>
+<%= f.hidden_field :application_id, :value=>params[:id] %>
+<div class='div_class_tab_fichiercompression'>
+<table border='0' width='900' class='tab_class_fichiercompression' cellpadding='0' cellspacing='0'>
+  <tr class='colonne_titre'>
+	<td class='colonne_general_first' width='55'><%= t("tab_zip.version") %></td>
+	<td class='colonne_general' width='80'><%= t("tab_zip.description") %></td>
+	<td class='colonne_general' width='120'><%= t("tab_zip.actuel_version") %></td>
+	<td class='colonne_general' width='350'><%= t("tab_zip.application_partageant_fichier") %></td>
+	<td class='colonne_general' width='120'><%= t("tab_zip.telechargement") %></td>
+    	<% if current_user.role_id == 1 %>
+		<td class='colonne_general' width='150'>Parcourir le zip</td>	
+	<% end %>
+	<td class='colonne_general' width='70'>Edition</td> 
+	<td class='colonne_general_last'><%= t("general.sup") %></td>
+  </tr>
+
+<% @avoirs.each do |avoir| %>
+	<tr class='class_contenu_colonne_user' style='background-color:<%= tab_td_style(@compteur) %>'>
+    <td class='contenu_colonne_general_first'><%= avoir.fichiercompression.id %></td>
+    <td class='contenu_colonne_general'><%= avoir.fichiercompression.description %></td>
+    <td class='contenu_colonne_general'>
+	    <%= f.radio_button("currentversion", avoir.fichiercompression.id, :checked=>avoir.currentversion) %>
+    </td>
+    <td class='contenu_colonne_general'><%= link_to t("tab_zip.application_partageant_fichier"), :controller=>"applications", :action=>"apps_sharing_zips", :id=>avoir.fichiercompression_id %></td>
+    <td class='contenu_colonne_general'><%= link_to t("tab_zip.telecharger"), avoir.fichiercompression %></td>
+    <% if current_user.role_id == 1 %>
+	    <td class='contenu_colonne_general'><%= link_to "Parcourir le zip", {:controller=>"fichiercompressions", :action=>"edit", :id=>avoir.fichiercompression.id} %></td>
+    <% end %>
+    <td class='contenu_colonne_general'>
+	    <%= avoir.application.groupapp.name == 'PDF Reader' ? link_to("Editer", {:controller=>"fichiercompressions", :action=>"filepdfimg", :id=>avoir.fichiercompression_id},:popup => ["Edition de la map", "scrollbars=yes"]) : link_to("Editer", {:controller=>"fichiercompressions", :action=>"editfilepublic", :id=>avoir.fichiercompression_id, :imgflooractuel=>0}, :popup => ["Edition de la map", "scrollbars=yes"]) %>
+    </td>
+    <td class='contenu_colonne_general'><%= link_to image_tag("img_general/close.gif", :style=>'border:0px;'), avoir, :confirm => t("general.confirmation_sup"), :method => :delete %></td>
+  </tr>
+  <% @compteur = (@compteur == 0 ? 1 : 0) %>
+<% end %>
+</table>
+</div>
+	<%= f.submit t("tab_zip.update_zip") %>
+<% end %>
+<%= will_paginate @avoirs %>
+</div>

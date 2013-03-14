@@ -1,0 +1,4 @@
+	<p>
+        	<%= f.label(:file_file_name, "Choisissez le fichier") %><br>
+		<%= f.select(:file_file_name, @tab_list_ftp.collect{|list_ftp| [list_ftp,"#{RAILS_ROOT}/public/ftp/#{list_ftp}"]}) %>
+	</p>

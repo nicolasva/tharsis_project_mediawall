@@ -1,0 +1,62 @@
+<% if flash[:password].nil? %>
+<h1><%= t("title.voici_groupes") %></h1>
+
+<div class='class_gestion_roles'>
+<table class='tab_class_roles' width='500' border='0' cellpadding='0' cellspacing='0'>
+  <tr class='colonne_titre'>
+	<td class='colonne_general_first' width='122px'><%= t("roles.group_name") %></td>
+	<td class='colonne_general' width='220px'><%= t("roles.see_user_group") %></td>
+	<td class='colonne_general' width='50px'><%= t("roles.edit_group") %></td>
+	<td class='colonne_general_last' width='40px'>
+		<%= image_tag("img_general/bin.png") %>
+	</td>
+   </tr>
+   <tr>
+	   <td style='padding-left: 10px;'>
+		   <%= current_user.role.name %> <%= link_to image_tag("controllersdroits/plus.png", :class=>"class_liens_plus"), edit_role_path(current_user.role) %>
+	   </td>
+
+	   <td>
+		   <%= link_to t("roles.see_user_group"), :controller=>"users", :action=>"show", :id=>current_user.role_id %>
+	   </td>
+
+	   <td>
+		   <%= link_to t("general.edition"), edit_role_path(current_user.role) %>
+	   </td>
+
+	   <td style='text-align:center;'>
+		   <%= link_to image_tag("img_general/close.gif", :style=>'border:0px;'), current_user.role, :confirm => t("general.confirmation_sup"), :method => :delete %>
+	   </td>
+   </tr>
+<% unless get_table_role_id(current_user.role_id) == 0 %>
+		<%= get_table_role_id(current_user.role_id) %>
+	
+<% else %>
+	<%= t("roles.any_role") %>
+<% end %>
+</table>
+</div>
+
+<div class='div_class_menu_roles'>
+	<ul class='ul_class_menu_roles'>
+		<li>
+		<%= link_to image_tag("roles/#{t("roles.new_groups")}", :size=>"70x70"), new_role_path %> 
+		</li>
+	</ul>
+</div>
+<% else %>
+	<h1>Recapitulatif de la création du compte</h1>
+	<ul>
+		<li>	
+		Nom du groupe : <%= @roles.name %>
+		</li>
+
+		<li>
+		Identifiant de l'utilisateur crée : <%= @roles.users.find(:first).username %>
+		</li>
+
+		<li>
+		Mot de passe de l'utilisateur crée : <%= flash[:password] %>
+		</li>
+	</ul>
+<% end %>

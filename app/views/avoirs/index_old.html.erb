@@ -1,0 +1,18 @@
+<h1>Listing avoirs</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @avoirs.each do |avoir| %>
+  <tr>
+    <td><%= link_to 'Show', avoir %></td>
+    <td><%= link_to 'Edit', edit_avoir_path(avoir) %></td>
+    <td><%= link_to 'Destroy', avoir, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New avoir', new_avoir_path %>

@@ -1,0 +1,11 @@
+proportion: 3
+difproportiontranslation: 95
+proportiontranslationdefaut: 300
+proportioncircledefaut: 4
+proportioncirclegrossissementdefaut: 3
+proportiontextzonedefaut: 12
+proportiontextzonegrossissementdefaut: 5
+position_depart:
+      x_position: 20
+      y_position: 20
+      

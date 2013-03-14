@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Users: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag "font_family/style" %>
+  <%= stylesheet_link_tag "menu/style" %> 
+  <%= stylesheet_link_tag "url_link_location/style" %>
+  <%= stylesheet_link_tag "footer/style" %>
+  <%= stylesheet_link_tag "roles/style" %>
+  <%= stylesheet_link_tag "commun_gestion_user/style" %>
+  <%= stylesheet_link_tag "modalbox/modalbox" %> 
+  <%= stylesheet_link_tag "flash_notice/style" %> 
+  <%= javascript_include_tag :defaults, "controls", "utilities", "lowpro", "common" %>
+  <%= javascript_include_tag "scriptaculous/scriptaculous" %>
+  <%= javascript_include_tag "scriptaculous/effects" %>
+  <%= javascript_include_tag "scriptaculous/slider" %>
+  <%= javascript_include_tag "modalbox/modalbox" %>
+</head>
+<body>
+<div class='div_class_corps_total'>
+<% if current_user %>
+	<div class='div_menu_connect'>
+		<ul class='ul_class_menu_connect'> 
+		     <%= render :partial => 'layouts/templates/deconnect_menu' %>
+		     <%= render :partial => 'layouts/templates/applications/other_menu' %>			      
+		</ul>
+	</div>
+<% end %>
+<div class='class_url_home'>
+	<ul>
+	    <li>	
+	    	<div class='span_class_url_home' id='span_id_url_home'>
+		    <%= get_url_home(controller_name,controller.action_name,request.request_uri) %>
+	    	</div>
+	    </li>
+
+	    <li class='class_message_flash'>
+	  	<div id='flash'>
+	  		<% flash.each do |type, message| %>
+            		<% unless message.blank? || type.to_s == "role" || type.to_s == "password" %>
+			<div id="flash_#{type}" class="message #{type}" style="background-color:#8fcb5f;border:1px solid #8fcb5f;-moz-border-radius: 8px;-webkit-border-radius: 8px;border-radius: 8px;color:black;padding-top:15px;padding-bottom:5px;">
+					<%= message %>
+	        	</div>
+	   		<% end %>
+	 		<% end %>
+		</div>
+	   </li>
+	</ul>
+</div>
+
+	<div class='div_class_menu'>
+		<ul class='ul_class_menu_user'>
+		    <%= render :partial => 'layouts/templates/commun_gestion_user/menu_admin_user' %>			      
+		</ul>
+	</div>
+
+<div class='div_corps_user'>
+<%= yield %>
+</div>
+<div id='footer'>
+	© Tharsis Software
+</div>
+</div>
+</body>
+</html>

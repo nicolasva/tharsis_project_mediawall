@@ -1,0 +1,22 @@
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this galerieimage from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="automat">
+	  <p>
+	  	<%= f.label(:amount) %><br>
+		<%= f.text_field(:amount) %>
+	  </p>
+
+	  <p>
+	  	<%= f.submit "Enregistrer ce prix pour cette enchère" %>
+  	  </p>
+  </div>

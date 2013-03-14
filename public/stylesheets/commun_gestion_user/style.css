@@ -1,0 +1,52 @@
+div.div_class_menu
+{
+ float:left;
+}
+
+div.div_class_menu ul.ul_class_menu_user
+{
+	margin: 0px;
+	list-style-type: none;
+}
+
+div.div_corps_user
+{
+	background-color: white;
+	margin-left: 170px;
+}
+
+div.div_class_menu ul.ul_class_menu_user li a img
+{
+	border: 0px;
+}
+
+div.div_class_menu ul.ul_class_menu_user li div.class_liens_username
+{
+	margin-left: 32px;
+	margin-top: -32px;
+	margin-bottom: 11px;
+	color: #3c3c3c;
+}
+
+
+div.div_corps_user div.div_class_user
+{
+	width: 600px;
+	padding: 0px;
+	padding-left: 9px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+div.div_corps_user div.div_class_user p.p_class_first_form_user
+{
+	margin-top: 0px;
+}
+
+
+div.div_corps_user p.p_class_bouton_valid_register
+{
+	margin-left: 422px;
+}

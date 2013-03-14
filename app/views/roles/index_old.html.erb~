@@ -1,0 +1,49 @@
+<h1><%= t("title.voici_groupes") %></h1>
+
+<div class='class_gestion_roles'>
+<table class='tab_class_roles' width='650px' border='0' cellpadding='0' cellspacing='0'>
+  <tr class='colonne_titre'>
+	<td class='colonne_general_first' width='122px'><%= t("roles.group_name") %></td>
+	<td class='colonne_general' width='220px'><%= t("roles.see_user_group") %></td>
+	<td class='colonne_general' width='50px'><%= t("roles.edit_group") %></td>
+	<td class='colonne_general_last' width='40px'>
+		<%= image_tag("img_general/bin.png") %>
+	</td>
+   </tr>
+</table>
+<% compteur = 0 %>
+<% if params[:role_id].nil? %>
+<ul class='ul_class_liste_roles'>
+<% @roles.each do |role| %>
+<% content_tag_for :li, role do %>
+   <table border='1' width='500px'>
+    <tr class='class_contenu_colonne_user' style='background-color:<%= tab_td_style(compteur) %>;'>
+    	<td class='contenu_colonne_user' width='133px'><%= link_to role.name, :controller=>"roles", :action=>"index", :role_id=>role.id %></td>
+    	<td class='contenu_colonne_general' width='233px'><%= link_to t("roles.see_user_group"), :controller=>"users", :action=>"show", :id=>role.id %></td>
+    	<td class='contenu_colonne_general' width='50px'><%= link_to t("general.edition"), edit_role_path(role) %></td>
+    	<td class='contenu_colonne_general' width='40px'><%= link_to image_tag("img_general/close.gif", :style=>'border:0px;'), role, :confirm => t("general.confirmation_sup"), :method => :delete %></td>
+    </tr>
+
+    <tr>
+		<td>
+		</td>
+    </tr>
+  </table>
+     <% compteur = (compteur == 0 ? 1 : 0) %>
+  <% end %>
+<% end %>
+</ul>
+<% else %>
+	<%= set_parent_home_roles(params[:role_id]) %>
+<% end %>
+
+<%= get_table_role_id(current_user.role_id) %>
+</div>
+
+<div class='div_class_menu_roles'>
+	<ul class='ul_class_menu_roles'>
+		<li>
+		<%= link_to image_tag("roles/#{t("roles.new_groups")}", :size=>"70x70"), new_role_path %> 
+		</li>
+	</ul>
+</div>

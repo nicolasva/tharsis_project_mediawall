@@ -1,0 +1,12 @@
+<div id='div_resultat_add_roles' style='display:none;'>
+</div>
+<% form_remote_tag :url =>{:controller=>"javascript", :action=>"valid_add_roles_ajax"} do %>
+		<p>
+			<%= t("roles.group_name") %> <br>
+		 	<%= text_field :roles, :name %>	
+		</p>
+
+		<p>
+			<%= submit_to_remote "valid_register_new_roles", t("roles.submit_add_roles"), :url => {:controller=>"javascript", :action=>"valid_add_roles_ajax"} %>
+		</p>
+<% end %>

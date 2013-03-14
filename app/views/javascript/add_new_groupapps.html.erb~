@@ -1,0 +1,22 @@
+<div id='id_add_new_groupapps' style='display:none;'>
+</div>
+<% form_remote_tag :url => {:controller=>"javascript", :action=>"valid_add_new_groupapps"} do %>
+	<p>
+		Nom du groupe de l'application : <br>
+		<%= text_field(:groupapp, :name) %>
+	</p>
+
+
+	<p>
+		<%= label_tag("Séléctionner les groupes d'utilisateurs qui pourront voir ce groupe d'applications") %><br>
+		<ul class='ul_class_groupapps_roles' style='border:1px solid black;list-style-type:none;overflow:auto;height:200px;width:200px;'>
+			<% Role.all.collect { |role| %>
+		      		<% content_tag_for :li, role do %>
+					<%= check_box_tag("groupapp[role_ids][]", role.id, (role.id == 1 ? true : false), :disabled=>role.id == 1 ? true : false) %> <%= label_tag(role.name) %>
+		        	<% end %>
+			<% } %>
+		</ul>
+	</p>
+	<%= submit_to_remote "valid_add_groupapps", "Ajouter un group d'application", :url => {:controller=>"javascript", :action=>"valid_add_new_groupapps"} %>
+<% end %>
+<%= link_to "Administrer les groupes d'applications", groupapps_path %>

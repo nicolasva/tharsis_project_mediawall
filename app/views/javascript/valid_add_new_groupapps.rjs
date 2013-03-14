@@ -1,0 +1,13 @@
+if @groupapp.save
+	page.replace_html "id_add_new_groupapps", "Ce groupe d'applications a bien été ajouté il est désormais disponible"
+	page.insert_html :top, "application_groupapp_id", content_tag('option', @groupapp.name, :value => @groupapp.id, :selected=>true)
+else
+	result_error_add_groupapp = "Ce groupe d'applications n'a pas été ajouté correctement il n'est pas disponible"	
+	result_error_add_groupapp += "<ul>"
+	@groupapp.errors.each{ |attr, msg|
+		result_error_add_groupapp += "<li>#{msg}</li>"	
+	}
+	result_error_add_groupapp += "</ul>"
+	page.replace_html "id_add_new_groupapps", result_error_add_groupapp 
+end
+	page.show "id_add_new_groupapps"

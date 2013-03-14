@@ -1,0 +1,17 @@
+		<ul>
+			<li>
+			<%= link_to "Voir tout les utilisateurs", :controller=>"users" %>
+			</li>
+			<li>
+			<%= link_to 'Nouvel utilisateur', new_user_path %>
+			</li>
+			<li>
+			<%= link_to 'Les utilisateurs par groupes', :controller=>"roles" %>
+			</li>
+			<li>
+			<%= link_to 'Les groupes', :controller=>"roles" %>
+			</li>
+			<li>
+			<%= link_to 'Gerer les droits sur les controlleurs', controllersdroits_url %>
+			</li>
+		</ul>

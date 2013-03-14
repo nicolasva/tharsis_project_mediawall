@@ -1,0 +1,664 @@
+# French translations for Ruby on Rails
+# by Christian Lescuyer (christian@flyingcoders.com)
+# contributor: Sebastien Grosjean - ZenCocoon.com
+ 
+fr:
+  header:
+     deconnection: "Deconnexion"
+     menu: "fr/accueil.png"
+     menu_select: "fr/select/accueil.png"
+     app: "fr/etat.png"
+     app_select: "fr/select/etat.png"
+     user: "fr/utilisateur.png"
+     user_select: "fr/select/utilisateur.png"
+     file: "Fichiers"
+     stat: "fr/statistiques.png"
+     stat_select: "fr/select/statistiques.png"
+     admin_users: "Administration"
+     edit_profil: "Profil"
+     deconnect: "Déconnexion"
+     title_update: "fr/miseajour.png"
+     title_update_select: "fr/select/miseajour.png"
+     next: "Suivant"
+     previous: "Retour"
+     new_apps: "fr/nouveau.png"
+     new_apps_select: "fr/select/nouveau.png"
+  general:
+     edition: "Editer"
+     create: "Créer"
+     back: "Retour"
+     sup: "Supression"
+     confirmation_sup: "Etes-vous sûr ?"
+     submit: "Valider"
+     update: "Mettre à jour"
+     connect: "Connexion"
+     today: "Aujourd'hui"
+     yesterday: "Hier"
+     current_week: "Cette semaine"
+     last_week: "La semaine dernière"
+     current_month: "Ce mois-ci"
+     last_month: "Le mois dernier"
+     manual: "Définir manuellement"
+  title:
+     file_update: "Mise à jour"
+     new_zip: "Nouveau zip"
+     list_zip: "Liste des zips"
+     voici_groupes: "Tous les groupes"
+     new_group: "Nouveau groupe"
+     liste_controlleur: "Liste des controleurs enregistrés"
+     new_controllersdroit: "Nouveau Controleur"
+     new_user: "Nouvel utilisateur"
+     new_application: "Nouvelle application"
+  presentations:
+     presentations_url: "Accueil"
+     create_new_licence: "Creer un ou plusieurs dispositifs"
+     update_new_licence: "Mettre à jour un ou plusieurs dispositifs"
+     etat: "Etat"
+     statistiques: "Statistiques"
+     add_new_group_client: "Ajouter un nouveau groupe client"
+  avoirs:
+     edit:
+        title: "Associer une versions à d'autres applications"
+        phrase_choix_apps_associate_release: "Choisissez les applications à associer à cette version"
+        form:
+           submit_associate_release_apps: "Associer cette version à ces bornes"
+  groupapps:
+     groupapps_url: "Groupes d'applications"
+     new_groupapps: "Ajouter un groupe d'applications"
+     index_groups: "Liste des groupes"
+     edit_groupapp: "Editer"
+     tab_phrase_nom_group: "Nom du groupe"
+     tab_phrase_edit_group: "Edit"
+     confirm_sup_groupapps: "Etes-vous sur de vouloir supprimer ce groupe d'applications ?"
+     nouveau_groupe: "Nouveau groupe"
+  applications:
+     choose_name_licence: "Choisissez un nom pour ce dispositif"
+     etape1: "Etape 1"
+     etape2: "Etape 2"
+     etape3: "Etape 3"
+     etape4: "Etape 4"
+     define_licence_type: "Choisissez le type d'applications que vous souhaitez ajouter"
+     add_new_type_apps: "Ajouter un nouveau type d'applications"
+     result_not_apps_search: "Il n'y a pas d'applications correspondant à votre recherche"
+     licence: "Licence n°"
+     type: "Type"
+     name: "Nom"
+     serial: "Serial"
+     applications_url: "applications"
+     arrow_up: "Trier par dispositifs actifs"
+     arrow_down: "Trier par dispositifs inactifs" 
+     select_group: "Sélectionner un groupe"
+     return_all_apps: "Retour aux applications"
+     edit_application: "Edition de l'application"
+     search_apps: "Rechercher"
+     new_license: "Nouveau dispositif"
+     etat: "Tableau récapitulatif de l'état des bornes"
+     phrase_confirm_sup_all_apps: "Etes-vous sur de vouloir supprimer l'ensemble de ces applications ?"
+     phrase_reception_facturation: "En cliquant sur OK vous confirmez l'achat d'une nouvelle licence. Une facture vous sera prochainement envoyée.<br>Vous aurez 30 jours pour effectuer le règlement de cette facture avant le blocage automatique du dispositif."
+     buton_activate: "Activer"
+     buton_desactivate: "Désactiver"
+     buton_reboot: "Redémarrer"
+     buton_assistance: "Assistance à distance"
+  fichiercompressions:
+     last_scale: "Vous êtes arrivé au dernier étage il n'y en a plus de disponible"
+     description_file: "Description du fichier"
+     h3_apps_next_update: "Les applications suivantes vont être mises à jour"
+     h3_select_update_file: "Sélectionnez le fichier de mise à jour"
+     h3_select_type_apps: "Séléction de l'application"
+     choose_apps: "Choisir les machines"
+     deploy_all_apps: "Déployer sur toutes les versions"
+     select_file_ref: "Séléctionner un fichier de référence pour la mise à jour"
+     parcourir: "Parcourir"
+     edit_file: "Editer le fichier"
+     update_file: "Mettre à jour des fichiers de l'ancienne version courante" 
+     fichiercompressions_url: "Zips"
+     pdf_list: "Liste des PDF"
+     update: "Mise à jour"
+     contenu: "Contenu"
+  controlleurs:
+     controller: "Les controleurs"
+  tab_app:
+     type: "Type"
+     file_dispo: "Il y a"
+     file_dispo_suite: "fichier(s)"
+     update: "Mise à jour le"
+     no_name: "Pas de nom"
+     nom_application: "Dispositif"
+     serial: "Serial"
+     mac: "Mac"
+     enregistrement: "Enregistrement"
+     etat: "Etat"
+     fichiers: "Contenu"
+     pings: "Info"
+     edit: "Edition"
+     supression: "Suppression"
+     editmultiple: "Edition" 
+     button_app_edit: "Editer les applications selectionnées"
+     button_app_drop: "Supprimer l'ensemble des applications selectionnés"
+     button_sup: "Supprimer"
+     liens_add_many_app: "Ajouter plusieurs applications"
+     new_application: "Ajouter une nouvelle application"
+     edit_many_apps: "Editer plusieurs applications"
+     all_edit: "Tout editer"
+     etat_ping: "Pas de ping"
+     liens_voir_ensemble_app: "Voir l'ensemble des applications sur une page"
+     liens_app_by_page: "Voir l'ensemble des applications par page"
+     nombre_app_create: "Nombre d'applications à créer"
+     search_apps: "Rechercher une application"
+     any_file: "Aucun fichier"
+     group: "Groupe"
+  tab_zip:
+     version: "Version"
+     description: "Description"
+     actuel_version: "Version actuelle" 
+     telechargement: "Téléchargement"
+     update_zip: "Mettre à jour les versions actuelles"
+     telecharger: "Telecharger"
+     liens_new_zip: "Nouveau zip"
+     application_partageant_fichier: "Liste des applications partageant ce fichier"
+     see_apps_share_file: "Voir les applications partageant ce fichier"
+     edit_file_apps: "Editer les fichiers de cette application"
+     sup_file_apps: "Supression"
+     title_apps_appartenant_fichier: "Séléctionnez les bornes pour définir le fichier"
+     title_suite_apps_appartenant_fichier : "comme courant :"
+     file_detail: "Détail du fichier"
+     bouton_sup_selection_apps: "Supprimer les applications séléctionnées"
+     confirmation_sup_fichier_apps: "Etes-vous sûr de vouloir supprimer les applications séléctionnées ?"
+     current_version: "Version courante du fichier pour cette application"
+     parcourir_zip: "Parcourir le zip"
+     associate_version_to_apps: "Associer à une application"
+  ping: 
+     title_ping: "Les pings concernant cette application"
+  statistics:
+     phrase_statistics_last24h: "Statistiques des dernières 24 heures"
+     categorie: "Catégorie"
+     not_media_consulted: "Il n'y a auncun média consulté"
+     medias: "Médias"
+     clique: "Clic"
+     semaine: "Semaine"
+     number_medias_consulted_by_day: "Nombre de médias consultés par heure"
+     number_medias_consulted_by_week: "Nombre de médias consultés par jour"
+     number_medias_consulted_by_month: "Nombre de médias consultés par semaine"
+     number_user_connected_by_day: "Nombre d'utilisateurs par heure"
+     number_user_connected_by_week: "Nombre d'utilisateurs par jour"
+     number_user_connected_by_month: "Nombre d'utilisateur par semaine"
+     medias_plus_consultes: "Top 20 des médias les plus consultés"
+     categories_plus_consultes: "Top 20 des catégories les plus consultées"
+     sessions: "Utilisateurs"
+     sessions_by_day: "Utilisateurs"
+     medias_consultes: "Medias consultés"
+     minutes_by_sessions: "min d'utilisations moyennes"
+     heures_by_sessions: "h d'utilisations moyennes"
+     minutes_by_sessions_totals: "min d'utilisations totales"
+     heures_by_sessions_totals: "h d'utilisations totales"
+     minutes_sessions_today: "min d'utilisations aujourd'hui"
+     heures_sessions_today: "h d'utilisations aujourd'hui" 
+     status: "Statuts"
+     phrase_url_home_stat: "Statistiques"
+     par_jour: "Aujourd'hui"
+     par_semaine: "Cette semaine"
+     par_mois: "Ce mois-ci"
+     not_statistics: "Il n'y a pas de graphique pour cette statistique"
+     phrase_gen: "Il y a eu"
+     Users_Sessions_nbWidgetsConsulted: "Clic"
+     Users_Sessions_sessionID: "Session"
+     Widgets_Consulted_sessionId: "Medias Consultés"
+     supression_contenu_table: "Supprimer le contenu de la table"
+     affichagetableen: "Nom de la table pour le menu en anglais"
+     selection_apps: "Veuillez séléctionner une ou plusieurs applications"
+     moyenne_global: "Moyenne Globale des applications séléctionnées"
+     liens_colonnes_categories: "Lier des colonnes à une catégorie"
+     liens_admin_affichage_table: "Administrer les tables à afficher et les catégories pour les statistiques"
+     liens_envoie_nouveau_fichier: "Envoyer un nouveau fichier"
+     compare_stat: "Comparer des statistiques"
+     bouton_visualiser: "Visualiser"
+     select_apps: "Sélectionnez les applications que vous souhaitez mettre à jour"
+     check_all_apps: "Toutes les applications"
+     stat_affichage: "Statistique à afficher"
+     nom_table: "Nom de la table"
+     nom_table_menu: "Nom de ces tables pour le menu des statistiques"
+     affichage_table_menu: "Affichage de cette table dans le menu"
+     edit_column_this_table: "Editer les colonnes de cette table"
+     sup_table: "Supprimer cette table"
+     edit_this_column: "Editer ces colonnes"
+     colonne_table: "Colonne de la table"
+     retour_table: "Retour aux tables"
+     nom_colonne: "Nom de la colonne"
+     info_colonne: "Nom de la colonne pour le formulaire des statistiques"
+     info_colonne_english: "Nom de la colonne en Français"
+     time_column: "Choix de la colonne du temps"
+     affichage_colonne_menu: "Affichage de cette colonne dans le menu"
+     choix_axe_x: "Choix axe sur les X (abcisses)"
+     tab_comparaison: "Table pour comparaison"
+     period_from: "Sur la période du"
+     period_to: "au"
+     categorie: "Catégorie"
+     select_groupes_acces_categorie: "Séléctionner les groupes ayant accès à cette catégorie"
+     select_table_ou_colonne: "Séléctionner une table ou une colonne"
+     update_new_rubrique: "Mettre à jour cette nouvelle rubrique" 
+     statistiques_search: "Rechercher des statistiques plus précisément"
+     statistics_url: "Statistiques"
+  statistiquesprincipal:
+     statistics: "Statistiques"
+     affichage_statistics: "Afficher les statistiques"
+     graphique_grand: "Graphique plus grand" 
+     affichage_nombre_statistique: "Afficher le nombre de cette statistique"
+     titre_graphique: "Titre du graphique"
+     affichage_nombre_statistique: "Afficher le total en chiffre de cette statistique"
+     titre_graphique_anglais: "Titre du graphique en anglais"
+     absencecategorieindex: "Il n'y a pas de catégorie prédéfinis à afficher dans la page"
+     update_categorie_statistique: "Mettre à jour cette catégorie de statistiques"
+     nom_categorie: "Nom de la catégorie"
+     statistique_create: "Choisissez la statistique à créer"
+  user:
+     user_url: "Utilisateurs"
+     edition_user: "Edition de l'utilisateur"
+     user_logos: "fr/utilisateur.png"
+     user_logos_select: "fr/select/utilisateur.png"
+     new_user_logos: "fr/nouveau-user.png"
+     search_user_logos: "fr/rechercher1.png"
+     bouton_register_new_user: "Enregistrer ce nouvel utilisateur"
+     liens_voir_user: "Voir tout les utilisateurs"
+     new_user: "Nouvel utilisateur"
+     user_by_group: "Les utilisateurs par groupes"
+     groupes: "Les groupes"
+     gestion_droit_controller: "Gérer les droits sur les controleurs"
+     ensemble_users: "Voici l'ensemble des utilisateurs"
+     identifiant: "Identifiant"
+     groupe: "Groupe"
+     liens_add_group_in_user: "Ajouter un nouveau groupe"
+  roles:
+     roles_url: "Groupes d'utilisateurs"
+     roles_logos: "fr/groupes.png"
+     roles_logos_select: "fr/select/groupes.png"
+     any_role: "Il n'y a pas de de groupes d'utilisateurs définis"
+     selection_type_apps_acces: "Selectionner les types d'applications auxquels il aura accès"
+     new_groups: "fr/nouveau_groupe.png"
+     group_name: "Nom du groupe"
+     see_user_group: "Les utilisateurs de ce groupe"
+     add_new_group: "Ajouter un nouveau groupe"
+     user: "Les utilisateurs"
+     add_new_group: "Ajouter un nouveau groupe"
+     edit_group: "Edition"
+     submit_add_roles: "Enregistrer ce nouveau groupe"
+     select_acces_group: "Sélectionner les accès pour ce groupe"
+  controllersdroits:
+     controllersdroits_url: "Acces des controleurs"
+     submit_create: "Enregistrer ce nouvelle accès"
+     controllersdroits_logos: "fr/acces.png"
+     controllersdroits_logos_select: "fr/select/acces.png"
+     controlleur_name: "Nom du controleur"
+     liens_nouveau_droit_controlleur: "Nouveau droit pour un controleur"
+     choix_groupes: "Choisissez au moins un groupe"
+  editfilepublic:
+     etages: "Etage"
+     nom: "Nom"
+     ajout: "Ajout"
+     modification: "Modification"
+     supression: "Supression"
+     titletheme: "Les thèmes"
+     titleblock: "Les blocs"
+     titlemark: "Les marques"
+     titlelogos: "Les logos"
+     addtheme: "Ajouter un thème"
+     addblock: "Ajouter une marque"
+     addlogos: "Ajouter un logo"
+     not_sousthemeasociate: "Il n'y a pas de sous thème associé à ce thème"
+     confirm_sup_marque: "Etes-vous sûr de vouloir supprimer cette marque ?"
+     confirm_sup_traduction: "Etes-vous sûr de vouloir supprimer cette traduction ?"
+     confirm_sup_block: "Etes-vous sûr de vouloir supprimer ce bloc ?"
+     name_translate: "Nom"
+     name_french_translate: "Nom en français"
+     name_english_translate: "Nom en anglais"
+     check_logos: "Choisissez un ou plusieurs logos"
+     logo: "Logo"
+     size_y: "Taille de la photo (y)"
+     size_x: "Taille de la photo (x)" 
+     nom_logo: "Nom du logo"
+     ajouter_logos: "Ajouter un logo"
+     annuler_ajout_logo: "Annuler l'ajout d'un logo"
+     phrase_add_logos_for: "Vous désirez ajouter des logos pour cette marque"
+     popup_themes: "Supprimer ce thème"
+     popup_logos: "Supprimer ce logo"
+     popup_add_logos: "Ajouter un logo"
+     popup_add_logos_plan: "Ajouter ce logo dans le plan"
+     popup_update_marque: "Mettre à jour cette marque"
+     popup_remove_marque: "Supprimer cette marque"
+     popup_add_theme_plans: "Ajouter ce thème dans le plan"
+     popup_update_logo: "Mettre à jour ce logo"
+     popup_sup_logo: "Supprimer ce logo"
+     popup_see_sous_theme: "Voir les sous-themes"
+     popup_add_sous_theme_plans: "Ajouter des sous-thèmes dans le plan"
+     popup_update_sous_theme_plan: "Mettre à jour ce sous-thème"
+  models:
+    notice:
+       application:
+         serial: "Peux-tu entrer un serial"
+       controllersdroit:
+         name: "Peux-tu entrer un nom pour ce controlleur"
+       role:
+         name: "Veuillez entrer un nom pour ce groupe"    
+       user:
+         username: "Veuillez entrer un nom d'utilisateur"
+         role_id: "Veuillez séléctionner une autorisation"
+         email: "Veuillez entrer une adresse e-mail valide" 
+       zip:
+         file_file_name: "veuillez uploader un fichier"
+       categoriecolonnetable:
+         name: "Veuillez entrer un nom pour la catégorie de la table"
+         nameen: "Veuillez entrer un nom en anglais pour la catégorie de la table"
+  controller:
+    notice:
+       application:
+         verifier_acces_admin: "Vous n'avez pas les droits pour accéder à cette page" 
+         not_acces: "L'utilisateur est inconnu !!!"
+         statpaiement:
+              positif: "L'état de la validation du paiement a bien été prise en compte"
+       applications:
+         valid_edit_client:
+           positif: "L'enregistrement des information concernant cette application s'est bien  déroulé elles sont désormais disponible"
+           negatif: "L'enregistrement des informations concernant cette application ne s'est pas déroulé correctement elles ne sont pas disponible"
+           absence_serial: "Le serial concernant l'application recherché n'existe pas et n'est donc pas disponible"
+           ville_name: "ville non renseigné"
+         valid_edit_etat:
+           positif: "L'enregistrement des états pour cette application s'est bien déroulé"
+           negatif: "L'enregistrement des états pour cette application ne s'est pas déroulé correctement"
+         statpaiement:
+           positif: "La mise à jour du paiement pour cette application s'est bien déroulé"
+           negatif: "La mise à jour du paiement pour cette application ne s'est pas déroulé correctement"
+         create:
+           positif: "L'application a été correctement créée"
+           negatif: "L'enregistrement de cette nouvelle application ne s'est pas déroulé correctement"
+           negatif_no_base_version: "Impossible de creer cette application, car aucune version de base n'a été définis" 
+         update:
+           positif: "L'application a été correctement mis à jour"
+           negatif: "L'application n'a pas correctement mis à jour"
+         edit_select:
+           selection_app: "Veuillez selectionner des applications"
+           delete_apps_positif: "La supression de ce(s) application(s) s'est bien déroulé elle est désormais disponible"
+           delete_apps_negatif: "La supression de ce(s) application(s) ne s'est pas déroulé correctement elle n'est pas disponible"
+           activation_apps_positif: "L'activation de ce(s) application(s) s'est bien déroulé"
+           activation_apps_negatif: "L'activation de ce(s) application(s) ne s'est pas déroulé correctement"
+           desactivation_apps_positif: "La désactivation de ce(s) application(s) s'est bien déroulé"
+           desactivation_apps_negatif: "La désactivation de ce(s) application(s) ne s'est pas déroulé correctement"
+           reboot_apps_positif: "Les applications séléctionnés vont redémarrer correctement"
+           reboot_apps_negatif: "Toutes les applications séléctionnés ne vont pas redémarrer correctement"
+           remote_assistance_positif: "L'assistance à distance pour les applications séléctionnés ont bien été prise en compte"
+           remote_assistance_negatif: "L'assistance à distance pour les applications séléctionnés n'ont pas été prise en compte"
+       controllersdroits:
+         create:
+           positif: "Les droits pour ce controlleur a bien été créée"
+           negatif: "Les droits pour ce controlleur n'a pas été correctement créée"
+         update:
+           positif: "Le droit pour ce controlleur a bien été mise à jour"
+           negatif: "Le droit pout ce controller n'a pas été correctement mise à jour il n'est pas disponible"
+       users:
+          create:
+            positif: "L'utilisateur a bien été créée"
+            negatif: "L'utilisateur n'a pas été correctement créée"
+          update:
+            positif: "Cet utilisateur a bien été mise à jour"
+            negatif: "Cet utilisateur n'a pas correctement été mise à jour"
+       pings:
+          create:
+            positif: "L'enregistrement des informations concernant les pings a bien été créée"
+            negatif: "L'enregistrement des informations concernant les pings n'a pas correctement été créée"
+       roles:
+          create:
+            positif: "Ce groupe a correctement été créée"
+            negatif: "Ce groupe n'a pas été correctement créée"
+          update:
+            positif: "Ce groupe a été correctement mise à jour"
+            negatif: "Ce groupe n'a pas correctement été mise à jour"
+       avoirs:
+          update:
+            positif: "Cette version à bien été associé à ces applications"
+            negatif: "Cette version n'a pas été correctement associé à ces applications"
+       statistics:
+          registermenutable:
+            positif: "L'enregistrement des modifications pour cette table s'est bien déroulé, elles sont désormais disponible"
+            negatif: "L'enregistrement des modifications concernant cette table ne s'est pas déroulé correctement, elles ne sont pas disponible"
+          valid_edit_colonne_table:
+            positif: "L'enregistrement des informations concernant ces colonnes se sont bien déroulés elles sont désormais disponible"
+            negatif: "L'enregistrement des informations concernant ces colonnes ne se sont pas déroulés correctement, et ne sont donc pas disponible"
+          createnewcategoriecolonnetables:
+            positif: "L'enregistrement de ces nouvelles catégories se sont bien déroulé elles sont désormais disponible"
+            negatif: "L'enregistrement de ces nouvelle catégories ne se cont pas bien déroulés et ne sont donc pas disponible"
+          validupdatestatistiquesprincipal:
+            positif: "La mise à jour de cette catégorie de statistiques se sont bien déroulé et sont désormais disponible"
+            negatif: "La m ise à jour de cette catégorie de statistiques ne sont pas déroulés correctement et ne sont donc pas disponible" 
+          validstatistiquesprincipal:
+            positif: "L'enregistrement de cette catégorie s'est bien déroulé elle est désormais disponible"
+            negatif: "L'enregistrement de cette catégorie ne s'est pas déroulé correctement elle n'est pas disponible" 
+          valid_update_colonne_table:
+            positif: "Les modifications concernant les catégories associant ces tables se sont bien déroulés"
+            nagatif: "Les modifications concernant les catégories associant ces tables ne se sont pas déroulés correctement"
+       fichiercompressions:
+          publication_newversion: 
+             positif: "La publication de cette map s'est bien déroulé, la nouvelle version est désormais disponible"
+             negatif: "La publication de cette ne s'est pas déroulé correctement et n'est pas disponible"
+          valid_current_version:
+            positif: "La version courante a bien été définis pour cette application"
+            negatif: "La version courente n'a pas été définis correctement pour cette application" 
+          updatefile:
+            positif: "L'Edition de ce fichier s'est bien déroulé il est désormais disponible"
+            negatif: "L'Edition de ce fichier ne s'est pas déroulé correctement il n'est ps disponible"
+            liens_telechargement: "Télécharger le fichier éditer"
+          update: 
+            positif: "L'enregistrement de ce fichier s'est bien déroulé il est désormais disponible"
+            negatif: "L'enregistrement de ce fichier ne s'est pas déroulé correctement il n'est pas disponible"
+          create:
+            positif: "Ce fichier a correctement été uploadé"
+            notice_format: "Veuillez entrer une fichier au format zip"
+            notice_file_nil: "Veuillez uploader un fichier ou séléctionner une version du ftp"
+          supnameshapes:
+            positif: "La supression du nom de cette shape s'est bien déroulé elle n'est plus disponible"
+            negatif: "La supression du nom de cette shape ne s'est pas déroulé correctement elle est encore disponible"
+          suptranslationmap:
+            positif: "La supression de cette translation s'est bien déroulé, elle n'est plus disponible"
+            negatif: "La supression de cette translation ne s'est pas déroulé correctement, elle est encore disponible"
+          sup_topics_blocks: 
+            positif: "La supression de ce thème s'est bien déroulé il est encore disponible"
+            negatif: "La supression de ce thème ne s'est pas déroulé correctement, il est encore disponible"
+          sup_blocks:
+            positif: "La supression de ce block s'est bien déroulé, il n'est plus disponible"
+            negatif: "La supression de ce block ne s'est pas déroulé correctement, il est encore disponible"
+          valid_add_soustheme:
+            positif: "L'enregistrement de ce sous-thème s'est bien déroulé, il est désormais disponible"
+            negatif: "Veuillez renseigner tout les champs"
+          valid_add_new_translations:
+            positif: "L'enregistrement de cette nouvelle translation s'est bien déroulé"
+          valid_update_new_translations: 
+            positif: "La mise à jour de cette nouvelle traduction s'est bien déroulée elle est désormais disponible"
+            negatif: "La mise à jour de cette nouvelle traduction ne s'est pas déroulée correctement elle n'est pas disponible"
+       usersessions:
+            positif: "Vous êtes connectés"
+            negatif: "Vous êtes déconnectés"
+       destroy_contenu_table:
+            positif: "La suppression du contenu de ces dispositifs s'est bien déroulé" 
+            negatif: "La suppression du contenu de ces dispositifs a connu une erreur"
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
+      long_ordinal: "%e %B %Y"
+      only_day: "%e"
+ 
+    day_names: [dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi]
+    abbr_day_names: [dim, lun, mar, mer, jeu, ven, sam]
+    month_names: [~, janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
+    abbr_month_names: [~, jan., fév., mar., avr., mai, juin, juil., août, sept., oct., nov., déc.]
+    order: [ :day, :month, :year ]
+  
+  time:
+    formats:
+      default: "%d %B %Y %H:%M"
+      time: "%H:%M"
+      short: "%d %b %H:%M"
+      long: "%A %d %B %Y %H:%M:%S %Z"
+      long_ordinal: "%A %d %B %Y %H:%M:%S %Z"
+      only_second: "%S"
+    am: 'am'
+    pm: 'pm'
+ 
+  datetime:
+    distance_in_words:
+      half_a_minute: "une demi-minute"
+      less_than_x_seconds:
+        zero: "moins d'une seconde"
+        one: "moins de 1 seconde"
+        other: "moins de {{count}} secondes"
+      x_seconds:
+        one: "1 seconde"
+        other: "{{count}} secondes"
+      less_than_x_minutes:
+        zero: "moins d'une minute"
+        one: "moins de 1 minute"
+        other: "moins de {{count}} minutes"
+      x_minutes:
+        one: "1 minute"
+        other: "{{count}} minutes"
+      about_x_hours:
+        one: "environ une heure"
+        other: "environ {{count}} heures"
+      x_days:
+        one: "1 jour"
+        other: "{{count}} jours"
+      about_x_months:
+        one: "environ un mois"
+        other: "environ {{count}} mois"
+      x_months:
+        one: "1 mois"
+        other: "{{count}} mois"
+      about_x_years:
+        one: "environ un an"
+        other: "environ {{count}} ans"
+      over_x_years:
+        one: "plus d'un an"
+        other: "plus de {{count}} ans"
+    prompts:
+      year: "Année"
+      month: "Mois"
+      day: "Jour"
+      hour: "Heure"
+      minute: "Minute"
+      second: "Seconde"
+  
+  number:
+    format:
+      precision: 3
+      separator: ','
+      delimiter: ' '
+    currency:
+      format:
+        unit: '€'
+        precision: 2
+        format: '%n %u'
+    human:
+      format:
+        # These three are to override number.format and are optional
+        # separator:
+        delimiter: ""
+        precision: 2
+      # Rails <= v2.2.2
+      # storage_units: [octet, kb, Mb, Gb, Tb]
+      # Rails >= v2.3
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: "octet"
+            other: "octets"
+          kb: "Ko"
+          mb: "Mo"
+          gb: "Go"
+          tb: "To"
+ 
+  support:
+    array:
+      sentence_connector: 'et'
+      skip_last_comma: true
+      words_connector: ", "
+      two_words_connector: " et "
+      last_word_connector: " et "
+  
+  activerecord:
+    models:
+       user: "Utilisateur"
+       users: "Utilisateurs"
+       user_session: "Session"
+       roles: "Groupes"
+       role: "Groupe"
+       zip: "Zip"
+       zips: "Zips"
+       controllersdroits: "Controllersdroits"
+       controllersdroit: "Controllersdroit"
+       applications: "Applications"
+       application: "Application"
+       stat_categoriecolonnetables: "Categoriecolonnetables"
+       stat_categoriecolonnetable: "Categoriecolonnetable"
+    attributes:
+       user:
+          username: "Identifiant"
+          password: "Mot de passe"
+          password_confirmation: "Confirmer votre mot de passe"
+          email: "E-mail"
+          role_id: "Autorisation"
+          language: "Langage"
+          backgroundcolor: "Couleur de l'arrière plan"
+          colortext: "Couleur du texte"
+          stylecss: "Choisissez l'apparence"
+          alertapp: "Recevoir par mail les alertes des dispositifs qui ne fonctionnent pas"
+       role:
+          name: "Nom du groupe"
+          roles_idsoeur: "Choisissez les groupes dont dépendra ce groupe"
+       ping:
+          created_at: "Créé le"
+          status: "Status"
+       zip:
+          description: "Description"
+          file: "HTTP"
+       application:
+          name: "Nom"
+          serial: "Serial"
+          mac: "Mac"
+          role_id: "Groupe d'utilisateurs"
+          enregistrement: "enregistrement" 
+          created_at: "Créé le"
+          updated_at: "Mise à jour le"
+       controllersdroit:
+          name: "Nom du controleur"
+       stat_categoriecolonnetable:
+          name: "Nom de la catégorie en français"
+          nameen: "Nom de la catégorie en anglais"
+          typegraph: "Type de graphique"
+          nbrubriquecontenu: "Nombre de rubrique à afficher dans le camembert pour cette catégorie"
+    errors:
+      template:
+        header:
+          one: "Impossible d'enregistrer {{model}}: 1 erreur"
+          other: "Impossible d'enregistrer {{model}}: {{count}} erreurs."
+        body: "Veuillez vérifier les champs suivants :"
+      messages:
+        inclusion: "n'est pas inclus(e) dans la liste"
+        exclusion: "n'est pas disponible"
+        invalid: "n'est pas valide"
+        confirmation: "ne concorde pas avec la confirmation"
+        accepted: "doit être accepté(e)"
+        empty: "doit être rempli(e)"
+        blank: "doit être rempli(e)"
+        too_long: "est trop long (pas plus de {{count}} caractères)"
+        too_short: "est trop court (au moins {{count}} caractères)"
+        wrong_length: "ne fait pas la bonne longueur (doit comporter {{count}} caractères)"
+        taken: "n'est pas disponible"
+        not_a_number: "n'est pas un nombre"
+        greater_than: "doit être supérieur à {{count}}"
+        greater_than_or_equal_to: "doit être supérieur ou égal à {{count}}"
+        equal_to: "doit être égal à {{count}}"
+        less_than: "doit être inférieur à {{count}}"
+        less_than_or_equal_to: "doit être inférieur ou égal à {{count}}"
+        odd: "doit être impair"
+        even: "doit être pair"
+        record_invalid: "La validation a échoué : {{errors}}"
+ 

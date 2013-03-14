@@ -1,0 +1,38 @@
+<% if params[:id] == "add_roles" %>
+<%= render :partial=>"javascript/partial_javascript/form_add_roles" %>
+<% end %>
+<% if params[:id] == "recup_controller" %>
+<%= render :partial=>"javascript/partial_javascript/recup_controller" %>
+<%  end %>
+<% if params[:id] == "edit_all" %>
+<%= javascript_include_tag "multiplecheckboxjs/js.js" %>
+<% form_for :role, :url=>{:controller=>"applications", :action=>"valid_all_edit"} do |role_form| %>		
+	<ul>
+		<% for role in Role.find(:all) %>
+			<li>
+			<%= check_box_tag("application[role_ids][]", role.id) %> <%= label_tag(role.name) %>
+			</li>
+		<% end %>
+	</ul>
+
+	<%= role_form.submit t("general.submit") %>
+<% end %>
+<% end %>
+
+<% if params[:id] == "add_many_applications" %>
+<%= javascript_include_tag "multiplecheckboxjs/js.js" %>
+<% form_for :application, :url=>{:controller=>"applications", :action=>"nb_applications_generate"} do |application| %>
+	<p>
+		<%= application.label(t("tab_app.nombre_app_create")) %><br>
+		<%= application.text_field :nombre_application, :size=>2 %>
+	</p>
+
+
+  	<p>
+		<%= application.label(:groupapp_id, "Séléctionner le groupe d'applications à laquelle vous associer cette application") %>
+		<%= application.select(:groupapp_id, Groupapp.all.collect{|p| [p.name, p.id]}) %>	
+  	</p>
+
+	<%= application.submit t("general.create") %>
+<% end %>	
+<% end %>

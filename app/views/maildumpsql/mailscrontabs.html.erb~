@@ -1,0 +1,11 @@
+<html>
+   </head>
+   		<title>
+			Sauvegarde du fichier de la base de donnée
+		</title>
+   </head>
+        <body>
+	     Pour récupérer le dump de la base de donnée cliquer ci-dessous : 
+	     <%= link_to "Dump de la base de donnée", @file %>
+	</body>
+</html>

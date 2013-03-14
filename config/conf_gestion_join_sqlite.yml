@@ -1,0 +1,27 @@
+table:
+   link: ["rowid", "id", "id_1", "id_2", "type_1", "type_2"]
+   categories: ["id", "name_id", "description_id", "priority"]
+   blocks: ["rowid", "id", "name_id", "description_id", "picture"]
+   points: ["id", "name_id", "description_id", "position_x", "position_y", "position_z", "height", "floor_id", "pathreference_id", "pathreference_type"]
+   paths: ["id", "name_id", "description_id", "point_start_id", "point_end_id", "accessibility"]
+jointuretable:
+  categories: "translations left join categories on categories.name_id=translations.id"
+  logos: "translations left join logos on logos.name_id=translations.id"
+  blocks: "translations left join blocks on blocks.name_id=translations.id" 
+  topics: "translations left join topics on topics.name_id=translations.id"
+  points: "paths left join points on points.id=paths.point_start_id"
+  paths: "points left join paths on paths.point_end_id=points.id"
+affichagetable:
+  topics: [0, 1, 2, 4]
+  link: [0, 3, 4]
+  categories: [0, 1, 2, 4]
+  logos: [0, 1, 2, 4]
+  blocks: [0, 1, 2, 4] 
+lienscolonne:
+  topics: []
+  categories: []
+  logos: []
+  blocks: [] 
+  link: [3, 4]
+idlienscolonne:
+  link: { 3: 1, 4: 3 }  

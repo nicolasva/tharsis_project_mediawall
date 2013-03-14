@@ -1,0 +1,27 @@
+<% form_for :comparaisonstat, :url=>{:controller=>"statistics", :action=>"statcomparate"} do |f| %>
+     <div class='comparaison1_comparaison2' style='height:850px;'> 
+	  <div class='comparaison1'>
+		Comparaison 1
+		<%= render(:partial => "form", :locals => { :visugraph => f }) %>	
+		<%= render(:partial=>"/statistics/templates/period", :locals => { :visugraph => f}) %> 	
+	   </div>
+	   <div class='comparaison2'>
+		<%= render(:partial => "/statistics/templates/comparaisonform") %>
+
+	   </div>
+     </div>
+		<div>
+			<%= f.submit "Visualiser" %> 
+		</div>
+			 	
+<% end %>
+
+<div id="fishEye">
+	<%= 
+		image_tag("img_general/applications/style_1/admin_tableau.png", :style=>"border:0px;", :href=>"/statistics/menu", :title=>"Administrer les tables et les catégories pour les statistiques") 
+        %>
+	<%= 
+		image_tag("img_general/applications/style_1/stats.png", :style=>"border:0px;", :href=>"/statistics", :title=>"comparer les statistiques") 
+	%>
+</div>
+<%= javascript_include_tag "dock/listener" %>

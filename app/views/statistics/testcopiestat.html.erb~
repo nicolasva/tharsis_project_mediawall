@@ -1,0 +1,1 @@
+<%= Statistic.viewstattable_to_tablestat %>

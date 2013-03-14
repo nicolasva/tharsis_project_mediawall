@@ -1,0 +1,50 @@
+<% form_for(@user) do |f| %>
+<div class='div_class_user'>
+  <%= f.error_messages %>
+  <% if @controller.control_acces_user_controller(controller_name,action_name) %>
+  	<p class='p_class_first_form_user'>
+        	<%= f.label t("activerecord.attributes.user.role_id") %>
+        	<br>
+		<%= f.select(:role_id, Role.all.collect{ |u| [u.name, u.id]}) %>
+		<% 
+			#link_to t("user.liens_add_group_in_user"), {:controller=>"javascript", :action=>"add_roles"}, :onclick=>"Modalbox.show(this.href, {title: 'Ajout nouveau groupe', width: 500, height: 220}); return false;" 
+		%>
+  	</p>
+  <% end %>
+  <p>
+	<%= f.label :username, t("activerecord.attributes.user.username") %><br>
+	<%= f.text_field :username %>
+  </p>
+
+  <% if action_name != "edit" || current_user.role_id.to_i == 1 %>
+     <p>
+	<%= f.label :password, t("activerecord.attributes.user.password") %><br>
+	<%= f.password_field :password %>
+     </p>
+
+     <p>
+	<%= f.label :password_confirmation, t("activerecord.attributes.user.password_confirmation") %><br>
+	<%= f.password_field :password_confirmation %>
+     </p>
+  <% end %>
+
+  <p>
+  	<%= f.label :email, t("activerecord.attributes.user.email") %><br>
+	<%= f.text_field :email %>
+  </p>
+
+  <p>
+	<%= f.label :alertapp, t("activerecord.attributes.user.alertapp") %><br>
+	<%= f.check_box :alertapp %>
+  </p>
+
+  <p>
+	<%= f.label :language, t("activerecord.attributes.user.language") %><br>
+	<%= f.select :language, [["Anglais", "en"],["Français", "fr"]] %>
+  </p>
+
+</div>
+  <p class='p_class_bouton_valid_register'>
+    <%= f.submit t("user.bouton_register_new_user") %>
+  </p>
+<% end %>

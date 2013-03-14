@@ -1,0 +1,5 @@
+<ul>
+<% @role.groupapps.each{ |groupapp| %>
+	<%= render :partial => '/groupapps/templates/liste_groupapp', :locals => { :groupapp => groupapp, :user=>"" } %> 
+<% } %>
+</ul>

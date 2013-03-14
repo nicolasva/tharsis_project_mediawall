@@ -1,0 +1,12 @@
+<%= javascript_include_tag "multiplecheckboxjs/js" %>
+<% form_for :categoriecolonnetable, @categoriecolonnetable, :url=>{:controller=>"statistics", :action=>"valid_update_colonne_table"} do |categoriecolonnetable| %>
+		<%= categoriecolonnetable.hidden_field :id %>
+
+		<%= render(:partial => '/statistics/templates/form_categorie_colonne', :locals => { :categoriecolonnetable => categoriecolonnetable }) %>	
+		<p>
+			<%= categoriecolonnetable.submit t("statistics.update_new_rubrique") %>
+		</p>
+<% end %>
+<%= link_to t("general.back"), :controller=>"statistics", :action=>"categoriecolonne" %>
+
+	<%= render :partial=>"/statistics/templates/dock_categorie_colonne" %>

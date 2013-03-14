@@ -1,0 +1,6 @@
+<% form_for :updatelogos, :url=>{:controller=>"javascript", :action=>"valid_update_blog"}, :html=>{:multipart=>true} do |f| %>
+	<%= f.hidden_field :id, :value=>params[:id] %>
+	<%= render(:partial => "javascript/partial_javascript/form_add_logos", :locals =>{:f => f}) %>
+
+	<%= f.submit("Mettre à jour ce logo") %>
+<% end %>

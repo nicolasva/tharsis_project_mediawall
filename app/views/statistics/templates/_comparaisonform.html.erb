@@ -1,0 +1,59 @@
+		<p>Comparaison 2</p>
+		<p>
+			<%= t("statistics.select_apps") %> :
+			<div class='class_choix_applications'>
+				<ul class='ul_class_liste_application'>	
+				<% Application.all.collect{ |application| %>
+					<li>
+						<%= check_box_tag("visugraph2[application_id][]", application.id, @tab_application2.nil? ? false : @tab_application2.include?(application.id.to_s), {:class => "applicationcomparate_cb"}) %> <%= application.name %> <%= application.serial %>
+					</li>
+				<% } %>
+				</ul>
+			</div>
+		</p>
+
+		<p>
+			<%= t("statistics.check_all_apps") %> : 
+			<%= check_box_tag("check_all_checkboxes2", {:id => 'check_all_checkboxes2'}) %>
+		</p>
+
+		<p>
+			<%= t("statistics.categorie") %> : <br>
+			<%= select(:visugraph2, :categoriecolonnetables, options_from_collection_for_select(Statistic::Categoriecolonnetable.all, 'id', 'name', @choix_category.to_i),  {:include_blank => true}) %>
+			
+		</p>
+
+		<p>
+		     <%= t("statistics.stat_affichage") %> :
+			<div class='class_choix_applications'>
+				<ul>
+					<% Statistic::Table.all.collect{ |table| %>
+						<li><%= table.affichagetable.nil? ? table.name : table.affichagetable %></li>
+						<%= hidden_field_tag("visugraph2[table_id][]", table.id) %>
+				
+						<% table_colonne = table.colonnes.find :all, :conditions=>"choixaffichage=1" %>
+						<ul class='ul_class_liste_application'>
+							<% table_colonne.each{ |colonne| %>
+								<li>
+								<%= check_box_tag("visugraph2[choix_colonne][#{table.id}][]", colonne.id, @tab_colonne2.nil? ? false : @tab_colonne2.include?(colonne.id.to_s)) %> <%= colonne.affichagecolonne.empty? ? colonne.name : colonne.affichagecolonne %>
+								</li>
+							<% } %>
+						</ul>
+					   <% } %>
+				</ul>
+			</div>
+		</p>
+
+		<p>
+
+			<%= select("visugraph2", "period", options_for_select([["Aujourd'hui", "today"], ["Hier", "yesterday"], ["Cette semaine", "current_week"], ["La semaine dernière", "last_week"], ["Ce mois-ci", "current_month"], ["Le mois dernier", "last_month"], ["Définir manuellement", "manual"]], @period2.nil? ? "today" : @period2)) %>	
+		</p>
+
+		<p>
+			<%= t("statistics.period_from") %> : <br>
+			<%= select_datetime(@fromdate2 || 7.days.ago, :prefix => 'fromdate2') %>
+			<br>
+			<%= t("statistics.period_to") %> : <br>
+			<%= select_datetime(@todate2 || Time.now, :prefix => 'todate2') %>
+		</p>
+	     </div>

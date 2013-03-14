@@ -1,0 +1,31 @@
+<ul class='ul_id_presentation'>
+	<% if @controller.control_acces_user_controller("applications","new") %>
+		<li>
+			<%= link_to "<div style='float:left;margin-top:2.5px;margin-left:9px;'>#{image_tag("presentations/#{t('header.new_apps')}", :size=>"74x74")}</div><div style='margin-left:25px;float:left;margin-top:29px;'>#{t("presentations.create_new_licence")}</div>", :controller=>"applications", :action=>"new" %>	
+		</li>
+	<% end %>
+
+	<%  if @controller.control_acces_user_controller("fichiercompressions","new") %>
+		<li>
+			<%= link_to "<div style='float:left;margin-top:2.5px;margin-left:9px;'>#{image_tag("presentations/#{t('header.title_update')}", :size=>"74x74")}</div><div style='margin-left:25px;float:left;margin-top:29px;'>#{t("presentations.update_new_licence")}</div>", :controller=>"fichiercompressions", :action=>"new" %> 
+		</li>
+	<% end %>
+
+	<% if @controller.control_acces_user_controller("applications","index") %>
+		<li>
+			<%= link_to "<div style='float:left;margin-top:2.5px;margin-left:9px;'>#{image_tag("presentations/#{t('header.app')}", :size=>"74x74")}</div><div style='margin-left:25px;float:left;margin-top:29px;'>#{t("presentations.etat")}</div>", :controller=>"applications", :action=>"index" %>
+		</li>
+	<% end %>
+
+	<% if @controller.control_acces_user_controller("statistics","index") %>
+		<li>
+			<%= link_to "<div style='float:left;margin-top:2.5px;margin-left:9px;'>#{image_tag("presentations/#{t("header.stat")}", :size=>"74x74")}</div><div style='margin-left:25px;float:left;margin-top:29px;'>#{t("presentations.statistiques")}</div>", :controller=>"statistics", :action=>"index" %>
+		</li>
+	<% end %>
+
+	<% if @controller.control_acces_user_controller("addrolessimplifie","index") %>
+		<li>
+			<%= link_to "<div style='float:left;margin-top:2.5px;margin-left:9px;'>#{image_tag("presentations/addgroupe.png", :size=>"74x74")}</div><div style='margin-left:25px;float:left;margin-top:29px;'>#{t("presentations.add_new_group_client")}</div>", :controller=>"addrolessimplifie" %>
+		</li>
+	<% end %>
+</ul>

@@ -1,0 +1,20 @@
+	<%= f.error_messages %>
+	<p>
+		<%= f.label(:name, "Nom de la catégorie") %><br>
+		<%= f.text_field(:name) %>
+	</p>
+
+	<p>
+		Choisissez la statistique à créer : 
+		<ul class='class_categorie_statistique'>
+			<% Statistic::Categoriecolonnetable.all.collect{ |categoriecolonnetable| %>
+				<% content_tag_for :li, categoriecolonnetable do %>
+					<%= check_box_tag("categoriecolonnetable[id][]", categoriecolonnetable.id, false) %> 
+					<%= f.label(categoriecolonnetable.name) %>
+					Graphique plus grand <%= check_box_tag("categoriecolonnetable[imagegrand][]", categoriecolonnetable.id, false) %> 
+					Afficher le nombre de cette statistique : <%= check_box_tag("categoriecolonnetable[affichagenombrestatglobal][]", categoriecolonnetable.id, false) %> 
+						<br>titre du graphique : <%= text_field_tag "categoriecolonnetable[titregraphique][]" %>
+				<% end %>
+			<% } %>
+	       </ul>
+	</p>

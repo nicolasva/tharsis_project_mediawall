@@ -1,0 +1,9 @@
+<h1><%= t("avoirs.edit.title") %></h1>
+
+<% form_for(@avoir) do |f| %>
+  <%= f.error_messages %>
+  <%= render(:partial => "form", :locals => {:f => f, :avoirs=>@avoirs})  %>
+  <p>
+    <%= f.submit t("avoirs.edit.form.submit_associate_release_apps") %>
+  </p>
+<% end %>

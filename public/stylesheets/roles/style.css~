@@ -1,0 +1,178 @@
+div.div_corps_user
+{
+	background-color: white;
+	min-height: 550px;
+}
+
+div.class_gestion_roles
+{
+	width: 100%;
+}
+
+div.class_gestion_roles table.tab_class_roles
+{
+        border: 1px solid #aaa;	
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+div.class_gestion_roles table.tab_class_roles tr td img.class_liens_plus
+{
+	float: right;
+	margin-right: 10px;
+}
+
+div.class_gestion_roles table.tab_class_roles tr.colonne_titre
+{
+	color: white;
+	border: 1px solid #aaa;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+}
+
+div.class_gestion_roles table.tab_class_roles tr.colonne_titre td
+{
+	background-color: #404040;
+}
+
+div.class_gestion_roles table.tab_class_roles tr.colonne_titre td.colonne_general_first
+{
+	-moz-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+        border-top-left-radius: 8px;	
+	padding-left: 8px;
+}
+
+div.class_gestion_roles table.tab_class_roles tr.class_contenu_colonne_user
+{
+}
+
+div.class_gestion_roles table.tab_class_roles tr.class_contenu_colonne_user td.contenu_colonne_user
+{
+	border-left: 1px solid #aaa;
+	padding-left: 8px;
+}
+
+div.class_gestion_roles table.tab_class_roles tr.colonne_titre td.colonne_general_last
+{
+	-moz-border-radius-topright: 8px;
+	-webkit-border-top-right-radius: 8px;
+        border-top-right-radius: 8px;	
+}
+
+div.class_gestion_roles table.tab_class_roles tr td
+{
+}
+
+div.class_gestion_roles table.tab_class_roles tr td img
+{
+	border: 0px;
+}
+
+div.class_gestion_roles table.tab_class_roles tr td img.class_img_plus
+{
+	float: right;
+	margin-right: 15px;
+}
+
+div.class_gestion_roles table.tab_class_roles tr td img.class_liens_sup_roles
+{
+	margin-left: 15px;
+}
+
+div.class_gestion_roles table.tab_class_roles tr td a
+{
+	color: #4169aa;
+	text-decoration: none;
+}
+
+div.class_gestion_roles ul
+{
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+div.div_corps_user ul.ul_class_group
+{
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+div.div_corps_user ul.ul_class_group li
+{
+	margin: 0px;
+	padding: 0px;
+	float: left;
+}
+
+div.div_corps_user ul.ul_class_group li a img
+{
+	border: 0px;
+}
+
+div.div_class_menu_roles
+{
+	height: 200px;
+	margin-top: 30px;
+}
+
+div.div_class_menu_roles ul.ul_class_menu_roles
+{
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+}
+
+div.div_class_menu_roles ul.ul_class_menu_roles li
+{
+	float: left;
+}
+
+div.class_gestion_roles ul.ul_class_liste_roles
+{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+ul.ul_class_controllersdroit_roles
+{
+	border: 1px solid black;
+	list-style-type: none;
+	overflow: auto;
+	height: 200px;
+	width: 200px;
+}
+
+ul.ul_class_list_groupapps
+{
+	border: 1px solid black;
+	list-style-type: none;
+	overflow: auto;
+	height: 200px;
+	width: 200px;
+}
+
+div.div_corps_user ul
+{
+	list-style-type: none;
+}
+
+div.div_corps_user ul li
+{
+
+}
+
+div.div_corps_user ul li span
+{
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+p.p_class_bouton_valid_register_roles
+{
+	margin-left: 555px;
+}

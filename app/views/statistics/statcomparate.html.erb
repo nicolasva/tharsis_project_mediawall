@@ -1,0 +1,43 @@
+<% form_for :comparaisonstat, :url=>{:controller=>"statistics", :action=>"statcomparate"} do |f| %>
+     <div class='comparaison1_comparaison2'> 
+	  <div class='comparaison1'>
+		Comparaison 1
+		<%= render(:partial => "form", :locals => { :visugraph => f }) %>
+		
+	   </div>
+	   <div class='comparaison2'>
+		<%= render(:partial => "/statistics/templates/comparaisonform") %>
+	   </div>
+     </div>
+
+		<%= render(:partial=>"/statistics/templates/period", :locals => { :visugraph => f}) %> 	
+
+		<%= f.submit "Visualiser" %> 
+			 	
+<% end %>
+<br>
+
+     <div class='comparaison1_comparaison2'> 
+	  <div class='comparaison1'>
+		Resultat de la comparaison 1 : <br>
+		<% 0.upto(@tab_image_visugraph.length-1){ |i| %>
+			<a href='<%= @tab_image_visugraph[i] %>' onclick="window.open(this.href,'Detail','height=500,width=680,scrollbars=yes');return false;"><%= image_tag(@tab_image_visugraph[i], :width => "150") %></a>		
+		<% } %>
+	   </div>
+
+	   <div class='comparaison2'>
+		Resultat de la comparaison 2 : <br>
+	   	<% 0.upto(@tab_image_visugraph2.length-1){ |i| %>
+			<a href='<%= @tab_image_visugraph2[i] %>' onclick="window.open(this.href,'Detail','height=500,width=680,scrollbars=yes');return false;" ><%= image_tag(@tab_image_visugraph2[i], :width => "150") %></a>	
+		<% } %>
+	   </div>
+     </div>
+<div id="fishEye">
+	<%= 
+		image_tag("img_general/applications/style_1/admin_tableau.png", :style=>"border:0px;", :href=>"/statistics/menu", :title=>"Administrer les tables et les catégories pour les statistiques") 
+        %>
+	<%= 
+		image_tag("img_general/applications/style_1/stats.png", :style=>"border:0px;", :href=>"/statistics", :title=>"comparer les statistiques") 
+	%>
+</div>
+<%= javascript_include_tag "dock/listener" %>

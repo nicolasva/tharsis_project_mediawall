@@ -1,0 +1,6 @@
+<% form_for :categorieindex, @categorieindex, :url=>{:controller=>"statistics", :action=>"validupdatestatistiquesprincipal"} do |f| %>
+	<%= f.hidden_field :id %>
+	<%= render(:partial => "statistics/templates/form_categorie_statistic_principal", :locals => { :f => f}) %>
+
+	<%= f.submit t("statistiquesprincipal.update_categorie_statistique") %>
+<% end %>

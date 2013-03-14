@@ -1,0 +1,78 @@
+	<%= f.error_messages %>
+	<p>
+		<%= f.label(:name, t("statistiquesprincipal.nom_categorie")) %><br>
+		<%= f.text_field(:name) %>
+	</p>
+
+	<p>
+		<%= t("statistiquesprincipal.statistique_create") %> : 
+			<table border='0' cellpadding='0' cellspacing='0' style='border:2px solid black;' id='id_tab_statistic'>
+				<tr class='tr_class_titre_tableau'>
+					<td style='border-right: 2px outset white;border-bottom: 1px solid black;background-color:black;color:white;' width='200px;'>
+						<%= t("statistiquesprincipal.statistics") %>	
+					</td>
+
+					<td style='border-right: 2px outset white;border-bottom: 1px solid black;background-color:black;color:white;' width='200px'>
+						<%= t("statistiquesprincipal.affichage_statistics") %>
+					</td>
+
+					<td style='border-right: 2px outset white;border-bottom: 1px solid black;background-color:black;color:white;' width='200px;'>
+						<%= t("statistiquesprincipal.graphique_grand") %>
+					</td>
+
+					<td style='border-right: 2px outset white;border-bottom: 1px solid black;background-color:black;color:white;' width='350px;'>
+						<%= t("statistiquesprincipal.affichage_nombre_statistique") %>
+					</td>
+
+					<td width='150px;' style='border-right: 2px outset white;border-bottom: 1px solid black;background-color:black;color:white;'>
+						<%= t("statistiquesprincipal.titre_graphique") %>
+					</td>
+
+					<td width='150px' style='border-bottom: 1px solid black;background-color:black;color:white;'>
+						<%= t("statistiquesprincipal.titre_graphique_anglais")
+					</td>
+				</tr>
+
+				<% Statistic::Categoriecolonnetable.all.collect{ |categoriecolonnetable| %>
+					<% posseder = @categorieindex.posseders.find(:first, :conditions=>"categoriecolonnetable_id=#{categoriecolonnetable.id}") %>	
+					<% content_tag_for :tr, categoriecolonnetable do %>
+						<td style='border-right: 2px outset black;border-bottom:2px solid black;' width='200px;' class='class_name_categoriecolonnetable'>	
+							<%= check_box_tag("categoriecolonnetable[id][]", categoriecolonnetable.id, posseder.nil? ? false : true, :class=>"class_categoriecolonnetable_name") %>
+							<%= 
+								f.label(categoriecolonnetable.name) 
+							%>
+						</td>
+
+						<td style='border-right: 2px outset black;border-bottom:2px solid black;' width='200px;'>
+							<%= check_box_tag("categoriecolonnetable[statistic][]", categoriecolonnetable.id, posseder.nil? ? false : posseder.statistic, :class=>"class_checkbox_statistic", :id=>"id_checkbox_statistic_#{categoriecolonnetable.id}") %>
+						</td>
+
+						<td style='border-right: 2px outset black;border-bottom:2px solid black;' width='200px;'>
+						<%= 
+							check_box_tag("categoriecolonnetable[imagegrand][]", categoriecolonnetable.id, posseder.nil? ? false : posseder.imagegrand, :class=>"class_checkbox_imagegrand", :id=>"id_checkbox_imagegrand_#{categoriecolonnetable.id}" ,:style=>"display:#{posseder.nil? ? 'block' : posseder.statistic ? 'block' : 'none'}") 
+						%> 
+						</td>
+
+						<td style='border-right: 2px outset black;border-bottom:2px solid black;' width='350px;'>
+							<%= 
+							check_box_tag("categoriecolonnetable[affichagenombrestatglobal][]", categoriecolonnetable.id, posseder.nil? ? false : posseder.affichagenombrestatglobal) 
+							%>
+
+						</td>
+
+						<td width='150px' style='border-right: 2px outset black;border-bottom:2px solid black;'>
+							<%= 
+							text_field_tag("categoriecolonnetable[titregraphique][]", posseder.nil? ? "Statistique Global" : posseder.titregraphique) 
+							%>
+
+						</td>
+
+						<td width='150px' style='border-bottom:2px solid black;'>
+							<%= text_field_tag("categoriecolonnetable[titregraphiqueen][]", posseder.nil? ? "Global Statistic" : posseder.titregraphiqueen) %>
+						</td>
+					<% end %>
+				<% } %>
+			</table>		
+			</p>
+
+	<%= javascript_include_tag "statistics/updatestatisticsprincipal" %>

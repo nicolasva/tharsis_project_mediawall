@@ -1,0 +1,23 @@
+<ul>
+	<li>
+	Le groupe <span class='span_class_recap_create_group'><%= @role.name %></span> a bien été crée.
+	</li>
+
+	<li>
+		Identifiants à fournir à votre client
+	</li>
+
+	<li>
+	login: <span class='span_class_recap_create_group'><%= @role.users.find(:first).username %></span>
+	</li>
+
+	<li>
+	mot de passe : <span class='span_class_recap_create_group'><%= flash[:password] %></span>
+	</li>
+</ul>
+<% 
+	#link_to 'Edit', edit_role_path(@role) 
+%> 
+<% 
+	#link_to 'Back', roles_path 
+%>

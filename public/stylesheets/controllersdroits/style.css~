@@ -1,0 +1,113 @@
+div.div_corps_user
+{
+	background-color: white;
+	min-height: 550px;
+}
+
+div.class_gestion_controllersdroits
+{
+	width: 260px;
+	border-right: 1px solid #aaa;
+        border-bottom: 1px solid #aaa;	
+        border-left: 1px solid #aaa;
+	background-color: transparent;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits
+{
+	font-size: 10pt;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.colonne_titre
+{
+	color: white;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.colonne_titre td
+{
+	background-color: #404040;
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.colonne_titre td.colonne_general_first
+{
+	-moz-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+        border-top-left-radius: 8px;	
+	padding-left: 8px;
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.colonne_titre td.colonne_general
+{
+	text-align: center;
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.colonne_titre td.colonne_general_last
+{
+	-moz-border-radius-topright: 8px;
+	-webkit-border-top-right-radius: 8px;
+        border-top-right-radius: 8px;	
+	text-align: center;
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr td img
+{
+	border: 0px;
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.class_contenu_colonne_controllersdroits td.contenu_colonne_controllersdroits img.class_img_bin_corbeille
+{
+	margin-left: 15px;
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.class_contenu_colonne_controllersdroits td.contenu_colonne_controllersdroits img.class_img_plus_edit
+{
+	float: right;
+	margin-right: 10px;
+}
+
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.class_contenu_colonne_user td.contenu_colonne_user
+{
+	padding-left: 8px;
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.class_contenu_colonne_user td.contenu_colonne_general
+{
+	text-align: center;
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.class_contenu_colonne_user td a
+{
+	color: black;
+	text-decoration: none;
+}
+
+div.class_gestion_controllersdroits table.tab_class_controllersdroits tr.class_contenu_colonne_user td a:hover
+{
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+ul.ul_class_controllersdroits
+{
+	margin: 0px;
+	margin-top: 15px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+ul.ul_class_controllersdroits li a img
+{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}

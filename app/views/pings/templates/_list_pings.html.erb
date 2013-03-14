@@ -1,0 +1,21 @@
+<% unless pings.empty? %>
+<table class='tab_list_ping' cellpadding='0' cellspacing='0'>
+	<tr class='colonne_titre'>
+		<td class='colonne_general_first' width='100'><%= t("tab_app.nom_application") %></td>
+		<td class='colonne_general' width='250'><%= t("activerecord.attributes.ping.status") %></td>
+		<td class='colonne_general' width='150'><%= t("activerecord.attributes.ping.created_at") %></td>
+		<td class='colonne_general_last' width='100'><%= t("general.sup") %></td>
+	</tr>	
+	<% pings.each{ |liste_ping| %>
+		<tr class='class_contenu_colonne_user'>
+			<td class='contenu_colonne_first'><%= liste_ping.application.serial %></td>
+			<td class='contenu_colonne_general'><%= liste_ping.status.gsub(':','<br>') unless liste_ping.nil? || liste_ping.status.nil? %></td>
+			<td class='contenu_colonne_general'><%= liste_ping.created_at.strftime('%d-%m-%Y %H:%M:%S') %></td>
+			<td class='contenu_colonne_general'><%= link_to image_tag("img_general/close.gif"), liste_ping, :confirm => 'Are you sure?', :method => :delete %></td>
+		</tr>
+	<% } %>
+</table>
+<% else %>
+	<%= t("tab_app.any_ping") %>
+<% end %>
+<%= will_paginate pings %>

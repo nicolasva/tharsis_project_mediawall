@@ -1,0 +1,534 @@
+/* New css */
+div.div_class_groupapps
+{
+	margin-left: 10px;
+	float: left;
+	/*background-color: blue;*/
+}
+
+div.div_class_groupapps div.class_select_group_apps p.span_class_select_groups
+{
+	margin: 0px;
+	padding: 0px;
+	font-weight: bold;
+}
+
+div.div_class_groupapps div.class_select_group_apps ul.ul_class_groupapps
+{
+	padding: 0px;
+	margin: 0px;
+	padding-left: 20px;
+	list-style-type: none;
+	border: 1px solid #aaa;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;
+        padding-left: 15px;
+        line-height: 22px;	
+}
+
+div.div_class_groupapps div.class_select_group_apps ul
+{
+	padding: 0px;
+	margin: 0px;
+	padding-left: 20px;
+	list-style-type: none;
+	list-style-type: none;
+        padding-left: 15px;
+        line-height: 22px;	
+}
+
+div.div_class_groupapps div.class_select_group_apps ul.ul_class_groupapps li a
+{
+	color: black;
+	text-decoration: none;
+}
+
+
+div.div_class_corps_stat
+{
+	margin-left: 200px;
+}
+
+div.div_class_corps_stat h1
+{
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+	height: 42px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne
+{
+	margin-right: 40px;
+	list-style-type:none;
+}
+div.div_class_corps_stat ul.ul_class_table_colonne li#li_id_stat_general_colonne_graph_general
+{
+	height: 415px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne li.li_class_stat_general_colonne
+{
+	border: 1px solid #aaa;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne li.li_class_stat_by_type_apps
+{
+	margin-top: 20px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne ul.ul_class_stat_by_type
+{
+	min-height: 200px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne ul li
+{
+	margin:0px;
+	padding-left: 20px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne ul.ul_class_stat_by_type li p.p_class_titre_apps_group_name a 
+{
+	text-decoration: underline;
+	color: #4169aa;
+	padding: 0px;
+	margin: 0px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne ul.ul_class_stat_by_type li p.p_class_titre_apps_group_name a:hover
+{
+	color: #848484;
+	text-decoration: underline;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne ul.ul_class_stat_by_type
+{
+	margin: 0px;
+	padding: 0px;
+	height: 40px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne ul.ul_class_stat_by_type li.class_stat_by_type_right
+{
+	list-style-type: none;
+	float:right;
+	margin-top: 35px;
+	border: 1px solid #aaa;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+	width: 300px;
+	line-height: 30px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne ul.ul_class_stat_by_type li.class_stat_by_type
+{
+	list-style-type: none;
+	float: left;
+	margin-top: 35px;
+	border: 1px solid #aaa;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+	width: 300px;
+	line-height: 30px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne li div.div_class_roles_apps_by_type
+{
+	padding-top: 20px;
+	margin-top: 110px;
+  	height: 50px;
+	margin-bottom: 40px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne li div.div_class_roles_apps_by_type ul.ul_class_roles_applications_by_type
+{
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne li div.div_class_roles_apps_by_type ul.ul_class_roles_applications_by_type li
+{
+	float:left;
+	margin-left: 20px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne li ul.ul_class_together_stat_media #id_graph_stat
+{
+	list-style-type:none;
+	float:left;
+	border-right: 2px solid #aaa;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;
+	margin-right: 20px;	
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne li ul.ul_class_together_stat_media ul.ul_class_detail_stat_chiffre
+{
+	padding-top: 20px;
+}
+
+div.div_class_corps_stat ul.ul_class_table_colonne li ul.ul_class_together_stat_media ul.ul_class_detail_stat_chiffre li.class_chiffre_stat_all_media
+{
+	list-style-type: none;
+	line-height: 30px;
+}
+
+div.class_choix_applications
+{
+	border: 1px solid #aaa;
+	width: 350px;
+	overflow: auto;
+}
+
+
+/* Fin css */
+div.div_admin_statistics
+{
+	height: 40px;
+	background-color: transparent;
+}
+
+div.div_admin_statistics ul
+{
+	list-style-type: none;
+}
+
+div.div_admin_statistics ul li
+{
+	float: left;
+	margin-left: 20px;
+}
+
+div.div_admin_statistics a
+{
+	color: black
+	text-decoration: underline;
+}
+
+div.div_admin_statistics a:hover
+{
+	color: #848484;
+	text-decoration: underline;
+	background-color: transparent;
+}
+
+ul#categoriecolonnetables
+{
+	width: 300px;
+	background-color: white;
+}
+
+ul#categoriecolonnetables li span:hover.deplacer
+{
+	cursor: move;
+}
+
+ul.class_liste_table li
+{
+	list-style-type: none;
+}
+
+ul.class_categorie_statistique
+{
+	padding: 0px;
+	background-color: white;
+	width: 800px;
+}
+
+ul.class_categorie_statistique li
+{
+	list-style-type: none;
+}
+
+/* deuxième partie */
+
+/*div.class_corps table.tab_class_applications*/
+div.class_corps
+{
+	min-height: 1500px;
+	background-color: white;
+}
+
+div.class_corps div.div_class_all_top
+{
+	width: 550px;
+	margin-left: 550px;
+	margin-top: 0px;
+}
+
+div.class_corps div.div_class_all_top div.div_class_top
+{
+	border: 1px solid #aaa;
+	/*background-color: blue;*/
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+        border-radius: 10px;	
+}
+
+div.class_corps div.div_class_all_top div.div_class_top ul
+{
+	list-style-type: none;
+}
+
+div.class_corps div.div_class_all_top div.div_class_top ul li ol
+{
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+div.class_corps div.div_class_all_top div.div_class_top ul li ol li
+{
+	height: 40px;
+}
+
+span.span_class_chiffres_stat
+{
+	font-weight: bold;
+	font-size: 22pt;
+	color: #94cd1c;
+}
+
+
+div.class_corps div.div_class_all_top div.div_class_top ul li h2
+{
+	font-size: 10pt;
+	font-weight: lighter;
+	text-decoration: underline;
+}
+
+div.class_corps div.class_stat_graph
+{
+	float: left;
+}
+
+div.class_corps div.class_stat_graph ul
+{
+	padding: 0px;
+	padding-left: 10px;
+	list-style-type: none;
+}
+
+div.class_corps div.class_stat_graph ul li
+{
+	padding-left: 20px;
+	border: 1px solid #aaa;
+	margin-bottom: 45px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+        border-radius: 10px;	
+}
+
+ul.ul_class_top_detail_stat li
+{
+	margin-top: 20px;
+}
+
+ul.ul_class_top_detail_stat li span.span_class_detail_chiffre
+{
+	font-weight: bold;
+	font-size: 14pt;
+}
+
+table.table_class_top_detail_stat
+{
+	border: 1px solid #aaa;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+}
+
+table.table_class_top_detail_stat tr.colonne_titre
+{
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+	color: white;
+}
+
+table.table_class_top_detail_stat tr.colonne_titre td
+{
+	background-color: #404040;
+}
+
+table.table_class_top_detail_stat tr.colonne_titre td.colonne_general_first
+{
+	-moz-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+        border-top-left-radius: 8px;
+	padding-left: 10px;
+        padding-right: 10px;	
+}
+
+table.table_class_top_detail_stat tr.colonne_titre td.colonne_general_last
+{
+	-moz-border-radius-topright: 8px;
+	-webkit-border-top-right-radius: 8px;
+        border-top-right-radius: 8px;	
+	text-align: center;
+}
+
+table.table_class_top_detail_stat tr.class_contenu_colonne_top_stat td.contenu_colonne_top_stat
+{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+table.table_class_top_detail_stat tr.class_contenu_colonne_top_stat td.colonne_general_last
+{
+	text-align: center;
+}
+
+div.class_corps div.div_class_link_choix_day
+{
+	height: 50px;
+}
+
+div.class_corps div.div_class_link_choix_day ul
+{
+	margin: 0px;
+	padding: 0px;
+	margin-left: 2px;
+	list-style-type: none;
+}
+
+div.class_corps div.div_class_link_choix_day ul li
+{
+	margin-left: 20px;
+	margin-right: 12px;
+	float: left;
+}
+
+div.class_corps div.div_class_link_choix_day ul li.class_li_other_choix_day
+{
+	list-style-type: square;
+}
+
+div.class_corps div.div_class_link_choix_day ul li a
+{
+	color: #4169aa;
+}
+
+
+div.class_corps h1
+{
+	font-weight: lighter;
+}
+
+div.div_class_info_apps ul
+{
+	list-style-type: none;
+}
+
+div.div_class_info_apps ul li
+{
+	height: 30px;
+	margin: 0px;
+	padding: 0px;
+}
+
+div.div_class_info_apps ul li ol
+{
+	padding: 0px;
+	list-style-type: none;
+}
+
+div.div_class_info_apps ul li ol li
+{
+	float: left;
+}
+
+div.div_class_info_apps ul li ol li.class_info_name
+{
+	margin-right: 15px;
+	font-size: 20pt;
+}
+
+div.div_class_info_apps ul li ol li.link
+{
+	padding-top: 12px;
+	height: 15px;
+}
+
+div.div_class_info_apps ul li ol li.link a 
+{
+	margin-right: 20px;
+	font-style: italic;
+	font-size: 10pt;
+	color: #4169aa;
+	text-decoration: underline;
+}
+
+
+div.div_class_info_apps ul li ol li.link_bis
+{
+	height: 15px;
+}
+
+div.div_class_info_apps ul li ol li.link_bis a 
+{
+	color: #4169aa;
+	margin-right: 20px;
+	font-style: italic;
+	font-size: 10pt;
+	text-decoration: underline;
+}
+
+div.div_class_info_apps ul li ol li.link_bis a:hover
+{
+	text-decoration: underline;
+}
+
+div.div_class_info_apps ul li ol li.link_bis a:hover
+{
+	text-decoration: underline;
+}
+
+div.div_class_info_apps ul li.class_app_role_name
+{
+	font-size: 20pt;
+}
+
+div.div_class_info_apps ul li.class_app_name
+{
+	color: gray;
+	font-size: 16pt;
+	font-style: italic;
+}
+
+div.div_class_admin_statistics
+{
+	clear: both;
+	margin-left: 200px;
+	padding-top: 50px;
+}
+
+div.div_class_admin_statistics ul.ul_class_dock_menu
+{
+	list-style-type: none;
+}
+
+div.div_class_admin_statistics ul.ul_class_dock_menu li 
+{
+	margin-right: 10px;
+}
+
+div.div_class_admin_statistics ul.ul_class_dock_menu li a
+{
+	color: black;
+	text-decoration: none;
+}
+
+div.div_class_admin_statistics ul.ul_class_dock_menu li a:hover
+{
+	text-decoration: underline;
+}

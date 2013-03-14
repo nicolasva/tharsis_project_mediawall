@@ -1,0 +1,10 @@
+	<% content_tag_for :li, groupapp do %>	
+		<%= link_to groupapp.name, "#", :class=>"class_app", :id=>"id_applications_#{groupapp.id}", :onclick=>"Effect.toggle('ol_id_applications_#{groupapp.id}','BLIND');" %>
+		<ol id='ol_id_applications_<%= groupapp.id %>' style='display:none;'>
+			<% groupapp.applications.each{ |application| %>
+			     <% content_tag_for :li, application do %>
+				<%= check_box_tag("user[application_ids][]", application.id, user == "" ? false : user.applications.include?(application)) %><%= application.name %>
+			     <% end %>
+			<% } %>
+		</ol>
+	<% end %>	

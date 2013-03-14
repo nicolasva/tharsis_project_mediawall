@@ -1,0 +1,5 @@
+<% form_for :categorieindex, :url=>{:controller=>"statistics", :action=>"validstatistiquesprincipal"} do |f| %>
+	<%= render(:partial => "statistics/templates/form_categorie_statistic_principal", :locals => { :f => f}) %>
+
+	<%= f.submit "Creer cette catégorie de statistiques" %>
+<% end %>

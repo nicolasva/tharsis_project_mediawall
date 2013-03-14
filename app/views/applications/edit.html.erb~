@@ -1,0 +1,11 @@
+   <% form_for(@application) do |f| %> 
+        <div style='text-align:center;'>
+		<p>
+		<%= render(:partial=>"/applications/templates/form_name_application", :locals => {:f => f}) %>
+		</p>
+		<%= f.submit("Mettre à jour") %>
+        </div>
+   <% end %>
+<% 
+	#link_to t("general.back"), :controller=>"applications", :action=>"index", :groupapp_id=>@application.groupapp_id 
+%>

@@ -1,0 +1,26 @@
+<h1><%= t("title.liste_controlleur") %></h1>
+
+<div class='class_gestion_controllersdroits'>
+<table border='0' class='tab_class_controllersdroits' width='260' cellpadding='0' cellspacing='0'>
+  <tr class='colonne_titre'>
+	<td class='colonne_general_first'>
+		<%= t("controllersdroits.controlleur_name") %>
+	</td>
+	
+	<td class='colonne_general_last'>
+		<%= image_tag("img_general/bin.png") %>
+	</td>
+  </tr>
+
+<% @controllersdroits.each do |controllersdroit| %>
+  <tr class='class_contenu_colonne_user'>
+	  <td class='contenu_colonne_user'><%= controllersdroit.name %> <%= link_to image_tag("controllersdroits/plus.png", :class=>"class_liens_plus"), edit_controllersdroit_path(controllersdroit) %></td>
+    <td class='contenu_colonne_general'><%= link_to image_tag("img_general/close.gif"), controllersdroit, :confirm => t("general.confirmation_sup"), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+
+<br />
+
+<%= link_to image_tag("controllersdroits/new_lock.png", :size=>"70x70"), new_controllersdroit_path %>

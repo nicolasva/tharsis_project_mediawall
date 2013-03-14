@@ -1,0 +1,11 @@
+<h1>Réglement de cette enchère</h1>
+
+<%= form_for(@order) do |f| %>
+	<%= render(:partial=>"form", :locals => {:order=>@order, :f=>f, :galerieimages=>@galerieimages.nil?  ? "" : @galerieimages}) %>
+
+
+  	<div class="actions">
+    		<%= f.submit "Valider" %>
+  	</div>
+<% end %>
+

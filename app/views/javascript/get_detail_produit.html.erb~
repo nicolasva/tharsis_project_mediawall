@@ -1,0 +1,17 @@
+<div class='div_class_detail_produit'>
+  <div class='div_class_information_galerieimage'> 	
+    <ul>
+	<li>
+		<%= @galerieimage.title %>
+	</li>
+
+	<li>
+		Valeur : <%= @galerieimage.prixentree %>
+	</li>
+    </ul>
+  </div>
+
+  <div class='div_class_img_galerieimage'>
+  	<%= image_tag(@galerieimage.imageheader.url(:thumb), :size=>"290x290") %>
+  </div>
+</div>

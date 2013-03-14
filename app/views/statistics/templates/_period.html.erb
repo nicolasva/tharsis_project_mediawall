@@ -1,0 +1,19 @@
+		<%= calendar_date_select_includes "red" %>	
+		<p>
+			<%= visugraph.select(:period, options_for_select([[t("general.today"), "today"], [t("general.yesterday"), "yesterday"], [t("general.current_week"), "current_week"], [t("general.last_week"), "last_week"], [t("general.current_month"), "current_month"], [t("general.last_month"), "last_month"], [t("general.manual"), "manual"]], @period.nil? ? "today" : @period)) %>	
+		</p>
+	<div id='div_class_manual_period' style='display:<%= (@period.nil? ? 'none' : ( @period == "manual" ? "block" : "none" )) %>;'>
+		<p>
+		<%= t("statistics.period_from") %> : <br>
+		<%= 
+		#select_datetime(@fromdate || 7.days.ago, :prefix => 'fromdate') 
+		%>
+		<%= calendar_date_select_tag "fromdate", @fromdate || 7.days.ago, :embedded => true, :time => true %>
+		<br>
+		<%= t("statistics.period_to") %> : <br>
+		<%= 
+		#select_datetime(@todate || Time.now, :prefix => 'todate') 
+		%>	
+		<%= calendar_date_select_tag "todate", @todate || Time.now, :embedded => true, :time => true %>
+		</p>
+	</div>

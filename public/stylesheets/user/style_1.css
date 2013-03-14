@@ -1,0 +1,49 @@
+div.div_class_menu_admin
+{
+	float: left;
+}
+
+
+div.div_class_menu_admin ul li
+{
+	list-style-type: none;
+}
+
+div.div_corps_user
+{
+
+}
+
+table.tab_class_user
+{
+	text-align: center;
+}
+
+table.tab_class_user tr.colonne_titre td.colonne_general
+{	
+	font-weight: bold;
+	background: url('/images/img_general/applications/style_1/other_colonne.png');
+	color: white;
+}
+
+table.tab_class_user tr.colonne_titre td.colonne_general_user
+{
+	font-weight: bold;
+	background: url('/images/img_general/applications/style_1/tab_colonne_serial.png');
+	color: white;
+}
+
+table.tab_class_user tr.class_contenu_colonne_user td.contenu_colonne_general
+{
+	border-left: 2px groove silver;
+	border-top: 2px groove silver;
+	background-color: #d7cddb;	
+	height: 30px;	
+}
+
+table.tab_class_user tr.class_contenu_colonne_user td.contenu_colonne_user
+{
+	border-left: 2px groove silver;
+	border-top: 2px groove silver;
+	background-color: #b7acbc;
+}

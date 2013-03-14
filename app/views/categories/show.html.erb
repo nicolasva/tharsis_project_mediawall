@@ -1,0 +1,14 @@
+<div class='div_class_galerieimage'>
+  <ul class='ul_class_galerieimage'>
+	  <% @galerieimages.each{ |galerieimage| %>
+	  	<%= render(:partial => "galerieimages/templates/list_galerieimages", :locals => {:galerieimage=>galerieimage}) %>
+	  <% } %>	
+  </ul>
+	    <%= will_paginate @galerieimages %>
+</div>
+<% 
+	#link_to 'Edit', edit_category_path(@category) 
+%> 
+<% 
+	#link_to 'Back', categories_path 
+%>

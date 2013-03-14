@@ -1,0 +1,19 @@
+	<%= render :partial=>"users/partial_user/tab_liste_user" %>
+	<ul class='class_admin_user'>
+		<li class='class_first_admin_user'>
+		<%= link_to image_tag("users/#{t("user.search_user_logos")}", :size=>"50x50"), "#", :id=>"id_search_apps" %>
+		
+			<div id='div_id_search_apps' style='display:none;'>
+				<% form_for :user, :url=>{:controller=>"users", :action=>"valid_search_user"} do |f| %>		
+				<%= f.label(:user, "Rechercher un utilisateur")	%><br>
+				<%= text_field_with_auto_complete :user, :username,{ :size => 15 }, {:url => {:controller=>"users", :action=>"search_user_auto_completion"}, :method => :get, :with => "'search=' + element.value" } %>
+				<%= f.submit("Valider") %>
+				<% end %>
+			</div>
+		</li>
+		
+		<li class='li_class_admin_user_last'>
+		<%= link_to image_tag("users/#{t("user.new_user_logos")}", :size=>"70x70"), new_user_path %>
+		</li>
+	</ul>
+<br />

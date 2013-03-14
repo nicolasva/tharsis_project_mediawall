@@ -1,0 +1,4 @@
+<h1><%= t("roles.edit_group") %>  "<%= @role.name %>"</h1>
+
+<%= render :partial=>"form" %>
+

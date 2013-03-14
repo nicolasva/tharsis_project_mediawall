@@ -1,0 +1,9 @@
+class Role < ActiveRecord::Base
+        has_and_belongs_to_many :controllersdroits
+	has_and_belongs_to_many :groupapps
+ 	has_many :users
+	has_many :applications
+	belongs_to :role
+	validates_presence_of :name, :message=>I18n.t("models.notice.role.name")
+	attr_accessor :roles_idsoeur
+end

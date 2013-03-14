@@ -1,0 +1,5 @@
+<h1><%= t("title.new_group") %></h1>
+
+<%= render :partial=>"form" %>
+
+<%= link_to image_tag("roles/#{t("roles.new_groups")}", :size=>"70x70"), roles_path %> 

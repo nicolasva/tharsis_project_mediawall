@@ -1,0 +1,58 @@
+<% form_for :logos, :url=>{:controller=>"fichiercompressions", :action=>"valid_add_logos_marques"}, :html=>{:multipart=>true} do |f| %>
+	<%= t("editfilepublic.phrase_add_logos_for") %> : <%= @tab_result_info_marques[0][6] %>
+	<%= f.hidden_field :block_id, :value=>params[:id] %> 
+	<%= 
+		#link_to "Ajouter un logos", "#", :class=>"class_liens_add_logo" 
+	%>	
+	<div id='div_id_disparition_logos' style='display:none;'>
+	  <%= 
+		link_to_function("Annuler l'ajout d'un logo") do |page| 
+		   page.visual_effect(:slide_up, "div_class_add_logos")
+		   page.visual_effect(:appear, "div_id_apparition_logos")
+		   page.visual_effect(:switch_off, "div_id_disparition_logos")
+		end
+	   %>
+	</div>
+	<div id='div_id_apparition_logos'>
+	   <%= 
+	    link_to_function(t("editfilepublic.ajouter_logos")) do |page|
+	    	page.visual_effect(:slide_down, "div_class_add_logos")
+	    	page.visual_effect(:switch_off, "div_id_apparition_logos")
+	    	page.visual_effect(:appear, "div_id_disparition_logos")
+	    end
+    	   %>
+	</div>
+     <div id='div_class_add_logos' style='display:none;'>
+	<p>     
+                <%= f.label(:name_id, t("editfilepublic.nom_logo")) %><br>                   
+                <%= f.text_field(:name_id, :value=>(@name_translation.nil? ? "" : @name_translation)) %>                                 
+        </p>                                                                  
+                
+	<p>
+		<%= f.label(:size_x, t("editfilepublic.size_x")) %><br>
+		<%= f.text_field(:size_x, :value=>(@size_x.nil? ? "" : @size_x)) %>
+	</p>
+
+	<p>
+		<%= f.label(:size_y, t("editfilepublic.size_y")) %><br>
+		<%= f.text_field(:size_y, :value=>(@size_y.nil? ? "" : @size_y)) %>
+	</p>
+
+	<p>
+                <%= f.label(:logo, t("editfilepublic.logo")) %><br>                             
+		<%= f.file_field(:logo) %>   
+	</p>
+     </div>
+     <div class='div_class_list_logos'>
+	     <%= f.label(:check_logos, t("editfilepublic.check_logos")) %>
+	<ul>
+		<% @tab_result_logos.each{ |result_logos| %>
+			<li>
+			<%= check_box_tag("logos[check_logos][]", result_logos[0], false) %> 
+			<%= image_tag(file_write(result_logos[7],"#{RAILS_ROOT}/public/img_sqlite/logos/logos_#{result_logos[0]}.png","wb").scan(/^.{1,}public(.{1,})$/).to_s) %>
+			</li>	
+		<% } %>
+	</ul>
+      </div>
+	<%= f.submit("Valider") %>
+<% end %>

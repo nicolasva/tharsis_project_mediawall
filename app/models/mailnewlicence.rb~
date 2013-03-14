@@ -1,0 +1,11 @@
+class Mailnewlicence < ActionMailer::Base
+	def mails(application, user)
+		@subject = "Facturation - Nouvelle licence"
+		@body = {:application => application, :user => user} 
+		@recipients = "facturation@tharsis-software.com"
+		@from = user.email
+		@sent_on = Time.new
+		@headers = {}
+		@content_type = "text/html"
+	end
+end

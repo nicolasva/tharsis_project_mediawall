@@ -1,0 +1,20 @@
+	#fishEye, #fishEyeBottom{
+		height:175px;
+		width: 100%;
+		padding:10px;
+		text-align:center;
+	}
+	#fishEyeBottom{
+		bottom:0px;
+	}
+	#fishEye img, #fishEyeBottom img{
+		margin-top:100px;
+		width:50px;
+		height:50px;
+		height:auto;
+	}
+	#fishEye img{
+		margin-top:0px;
+		margin-bottom:100px;
+	}
+	

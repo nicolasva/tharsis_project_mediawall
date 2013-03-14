@@ -1,0 +1,6 @@
+		<% form_for :visugraph, :url=>{:controller=>"statistics", :action=>"visugraph"} do |visugraph| %>
+			<%= render(:partial => "form", :locals => { :visugraph => visugraph}) %>
+			<%= render(:partial=>"/statistics/templates/period", :locals => {:visugraph => visugraph}) %> 	
+		
+			<%= visugraph.submit t("statistics.bouton_visualiser") %>
+		<% end %>

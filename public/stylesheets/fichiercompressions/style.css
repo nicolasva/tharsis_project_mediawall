@@ -1,0 +1,510 @@
+div.class_all_zip
+{
+	margin-left: 9%;
+}
+
+div.class_all_zip a
+{
+	color: black;
+	text-decoration: none;
+}
+
+div.class_all_zip a:hover
+{
+	text-decoration: underline;
+}
+
+div.div_class_fichiercompression_to_apps
+{
+ 	width: 900px;
+	margin-left: 300px;
+ 	margin-bottom: 20px;
+}
+
+div.div_class_tab_fichiercompression
+{
+ 	width: 900px;
+ 	margin-bottom: 20px;
+}
+
+table.tab_class_fichiercompression
+{
+	font-size: 10pt;
+	border: 1px solid silver;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+	text-align: center;
+}
+
+table.tab_class_fichiercompression tr.colonne_titre
+{
+        color: white;
+        font-size: 10pt;
+        text-align: center;
+        font-weight: bold;	
+}
+
+table.tab_class_fichiercompression tr.colonne_titre td
+{
+        padding-top: 7px;	
+	background-color: #404040;
+}
+
+table.tab_class_fichiercompression tr.colonne_titre td.colonne_general_first
+{
+	-moz-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+        border-top-left-radius: 8px;
+	padding-left: 10px;
+        padding-right: 10px;
+}
+
+table.tab_class_fichiercompression tr.colonne_titre td.colonne_general_last
+{
+	-moz-border-radius-topright: 8px;
+	-webkit-border-top-right-radius: 8px;
+        border-top-right-radius: 8px;
+	padding-left: 10px;
+        padding-right: 10px;
+}
+
+table.tab_class_fichiercompression tr.class_contenu_colonne_user  td.contenu_colonne_general_first
+{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+table.tab_class_fichiercompression tr td a 
+{
+	color: black;
+	text-decoration: none;
+}
+
+div.div_class_tab_fichiern table.tab_class_fichiercompression tr td a:hover
+{
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+div.div_class_list_marque
+{
+ float:right;
+}
+
+ul.class_liste_marques
+{
+margin: 0px;
+ padding: 0px;
+}
+
+ul.class_liste_marques li
+{
+ list-style-type: none;
+ padding: 0px;
+ margin: 0px;
+}
+
+ol.ol_topicsmarques li
+{
+ cursor: move;
+}
+
+ol.ol_topicsmarques li a
+{
+ cursor: pointer;
+}
+
+ul.ul_class_liste_block li
+{
+ list-style-type: none;
+}
+
+ul.ul_class_blocks li
+{
+ list-style-type: none;
+}
+
+ul.class_topics_blocks
+{
+ margin-left: 40px;
+ color: blue;
+}
+
+ul.class_topics_blocks li
+{
+ margin-left: 20px;
+ float: left;
+ list-style-type: none;
+}
+
+
+ul.class_list_logos
+{
+ margin: 0px;
+ padding: 0px;
+}
+
+ul.class_list_logos li
+{
+ list-style-type: none;
+}
+
+ul.class_logos_block
+{
+ margin: 0;
+ padding: 0;
+ list-style-type:none;
+}
+
+ul.class_logos_block li
+{
+ float:left;
+}
+
+div.div_class_map
+{
+ float:left;
+}
+
+div.div_class_map ul
+{
+ margin: 0px;
+ padding: 0px;
+ list-style-type: none;
+} 
+
+div.div_class_map ul li
+{
+ color: white;
+ margin-left: 14px;
+ float: left;
+ text-align: center;
+}
+
+div.div_class_map ul li p
+{
+ font-weight: bold;
+ font-size: 11pt;
+}
+
+div.div_class_map ul li:hover
+{
+ background-color: white;
+ color: black;
+}
+
+div.class_choix_applications
+{ 
+  width: 650px; /* will be adjusted by script.aculo.us */
+  height: 20em; /* 8 × 1.6em */
+  overflow: auto;
+  background-color: white; 
+  /*border: 1px solid #888;*/
+  border-top: 2px solid #D0D0D0;
+  border-left: 2px solid #D0D0D0;
+  border-right: 2px solid #D0D0D0;  
+  border-bottom: 2px solid #D0D0D0; 
+  -moz-box-shadow:inset 3px 3px 5px #aaa; 
+  -webkit-box-shadow:inset 3px 3px 5px #aaa; 
+  box-shadow:inset 3px 3px 5px #aaa; 
+  margin: 0px; padding: 0px;
+}
+
+div.div_class_list_apps_to_associate_file
+{
+  width: 650px; /* will be adjusted by script.aculo.us */
+  height: 20em; /* 8 × 1.6em */
+  overflow: auto;
+}
+
+div.class_choix_applications ul.ul_class_liste_application{
+  list-style-type: none; margin: 0px; padding: 0px;
+  float: none;
+}
+
+div.class_choix_applications ul.ul_class_liste_application li:hover { background-color:  #ff9;}
+
+div.class_choix_applications ul.ul_class_liste_application li{
+  border-bottom: 1px solid silver;
+  list-style-type: none; display: block;
+  font-family: sans-serif; font-size: smaller; color: #444;
+  margin: 0; padding: 0.1em;
+  cursor: pointer; overflow: hidden;
+  float: none;
+}
+
+div.class_choix_applications ul.ul_class_liste_application li a{
+  color: black;
+}
+
+div.div_class_form_fichiercompressions
+{
+  margin-left: 8%;
+}
+
+div.class_edit_version_fichiercompression {
+  background-color: white;
+  width: 700px; /* will be adjusted by script.aculo.us */
+  overflow: hidden;
+  /*background-color: white; border: 1px solid #888;*/
+  margin: 0px; padding: 0px;
+  margin-left: 155px;
+  border: 1px solid #aaa;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+
+ul#main
+{
+	margin: 0px;
+	padding:0px;
+ 	list-style-type: none;
+	width: 3000px;
+}
+
+ul#main li h3
+{
+	font-weight: normal;
+	font-size: 12pt;
+}
+
+ul#main li a
+{
+	color: black;
+	text-decoration: none;
+}
+
+ul#main li a:hover
+{
+	text-decoration: underline;
+}
+
+ul#main li#etape0
+{
+	padding-left: 40px;
+	float: left;
+	width: 710px;
+	border-right: 2px solid #aaa;
+}
+
+ul#main li#etape1
+{
+	padding-left: 40px;
+	float: left;
+	width: 700px;
+        border-right: 2px solid #aaa;
+}
+
+ul#main li.class_next_etape
+{
+	padding-left: 40px;
+	float:left;
+	width: 700px;
+        border-right: 2px solid #aaa;
+}
+
+ul.ul_class_choix_file
+{
+	list-style-type: none;
+}
+
+ul.ul_class_choix_file li.class_choix_file_ftp
+{
+	color: silver;	
+}
+
+ol.ul_class_liste_file_ftp
+{
+	list-style-type: none;
+	width: 200px;
+  	border-top: 5px groove #FBFBFB;
+  	border-left: 5px groove #FBFBFB;
+  	border-right: 2px solid #FBFBFB;  
+  	border-bottom: 2px solid #FBFBFB; 
+}
+
+ol.ul_class_liste_file_ftp li label
+{
+	color: silver;
+}
+
+ul.ul_class_liste_group
+{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	border: 1px outset #aaa;
+	min-height: 300px;
+	width:600px;
+  	border-top: 5px groove #aaa;
+  	border-left: 5px groove #aaa;
+  	border-right: 2px solid #aaa;  
+  	border-bottom: 2px solid #aaa; 
+}
+
+ul.ul_class_liste_group li
+{
+	width: 50px;
+}
+
+div.div_class_height_contenu
+{
+	height: 380px;
+}
+
+div.div_class_height_contenu p.class_choix_merge span.class_span_champs_current_version
+{
+	border: 1px solid gray;
+	color: gray;
+	overflow: auto;
+}
+
+div.div_class_height_contenu p.class_choix_merge span.class_id_box_merge
+{
+	width: 40px;
+	margin-left: 15px;
+	border: 1px solid gray;
+	color: gray;
+}
+
+#div_id_versions_bornes
+{
+
+	position:absolute;
+	background-color:white;
+	top:12em;
+}
+
+div.div_class_bouton_suivant
+{
+	margin-right: 60px;
+	clear: both;
+	float: right;
+}
+
+table.class_tab_recap_update
+{
+	font-size: 10pt;
+	background-color: transparent;
+	border-bottom: 1px solid #aaa;
+}
+
+table.class_tab_recap_update tr.tr_titre_recap_update
+{
+	color: white;
+}
+
+table.class_tab_recap_update tr.tr_titre_recap_update td
+{
+	border-top: 1px solid #aaa;
+	background-color: #404040;
+}
+
+table.class_tab_recap_update tr.tr_titre_recap_update td.class_titre_first
+{
+	border-left: 1px solid #aaa;
+	padding-left: 8px;	
+	border-top-left-radius: 8px;
+	-moz-border-radius-topleft: 8px;
+	-webkit-border-radius-topleft: 8px;
+	text-align: center;
+}
+
+table.class_tab_recap_update tr.tr_titre_recap_update td.class_titre_last
+{
+	border-right: 1px solid #aaa;
+	padding-right: 8px;	
+	border-top-right-radius: 8px;
+	-moz-border-radius-topright: 8px;
+	-webkit-border-radius-topright: 8px;
+}
+
+table.class_tab_recap_update tr.class_contenu_recap_apps td
+{
+	text-align: center;
+}
+
+table.class_tab_recap_update tr.class_contenu_recap_apps td.td_class_contenu_recap_apps_first 
+{
+	border-left: 1px solid #aaa;
+}
+
+table.class_tab_recap_update tr.class_contenu_recap_apps td.td_class_contenu_recap_apps_last
+{
+	border-right: 1px solid #aaa;
+}
+
+div#div_id_files_apps_update
+{
+	margin-left: 140px;
+	height: 170px;
+	width: 350px;
+	border: 1px solid silver;
+  	overflow: auto;
+}
+
+div#div_id_result_liste_versions
+{
+	height: 170px;
+	width: 350px;
+	border: 1px solid silver;
+  	overflow: auto;
+}
+
+div#div_id_result_liste_bornes
+{
+	height: 170px;
+	width: 350px;
+	border: 1px solid silver;
+  	overflow: auto;
+}
+
+div.div_class_legende_old_currentversion ul li
+{
+	list-style-type: none;
+}
+
+div.div_class_legende_old_currentversion ul li 
+{
+}
+
+div.div_class_legende_old_currentversion ul li ol li
+{
+	float:left;
+}
+
+div.div_class_legende_old_currentversion ul li ol li.class_legende_couleur_archivecurrentversion 
+{
+	margin-top: 4px;
+	background-color: #BBF0C6;
+	width: 40px;
+	height: 20px;
+	margin-left: 10px;
+}
+
+div.class_corps div.div_class_version_to_apps
+{
+	width: 600px;
+	padding: 0px;
+	padding-left: 9px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	margin-left: 250px;
+}
+
+div.class_corps div.div_class_version_to_apps div.div_class_apps_to_versions
+{
+	list-style-type: none;
+	overflow: auto;
+	height: 40px;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+

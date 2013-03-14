@@ -1,0 +1,55 @@
+		<%= categoriecolonnetable.error_messages %>
+		<p>
+			<%= categoriecolonnetable.label(:name, t("activerecord.attributes.stat_categoriecolonnetable.name")) %><br>
+			<%= categoriecolonnetable.text_field :name %>
+		</p>
+
+		<p>
+			<%= categoriecolonnetable.label(:nameen, t("activerecord.attributes.stat_categoriecolonnetable.nameen")) %><br>
+			<%= categoriecolonnetable.text_field :nameen %>
+		</p>
+
+		<p>
+			<%= categoriecolonnetable.label(:typegraph, t("activerecord.attributes.stat_categoriecolonnetable.typegraph")) %> <br>
+			<%= categoriecolonnetable.select(:typegraph, options_for_select([["Statistique", 0], ["Graphique Bar", 1], ["Graphique Camembert", 2]], @categoriecolonnetable.typegraph)) %>
+		</p>
+
+		<p id="id_nbrubriquecontenu" style='display:<%= @categoriecolonnetable.typegraph == 1 || @categoriecolonnetable.typegraph == 2 ? 'block' : 'none' %>;'>
+			<%= categoriecolonnetable.label(:nbrubriquecontenu, t("activerecord.attributes.stat_categoriecolonnetable.nbrubriquecontenu")) %><br>
+			<%= categoriecolonnetable.text_field(:nbrubriquecontenu) %>
+		</p>
+
+		<p id='id_titrelegendestatglobal' style='display:<%= @categoriecolonnetable.table_id.nil? ? "none" : "block" %>;'>
+			<%= categoriecolonnetable.label(:titrelegendestatglobal, "Titre de la legende pour cette statistique global") %><br>
+			<%= categoriecolonnetable.text_field(:titrelegendestatglobal) %>
+		</p>
+		
+		<p>
+			<%= t("statistics.select_table_ou_colonne") %> <br>
+			<ul class='class_liste_table' id='id_liste_table'>
+				<% @tables.each{ |table| %>
+				     <% content_tag_for :li, table, :class=>"statistic_table" do %>
+					<%= check_box_tag("categoriecolonnetable[table_id]", table.id, @categoriecolonnetable.table_id.to_s.include?(table.id.to_s), :id=>table.id, :class=>"class_select_table") %><%= link_to(table.name, '#', :id=>table.id) %>
+					<ul id="id_table_colonne_<%= table.id %>" class='class_table_colonne' style='display:none;'>
+						<% table.colonnes.find(:all, :conditions=>"choixaffichage=1").each{ |colonne| %>
+				     			<% content_tag_for :li, colonne do %>
+								<%= check_box_tag("categoriecolonnetable[colonne_ids][]", colonne.id, @categoriecolonnetable.colonnes.include?(colonne), :id=>colonne.id) %> <%= categoriecolonnetable.label(colonne.name) %>
+							<% end %>
+					
+						<% } %>
+					     </ul>
+				     <% end %>
+				<% } %>
+			</ul>
+		</p>
+
+		<p>
+			<%= t("statistics.select_groupes_acces_categorie") %>	
+			<ul class='class_liste_role_categorie'>
+				<% Role.all.collect {|role| %>
+					<% content_tag_for :li, role do %>
+						<%= check_box_tag("categoriecolonnetable[role_ids][]", role.id, @categoriecolonnetable.roles.include?(role)) %> <%= categoriecolonnetable.label(role.name) %>
+					<% end %>
+				<% } %>
+			</ul>
+		</p>

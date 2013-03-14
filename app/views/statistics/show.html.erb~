@@ -1,0 +1,166 @@
+<% if params[:application_id].nil? %>
+<div class='div_class_info_apps'>
+	<ul>
+		<li class='class_app_groupapp_name'>
+		      <ol>
+			    <li class='class_info_name'>
+			    	<%= @groupapp.name %>
+			    </li>
+
+			    <li class='link'><%= link_to t("statistics.phrase_url_home_stat"), :controller=>"statistics", :action=>"show", :id=>@groupapp.name, :role_id=>params[:role_id] %></li>
+		            <li class='link'><%= link_to t("statistics.status"), applications_url %></li>
+		      </ol>
+		</li>
+	</ul>
+</div>
+	<% 
+
+	#TraitStatView.new(params[:role_id].nil? ? current_user.role_id : params[:role_id],get_date(params[:time].nil? ? 'by_day' : params[:time])[1],get_date(params[:time].nil? ? 'by_day' : params[:time])[0]).get_average_consulted.each{ |key, value| 
+%>
+<% 
+	#"#{key} => #{value}" 
+%>
+<% 
+	#} 
+%>
+<div class='class_stat_graph'>
+   <ul>	
+      <li>
+	<%= 
+	#get_stat_by_type("Users_Sessions","nbwidgetsconsulted",Time.now.to_i - 86400, Time.now,current_user.role_id,@groupapp.id) 
+
+	#get_stat_by_type("Users_Sessions","nbWidgetsConsulted",params[:time].nil? ? "by_day" : params[:time],params[:role_id].nil? ? current_user.role_id : params[:role_id],@groupapp.id) 
+	get_stat_click_viewsql(params[:time].nil? ? "by_day" : params[:time],params[:role_id].nil? ? current_user.role_id : params[:role_id],@groupapp.id)
+	%>
+     </li>
+     <li>
+	<%= 
+	#get_stat_by_type("Users_Sessions","sessionID",params[:time].nil? ? "by_day" : params[:time],params[:role_id].nil? ? current_user.role_id : params[:role_id],@groupapp.id)
+	get_stat_session_viewsql(params[:time].nil? ? "by_day" : params[:time],params[:role_id].nil? ? current_user.role_id : params[:role_id],@groupapp.id)
+        %>	
+     </li>
+   </ul>
+</div>
+
+<div class='div_class_all_top'>
+     <div class='div_class_link_choix_day'>
+	<ul>
+	     <li>
+	     <%= link_to t("statistics.par_jour"), {:controller=>"statistics", :action=>"show", :id=>@groupapp.name, :time=>"by_day", :role_id=>params[:role_id].nil? ? current_user.role_id : params[:role_id]}, :style=>"text-decoration:#{params[:time].to_s == "by_day" || params[:time].nil? ? "none" : "underline"};" %>
+	     </li>
+	     <li class='class_li_other_choix_day'>
+	     <%= link_to t("statistics.par_semaine"), {:controller=>"statistics", :action=>"show", :id=>@groupapp.name, :time=>"by_week", :role_id=>params[:role_id].nil? ? current_user.role_id : params[:role_id]}, :style=>"text-decoration:#{params[:time].to_s == "by_week" ? "none" : "underline"};" %>
+	     </li>
+	     <li class='class_li_other_choix_day'>
+	     <%= link_to t("statistics.par_mois"), {:controller=>"statistics", :action=>"show", :id=>@groupapp.name, :time=>"by_month", :role_id=>params[:role_id].nil? ? current_user.role_id : params[:role_id]}, :style=>"text-decoration:#{params[:time].to_s == "by_month" ? "underline" : "none"};" %>
+	     </li>
+        </ul>
+    </div>
+    <div class='div_class_top'>
+	<ul>
+	   <li>
+		<ol>
+		     <li>
+		     <span class='span_class_chiffres_stat'><%= @nombre_mediaconsultes %></span> <%= t("statistics.medias_consultes") %>
+		     </li>
+
+		     <li>
+		     <span class='span_class_chiffres_stat'><%= @nombre_session %></span> <%= t("statistics.sessions") %> 
+		     </li>
+		     <li>
+		     <%= @average_media_session %>
+		     </li>
+		</ol>	
+	    </li>
+	    <li>
+	    <h2><%= t("statistics.medias_plus_consultes") %></h2>
+		<%= get_top_media_consulted(params[:time].nil? ? "by_day" : params[:time],params[:role_id].nil? ? current_user.role_id : params[:role_id],@groupapp.id) %>
+	     </li>
+	     <li>
+	     <h2><%= t("statistics.categories_plus_consultes") %></h2>
+		<%= get_top_categorie_consulted(params[:time].nil? ? "by_day" : params[:time],params[:role_id].nil? ? current_user.role_id : params[:role_id],@groupapp.id) %>
+	     </li>
+       </ul>	     
+    </div>
+</div>
+<br>
+<%=
+	#get_stat_by_type("Widgets_Consulted", "sessionId",params[:time].nil? ? "by_day" : params[:time], params[:role_id].nil? ? current_user.role_id : params[:role_id], @groupapp.id)	
+	#get_stat_by_type("users_sessions","sessionID",time.now.to_i - 86400, time.now,current_user.role_id,@groupapp.id)
+%>	
+<% else %>
+<div class='div_class_info_apps'>
+	<ul>
+		<li class='class_app_groupapp_name'>
+			<ol>
+				<li class='class_info_name'><%= @application.groupapp.name %></li>
+				<li class='link'><%= link_to t("statistics.phrase_url_home_stat"), :controller=>"statistics", :action=>"show", :id=>@application.groupapp.name, :role_id=>@application.role_id %></li>
+				<li class='link'><%= link_to t("statistics.status"), :controller=>"statistics", :action=>"index", :role_id=>@application.role_id %></li>
+			</ol>
+		</li>
+		<li class='class_app_role_name'>
+			<ol>
+				<li class='class_info_name'><%= @application.role.name.upcase %></li>
+				<li class='link_bis'><%= link_to t("statistics.statistics_url"), :controller=>"statistics", :action=>"index", :role_id=>@application.role.id %></li>
+				<li class='link_bis'><%= link_to t("statistics.status"), :controller=>"applications", :action=>"index", :role_id=>@application.role.id %>
+			</ol>
+		</li>
+		<li class='class_app_name'>
+			<%= @application.name %>
+		</li>
+	</ul>
+</div>
+<div class='class_stat_graph'>
+  <ul>
+    <li>
+	<%= get_stat_click_apps(params[:time].nil? ? "by_day" : params[:time],@application.id) %>	
+    </li>
+    <li>
+	<%= get_stat_session_viewsql_by_apps(params[:time].nil? ? "by_day" : params[:time],@application.id) %>
+    </li>
+  </ul>
+</div>
+
+<div class='div_class_all_top'>
+     <div class='div_class_link_choix_day'>
+	<ul>
+	     <li>
+	     <%= link_to t("statistics.par_jour"), {:controller=>"statistics", :action=>"show", :application_id=>@application.id, :time=>"by_day"}, :style=>"text-decoration:#{params[:time].to_s == "by_day" || params[:time].nil? ? "underline" : "none"};" %>
+	     </li>
+	     <li class='class_li_other_choix_day'>
+	     <%= link_to t("statistics.par_semaine"), {:controller=>"statistics", :action=>"show", :application_id=>@application.id, :time=>"by_week"}, :style=>"text-decoration:#{params[:time].to_s == "by_week" ? "underline" : "none"};" %>
+	     </li>
+	     <li class='class_li_other_choix_day'>
+	     <%= link_to t("statistics.par_mois"), {:controller=>"statistics", :action=>"show", :application_id=>@application.id, :time=>"by_month"}, :style=>"text-decoration:#{params[:time].to_s == "by_month" ? "underline" : "none"};" %>
+	     </li>
+        </ul>
+    </div>
+  <div class='div_class_top'>
+    <ul>
+	<li>
+		<ol>
+			<li>
+			<span class='span_class_chiffres_stat'><%= @nombre_medias_consultes %></span> <%= t("statistics.medias_consultes") %>
+			</li>
+
+			<li>
+			<span class='span_class_chiffres_stat'><%= @nombre_total_session %></span> <%= t("statistics.sessions") %> 
+			</li>
+			<li>
+			<%= @average_media_session %>
+			</li>
+		</ol>
+	</li>
+	<li class='li_class_medias_consultes'>
+	    	<h2><%= t("statistics.medias_plus_consultes") %></h2>
+		<%= get_top_media_consulted_by_apps(params[:time].nil? ? "by_day" : params[:time], @application.id) %>
+	</li>
+
+	<li>
+		<h2><%= t("statistics.categories_plus_consultes") %></h2>
+		<%= get_top_categorie_consulted_by_apps(params[:time].nil? ? "by_day" : params[:time], @application.id) %>
+	</li>
+    </ul>
+  </div>    
+</div>
+<% end %>

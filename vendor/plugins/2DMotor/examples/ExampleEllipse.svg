@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
+         'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd'>
+<svg xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'
+  version='1.1' width='1000' height='800'>
+  <defs>
+    <marker id="marker-arrowhead" markerWidth="6" markerHeight="8"
+      refX="4" refY="3" orient="auto">
+      <path d="M 0 0 L 4 3 0 6" style="fill: none; stroke: black;"/>
+    </marker>
+  </defs>
+<ellipse cx='500' cy='50' rx='80' ry='30' stroke-width="4" fill="none" stroke="black"/>
+<text x='480' y='50' font-size="20">el1</text>
+<ellipse cx='500' cy='250' rx='100' ry='50' stroke-width="4" fill="none" stroke="black"/>
+<text x='480' y='250' font-size="20">el2</text>
+<ellipse cx='200' cy='380' rx='30' ry='70' stroke-width="4" fill="none" stroke="black"/>
+<text x='180' y='380' font-size="20">el3</text>
+<ellipse cx='700' cy='400' rx='20' ry='50' stroke-width="4" fill="none" stroke="black"/>
+<text x='680' y='400' font-size="20">el4</text>
+<line x1='500' y1='80' x2='500' y2='200' stroke-width="4" marker-end="url(#marker-arrowhead)" stroke="black"/>
+<line x1='429.289321881345' y1='285.355339059327' x2='221.213203435596' y2='330.502525316942' stroke-width="4" marker-end="url(#marker-arrowhead)" stroke="black"/>
+<line x1='570.710678118655' y1='285.355339059327' x2='685.857864376269' y2='364.644660940673' stroke-width="4" marker-end="url(#marker-arrowhead)" stroke="black"/>
+</svg>

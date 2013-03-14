@@ -1,0 +1,28 @@
+<h1>New ping</h1>
+
+<% form_for(:ping, @ping, :url=>{:controller=>"pings", :action=>"create"}, :html=>{:method=>:get}) do |f| %>
+ <%= f.error_messages %>
+ <p>
+ 	<% f.label(:application_id, "Séléctionner l'application") %><br>
+ 	<%= f.select(:application_id, Application.all.collect{|p| [p.serial, p.serial]}) %>	
+  </p>
+
+  <p>
+	Nom de l'utilisateur : <%= text_field(:users, :username) %>	
+  </p>
+
+  <p>
+	Mot de passe : <%= text_field(:users, :password) %>
+  </p>
+
+  <p>
+  	<%= f.label(:status) %>
+	<%= f.text_field :status %>
+  </p>
+
+  <p>
+    <%= f.submit 'Enregistrer' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', pings_path %>

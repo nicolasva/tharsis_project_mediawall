@@ -1,0 +1,7 @@
+<% form_for :addsoustheme, :url=>{:controller=>"javascript", :action=>"valid_add_soustheme"} do |f| %>
+	<%= f.hidden_field :id, :value=>params[:id] %>
+	<%= render(:partial=>"javascript/partial_javascript/form_add_namestranslations", :locals => {:f => f}) %>
+	<p>
+		<%= f.submit "Enregistrer" %>
+	</p>
+<% end %>

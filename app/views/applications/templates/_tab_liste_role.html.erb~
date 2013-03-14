@@ -1,0 +1,12 @@
+<% content_tag_for :li, role do %>
+	<% if !params[:groupapp_id].nil? && !params[:arrow].nil? && !params[:datetime].nil? %>
+		<%= link_to role.name.downcase, :controller=>"applications", :action=>"index", :role_id=>role.id, :groupapp_id=>params[:groupapp_id], :arrow=>params[:arrow], :datetime=>params[:datetime] %>
+	<% elsif !params[:groupapp_id].nil? && params[:arrow].nil? && params[:datetime].nil? %>
+		<%= link_to role.name, :controller=>"applications", :action=>"index", :role_id=>role.id, :groupapp_id=>params[:groupapp_id] %>
+	<% elsif !params[:groupapp_id].nil? && !params[:arrow].nil? && params[:datetime].nil? %>
+		<%= link_to role.name, :controller=>"applications", :action=>"index", :role_id=>role.id, :groupapp_id=>params[:groupapp_id], :arrow=>params[:arrow] %>
+	<% else %>
+		<%= link_to role.name, :controller=>"applications", :action=>"index", :role_id=>role.id %>
+	<% end %>
+
+<% end %>

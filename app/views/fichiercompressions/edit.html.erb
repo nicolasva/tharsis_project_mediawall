@@ -1,0 +1,11 @@
+<div class='div_class_version_to_apps'>    
+  <% form_for(@fichiercompression) do |f| %>
+       <%= f.error_messages %>
+       <%= 
+	     render(:partial => "/fichiercompressions/templates/form_edit_zip_to_apps", :locals => {:f => f, :groupapp_id=>@groupapp_id}) 
+       %>
+
+      <%= f.submit("Associer cette version à cette application") %>
+  <% end %>
+</div>
+

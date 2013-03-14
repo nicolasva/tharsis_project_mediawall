@@ -1,0 +1,70 @@
+<% form_for :infomenutable, :url=>{:controller=>"statistics", :action=>"registermenutable"} do |f| %>
+<table class='tab_class_applications' cellpadding='0' cellspacing='0'>
+	<tr class='colonne_titre'>
+		<td class='colonne_general_user'>
+			<%= t("statistics.nom_table") %>
+		</td>
+
+		<td class='colonne_general'>
+			<%= t("statistics.nom_table_menu") %>
+		</td>
+
+		<td class='colonne_general'>
+			<%= t("statistics.affichagetableen") %>
+		</td>
+
+		<td class='colonne_general'>
+			<%= t("statistics.affichage_table_menu") %>
+		</td>
+		
+		<td class='colonne_general'>
+			<%= t("statistics.edit_column_this_table") %>
+		</td>
+
+		<td class='colonne_general'>
+			<%= t("statistics.supression_contenu_table") %>
+		</td>
+
+		<td class='colonne_general'>
+			<%= t("statistics.sup_table") %>
+		</td>
+	</tr>
+
+	<% @table.each{ |table| %>
+		<tr class='class_contenu_colonne_user'>
+			<td class='contenu_colonne_user'>
+				<%= table.name %>
+			</td>
+
+			<td class='contenu_colonne_general'>
+				<%= hidden_field_tag "infomenutable[id][]", table.id %>
+				<%= text_field_tag "infomenutable[affichagetable][]", table.affichagetable %>
+			</td>
+
+			<td class='contenu_colonne_general'>
+				<%= text_field_tag "infomenutable[affichagetableen][]", table.affichagetableen %>
+			</td>
+
+			<td class='contenu_colonne_general'>
+				<%= check_box_tag("infomenutable[choixaffichage][]", table.id, table.choixaffichage) %>
+			</td>
+
+			<td class='contenu_colonne_general'>
+				<%= link_to t("statistics.edit_this_column"), :controller=>"statistics", :action=>"edit_colonne_table", :id=>table.id %>  
+			</td>
+
+			<td>
+				<%= link_to 'Suppression table \ colonne \ contenu', :controller=>"statistics", :action=>"delete_stat", :id=>table.id %>
+			</td>
+			
+			<td class='contenu_colonne_general'>
+				<%= link_to image_tag("img_general/close.gif", :style=>"border:0px;"), {:controller=>"statistics", :action=>"sup_tables", :id=>table.id} %>
+			</td>
+		</tr>
+	<% } %>	
+</table>
+	    <p>
+		<%= f.submit t("general.submit") %>
+	    </p>
+<% end %>
+

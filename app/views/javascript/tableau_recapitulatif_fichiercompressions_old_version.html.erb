@@ -1,0 +1,24 @@
+<ul class='ul_class_liste_group'>
+	<% @groupapps.each{ |groupapp| %>
+		<% liste_apps_groups = "" %>
+		<% style = "background-color:white;color:black;" %>
+		<% groupapp.applications.each{ |application| %>
+			<% style = "background-color:#0001C7;color:white;" if params[:tab_application].include?(application.id.to_s) == true %>
+			<% avoir = application.avoirs.find(:last) %>
+			
+			<% liste_apps_groups += "<tr style='background-color:#{params[:tab_application].include?(application.id.to_s) == true ? "#0001C7": "white"};color:#{params[:tab_application].include?(application.id.to_s) == true ? "white" : "black"}'>
+						<td>#{application.name}</td>
+						<td>#{avoir.fichiercompression.id}</td>
+						<td>#{avoir.fichiercompression.updated_at.strftime(I18n.locale == "fr" ? '%d-%m-%Y' : '%Y-%m-%d').to_s}</td>
+					        </tr>"
+			%>
+		<% } %>
+		<li>
+			<%= link_to groupapp.name, "#", :id=>"id_group_#{groupapp.id}", :class=>"a_class_group", :style=>style, :onclick=>"Effect.toggle('ol_apps_groups_#{groupapp.id}', 'BLIND');" %>
+			<table id="ol_apps_groups_<%= groupapp.id %>" style='display:none;'>
+				<tr><td>Nom</td><td>Version</td><td>Mise à jour le</td></tr>
+				<%= liste_apps_groups %>	
+			</table>
+		</li>
+	<% } %>
+</ul>

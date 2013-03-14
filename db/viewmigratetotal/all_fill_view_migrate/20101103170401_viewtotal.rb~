@@ -1,0 +1,87 @@
+class Viewtotal < ActiveRecord::Migration
+  def self.up
+	  #view table widgets_consulted
+	   create_view :stat_widgetdates, "select stat_contenus.contenu as date, widgetid from stat_widgetserials, stat_contenus where stat_contenus.idinsert=stat_widgetserials.idinsert and colonne_id=(select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Widgets_Consulted' and stat_colonnes.name LIKE 'time')" do |t|
+		t.column :date
+		t.column :widgetid
+	   end
+
+	   create_view :stat_widgetids, "select contenu,idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Widgets_Consulted' and stat_colonnes.name LIKE 'Widgetreference')" do |t|
+	        t.column :contenu
+	        t.column :idinsert
+	   end
+
+	   create_view :stat_widgetserials, "select stat_widgetids.contenu as widgetid, stat_contenus.contenu as serial, stat_widgetids.idinsert from stat_contenus,stat_widgetids where stat_contenus.idinsert=stat_widgetids.idinsert and colonne_id=(select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Widgets_Consulted' and stat_colonnes.name LIKE 'application_serial')" do |t|
+		t.column :widgetid
+		t.column :serial
+		t.column :idinsert
+	   end
+
+
+	   create_view :stat_serials, "select `roles`.`id` AS `roleid`,`roles`.`name` AS `rolename`,`groupapps`.`id` AS `groupid`,`groupapps`.`name` AS `groupname`,`applications`.`id` AS `applicationid`,`applications`.`name` AS `applicationame`,`applications`.`serial` AS `serial` from ((`roles` join `groupapps`) join `applications`) where ((`applications`.`role_id` = `roles`.`id`) and (`applications`.`groupapp_id` = `groupapps`.`id`))" do |t|
+  		t.column :roleid
+		t.column :rolename
+		t.column :groupid
+		t.column :groupname
+		t.column :applicationid
+		t.column :applicationname
+		t.column :serial
+  	   end
+
+
+	   create_view :stat_mediasessiondates, "select stat_mediasessions.roleid, stat_mediasessions.rolename, stat_mediasessions.groupid, stat_mediasessions.groupname, stat_mediasessions.applicationid, stat_mediasessions.applicationname, stat_mediasessions.serial, stat_mediasessions.widgetid, stat_mediasessions.sessionid, stat_widgetdates.date from stat_mediasessions,stat_widgetdates where stat_mediasessions.widgetid=stat_widgetdates.widgetid" do |t|
+  		t.column :roleid
+		t.column :rolename
+		t.column :groupid
+		t.column :groupname
+		t.column :applicationid
+		t.column :applicationname
+		t.column :serial
+		t.column :widgetid
+		t.column :sessionid
+		t.column :date
+  	   end
+
+	   #create view Users_Sessions
+	  create_view :stat_widgetidusers, "select contenu as duration, idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Users_Sessions' and stat_colonnes.name LIKE 'duration')" do |t|
+	  	t.column :duration
+		t.column :idinsert
+	  end
+
+
+	  create_view :stat_widgetusersessionids, "select contenu as sessionid, idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Users_Sessions' and stat_colonnes.name LIKE 'userSessionId')" do |t|
+	  	t.column :sessionid
+		t.column :idinsert
+	  end
+
+	  create_view :stat_widgetusersessionserials, "select contenu as serial, idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Users_Sessions' and stat_colonnes.name LIKE 'application_serial');" do |t|
+	  	t.column :serial
+		t.column :idinsert
+	  end
+
+	  create_view :stat_widgetusertimes, "select contenu as date, idinsert from stat_contenus where colonne_id = (select stat_colonnes.id from stat_colonnes,stat_tables where stat_colonnes.table_id=stat_tables.id and stat_tables.name LIKE 'Users_Sessions' and stat_colonnes.name LIKE 'time')" do |t|
+		  t.column :date
+		  t.column :idinsert
+  	  end
+
+	  create_view :stat_widgettotalusers, "select stat_widgetidusers.duration, stat_widgetusersessionids.sessionid, stat_widgetusersessionserials.serial, stat_widgetusertimes.date from stat_widgetidusers, stat_widgetusersessionids, stat_widgetusersessionserials, stat_widgetusertimes where stat_widgetidusers.idinsert=stat_widgetusersessionids.idinsert and stat_widgetidusers.idinsert=stat_widgetusersessionserials.idinsert and stat_widgetidusers.idinsert=stat_widgetusertimes.idinsert and stat_widgetusersessionids.idinsert=stat_widgetusersessionserials.idinsert and stat_widgetusersessionids.idinsert=stat_widgetusertimes.idinsert and stat_widgetusersessionserials.idinsert=stat_widgetusertimes.idinsert" do |t|
+	  	t.column :duration
+		t.column :sessionid
+		t.column :serial
+		t.column :date
+	  end
+
+
+	create_view :stat_widgettotalusersapps, "select stat_serials.roleid, stat_serials.rolename, stat_serials.groupid, stat_serials.groupname, stat_serials.applicationid, stat_widgettotalusers.duration, stat_widgettotalusers.sessionid, stat_widgettotalusers.serial, stat_widgettotalusers.date from stat_serials,stat_widgettotalusers where stat_serials.serial=stat_widgettotalusers.serial" do |t|
+		t.column :roleid
+		t.column :rolename
+		t.column :groupid
+		t.column :groupname
+		t.column :applicationid
+		t.column :duration
+		t.column :sessionid
+		t.column :serial
+		t.column :date
+	end
+  end
+end

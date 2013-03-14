@@ -1,0 +1,67 @@
+  <div id='id_notice_fichiercompressions' style='display:none;height:40px;'>
+  </div>
+  <%= f.error_messages %>
+  <div class='class_edit_version_fichiercompression'>
+	  <ul id='main'>
+	<li id='etape0'>
+	<h3>1. <%= t("fichiercompressions.h3_select_type_apps") %></h3>
+
+		<div class='div_class_height_contenu'>
+			<p>
+					
+			Type :
+				<% unless request.env['REQUEST_URI'].scan(/^.{1,}\/(.{1,})/)[0][0].to_s == "newpdfreader" %> 	
+					<%= f.select(:type_id, options_from_collection_for_select(Groupapp.find(:all, :conditions=>{:roles=>{:id=>current_user.role_id}}, :joins=>[:roles]), 'id', 'name')) %>	
+				<% else %>
+					PDF Reader
+					<%= f.hidden_field(:type_id, Groupapp.find_by_name("PDF Reader").id.to_i) %>
+				<% end %>	
+				<%= f.submit("Voir l'ensemble des licences de ce type", :name=>"all_licences_type_apps") %>
+			</p>
+			<p>
+				<%= f.label(:description, t("fichiercompressions.description_file")) %><br>
+				<%= f.text_field(:description, :value=>Time.now.strftime("%Y/%m/%d %H:%M:%S")) %>
+			</p>
+
+
+			<p id='p_id_currentversion' style='display:block;'>
+			<%= f.check_box(:currentversion) %> <%= f.label(:currentversion, "Nouvelle version courante") %>
+			</p>
+
+		</div>
+		<div class='div_class_bouton_suivant'>
+		<%= button_to_function t("header.next"), :name=>"buton_suivant_etape1_etape0", :class=>"class_buton_name_fichiercompressions", :id=>"id_buton_suivant_etape1_etape0" %>
+		</div>	
+	</li>
+
+	<li class='class_next_etape' id='etape1'>
+		<h3>3. <%= t("fichiercompressions.h3_select_update_file") %></h3>
+		<div class='div_class_height_contenu'>
+  		<%= render(:partial => "/fichiercompressions/templates/form_file", :locals => { :f => f}) %>
+		</div>
+		<div class='div_class_bouton_suivant'>
+		<%= button_to_function t("header.previous"), :name=>"buton_retour_etape1_etape2", :class=>"class_buton_name_fichiercompressions" %>
+		<%= button_to_function t("header.next"), :name=>"buton_suivant_etape2_etape1", :class=>"class_buton_name_fichiercompressions" %>
+		</div>
+	</li>
+
+	<li class='class_next_etape' id='etape2'>
+	<h3>3. <%= t("fichiercompressions.h3_apps_next_update") %></h3>	
+
+		<div class='div_class_height_contenu'>
+			<h3>Liste des groupes</h3>
+			<div id='div_id_result_liste_bornes'>
+			</div>
+			<%= check_box_tag("check_all_checkboxes_apps", {:id => 'check_all_checkboxes_apps'},true) %> tout séléctionné
+		<%
+			#<div id='div_id_apps_update'>
+				#</div>
+		%>
+			</div>
+		<div class='div_class_bouton_suivant'>
+		<%= button_to_function t("header.previous"), :name=>"buton_retour_etape1_etape2", :class=>"class_buton_name_fichiercompressions" %>	
+    		<%= f.submit t("header.next") %>
+		</div>
+	</li>
+     </ul>
+  </div>

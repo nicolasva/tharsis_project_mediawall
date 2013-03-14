@@ -1,0 +1,17 @@
+<%= f.error_messages %>
+<p>
+	<%= f.label(:name, "Nom de groupe d'applications") %><br>
+	<%= f.text_field :name %>
+</p>
+
+<p>
+	<%= label_tag("Séléctionner les groupes d'utilisateurs qui pourront voir ce groupe d'applications") %><br>
+	<ul class='ul_class_groupapps_roles'>
+		<% Role.all.collect { |role| %>
+		      <% content_tag_for :li, role do %>
+			      <%= check_box_tag("groupapp[role_ids][]", role.id, @groupapp.roles.include?(role)) %> <%= label_tag(role.name) %>
+		      <% end %>
+		<% } %>
+	</ul>
+</p>
+

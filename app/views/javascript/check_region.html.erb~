@@ -1,0 +1,3 @@
+<% @tab_regions.each { |region| %>
+	<%= "<option value='#{region.id}'>#{region.name}</option>" %>
+<% } %>

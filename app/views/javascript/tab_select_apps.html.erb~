@@ -1,0 +1,1 @@
+<%= get_roles_apps(current_user.role_id,params[:groupapps_id],false) %>

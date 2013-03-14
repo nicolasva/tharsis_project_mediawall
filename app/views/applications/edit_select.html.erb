@@ -1,0 +1,16 @@
+<% form_for :attribution_roles, :url=>{:controller=>"applications", :action=>"valid_attribution_role"} do |attribution_roles| %>
+	<% 0.upto(@tab_application.length-1){ |i| %>	
+		<%= hidden_field_tag("attribution_roles[application_id][]", @tab_application[i]) %>
+	<% } %>
+
+
+		<%= attribution_roles.label('Groupe : ') %>
+      		<ul>
+  			<% Role.all.collect{ |role| %>
+				<li>
+				<%= check_box_tag("attribution_roles[role_ids][]", role.id) %> <%= label_tag(role.name) %>
+				</li>		
+			<% } %>
+		</ul>
+		<%= attribution_roles.submit "valider" %>
+<% end %>

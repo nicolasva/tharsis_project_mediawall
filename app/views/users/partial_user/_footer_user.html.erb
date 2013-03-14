@@ -1,0 +1,17 @@
+		<ul>
+			<li>
+			<%= link_to t("user.liens_voir_user"), :controller=>"users" %>
+			</li>
+			<li>
+			<%= link_to t("user.new_user"), new_user_path %>
+			</li>
+			<li>
+			<%= link_to t("user.user_by_group"), :controller=>"roles" %>
+			</li>
+			<li>
+			<%= link_to t("user.groupes"), :controller=>"roles" %>
+			</li>
+			<li>
+			<%= link_to t("user.gestion_droit_controller"), controllersdroits_url %>
+			</li>
+		</ul>

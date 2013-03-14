@@ -1,0 +1,11 @@
+<h1>Liste des groupes de statistiques afficher dans la page principal</h1>
+
+<ul>
+	<% Statistic::Categorieindex.all.collect{ |categorieindex| %>
+		<% content_tag_for :li, categorieindex do %>
+			<%= link_to categorieindex.name, :controller=>"statistics", :action=>"updatestatisticsprincipal", :id=>categorieindex.id %>	<%= link_to "Supprimer cette catégorie de statistiques", {:controller=>"statistics", :action=>"destroystatistiquecategorie", :id=>categorieindex.id}, :confirm=>"Etes-vous sur de vouloir supprimer cette catégorie de statistiques sur la page principal ?" %>
+		<% end %>
+	<% } %>
+</ul>
+
+<%= link_to "Nouvelle catégorie de statistique pour la page principal", :controller=>"statistics", :action=>"statistiquesprincipal" %>

@@ -1,0 +1,35 @@
+ul.ul_id_presentation
+{
+  height: 534px;
+  padding-left: 8.5%;	
+  width: 100%;
+}
+
+ul.ul_id_presentation li
+{
+  background-image: url('/../images/presentations/b_home.png');
+  list-style-type: none;
+  margin-left: 0px;
+  height: 80px;
+  width: 830px;
+  text-align: center;
+  margin: 1em;
+  padding: 10px;
+  /*border: 1px solid #ddd;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;*/
+}
+
+
+ul.ul_id_presentation li:hover
+{
+  background-color: #DFE985; 
+}
+
+ul.ul_id_presentation li a
+{
+      display: block;
+      text-decoration: none;
+      color: #111; 
+}

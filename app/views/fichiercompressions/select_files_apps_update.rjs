@@ -1,0 +1,9 @@
+#page.show "div_id_versions_bornes"
+page.replace_html "p_id_currentversion", @application_currentversion.nil? ? "Pas de version courante pour votre groupe d'utilisateurs" : (@application_currentversion.avoirs.find(:first, :conditions=>{:currentversion=>1}).nil? ? "Pas de version courante" : "#{check_box_tag("fichiercompression_update[fichiercompression_id][]", @application_currentversion.avoirs.find(:first, :conditions=>{:currentversion=>1}).fichiercompression_id, true, :class=>"class_checkbox_versions", :onclick=>"verif_checked_versions(this.checked);")} #{label_tag(@application_currentversion.avoirs.find(:first, :conditions=>{:currentversion=>1}).fichiercompression.description)}")
+
+
+page.replace_html "p_id_version_base", @application_base_version.nil? ? "Pas de version de base pour votre groupe d'applications" : (@application_base_version.avoirs.find(:first, :conditions=>{:fichiercompressions=>{:base_version=>1}}, :joins=>:fichiercompression).nil? ? "Pas de version de base" : "#{check_box_tag("fichiercompression_update[fichiercompression_id][]", @application_base_version.avoirs.find(:first, :conditions=>{:fichiercompressions=>{:base_version=>1}}, :joins=>:fichiercompression).fichiercompression_id, false, :class=>"class_checkbox_versions", :onclick=>"verif_checked_versions(this.checked);")} #{label_tag(@application_base_version.avoirs.find(:first, :conditions=>{:fichiercompressions=>{:base_version=>1}}, :joins=>:fichiercompression).fichiercompression.description)}") 
+
+
+page.replace_html "div_id_result_liste_versions", get_roles_apps(current_user.role_id,params[:id_type],true,false)
+#page.replace_html "div_id_result_liste_bornes", get_roles_apps(current_user.role_id,params[:id_type],false) 

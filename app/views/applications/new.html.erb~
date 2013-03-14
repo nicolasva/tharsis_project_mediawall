@@ -1,0 +1,4 @@
+<%= render(:partial=>"/applications/templates/form", :locals => {:f => f}) %>
+
+
+

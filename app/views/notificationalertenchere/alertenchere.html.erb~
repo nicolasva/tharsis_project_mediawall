@@ -1,0 +1,9 @@
+<html>
+	<head>
+		<title>Cette enchere concernant ce produit <%= @galerieimage.title %> qui se trouve dans cette catégorie <%= @galerieimage.category.name %></title>
+	</head>
+   <body>
+	<h1>Bonjour Monsieur <%= @user.name %> <%= @user.prenom %></h1>
+      	Cette enchère pourrait vous interessez <%= @galerieimage.title %>, le prix proposer pour l'enchère démarre à <%= @galerieimage.prixpublic %>
+   </body>
+</html>

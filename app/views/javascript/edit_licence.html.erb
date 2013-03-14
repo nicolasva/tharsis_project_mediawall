@@ -1,0 +1,6 @@
+<% form_for(@application) do |f| %>
+	<p>
+		<%= render(:partial=>"/applications/templates/form_name_application", :locals => {:f => f}) %>
+		</p>	
+	<%= f.submit("Mettre à jour") %>
+<% end %>

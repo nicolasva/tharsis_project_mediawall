@@ -1,0 +1,82 @@
+@font-face {
+ font-family: gautami;
+ src: url("/stylesheets/font_family/gautami.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: gautami;
+ src: url("/stylesheets/font_family/gautami.ttf") /* TTF file for CSS3 browsers */
+}
+
+body
+{
+ font-family: "gautami";
+ margin: 0px;
+ padding: 0px;
+}
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.div_class_language
+{
+  margin-top: 0px;
+  background-color: blue;
+}
+
+div.div_class_language ul.ul_class_language
+{
+  margin-right: 40px;
+  padding: 0px;
+  float: right;
+  list-style-type: none;
+}
+
+div.div_class_connection
+{
+  background-color: transparent;
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 40%;
+  clear: both;
+  text-align: center;
+  font-size: 14pt;
+  font-style: helvetica;
+  color: black;
+}
+
+div.div_class_language ul.ul_class_language li
+{
+  float: left;
+}

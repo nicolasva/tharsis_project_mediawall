@@ -1,0 +1,29 @@
+<table>
+	<tr>
+		<td>Version</td>
+		<td>Description</td>
+		<td>Applications</td>
+	</tr>
+<% fichiercompressions.each{ |fichiercompression| %>
+	<tr style=''>
+		<td><%= fichiercompression.id %></td>
+		<td><%= fichiercompression.description %></td>
+		<td class='class_td_list_version_apps'>
+			<div class='div_class_select_application_associate_version' id='id_select_application_associate_version_<%= fichiercompression.id %>' style='display:none;'>
+			<ol>
+				<% groupapp.applications.all.collect { |application| %>
+					<% content_tag_for :li, application do %>
+						<%= 
+							#check_box_tag("avoir[application_id][]", "#{fichiercompression.id}_#{application.id}", Avoir.find(:first, :conditions=>{:application_id=>application.id, :fichiercompression_id=>fichiercompression.id, :currentversion=>true}).nil? ? false : Avoir.find(:first, :conditions=>{:application_id=>application.id, :fichiercompression_id=>fichiercompression.id, :currentversion=>true}).application_id.to_s.include?(application.id.to_s)) 
+						%> 
+						<%= f.radio_button(:currentversion, application.id, {:checked=>true}) %> <%=  label_tag(application.serial) %>
+					<% end %>
+				<% } %>
+			</ol>
+			<%= button_to_function "Ok", :name=>"buton_ok_select_apps_to_version", :class=>"class_buton_select_apps_to_version", :onclick=>"Modalbox.hide();" %>
+		    </div>
+		    <%= link_to "Voir les applications appartenant à cette version", "#" %>
+		</td>
+	</tr>
+<% } %>
+</table>

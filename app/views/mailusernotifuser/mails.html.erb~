@@ -1,0 +1,15 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>
+			Notication de la création d'un nouvelle utilisateur
+		</title>
+	</head>
+	<body>
+		Ce nouvelle utilisateur a été crée par <%= @currentuser.username %>
+		Information sur le nouvelle utilisateur de crée: <br>
+		Login d'identification : <%= @user.username %><br>
+		Mot de passe d'identification : <%= @password %> 
+	</body>
+</html>

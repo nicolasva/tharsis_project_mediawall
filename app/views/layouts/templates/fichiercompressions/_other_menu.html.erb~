@@ -1,0 +1,5 @@
+		    <li style='float:left;'><%= link_to image_tag("presentations/#{t('header.menu')}", :size=>"74x74"), presentations_url %>
+		    <li style='float:left;'><%= link_to image_tag("presentations/#{t('header.app')}", :size=>"74x74"), applications_url %></li>
+		    <li style='float:left;'><%= link_to image_tag("presentations/#{t('header.stat')}", :size=>"74x74"), {:controller=>"statistics"}, :class=>'liens_menu_bar_bis' %></li> 
+		    <li style='float:left'><%= link_to image_tag("presentations/#{t('header.title_update'}", :size=>"74x74"), :controller=>"applications", :action=>"new" %></li>
+		    <%= other_menu_fichiercompressions(controller.action_name) %>

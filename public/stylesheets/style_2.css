@@ -1,0 +1,161 @@
+body { background-color: #7a806f; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+img
+{
+	border: 0px;
+}
+
+div.div_menu_connect
+{
+	margin-top: 0px;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect
+{
+	margin: 0px;
+	padding: 0px;
+	height: 30px;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li
+{
+	float: right;
+	margin-left: 0px;
+	list-style-type: none;
+}
+
+ul.ul_class_dock_menu
+{
+	list-style-type: none;
+}
+
+ul.ul_class_dock_menu li
+{
+        margin-right: 20px;
+	float: left;
+}
+
+ul.ul_class_table_colonne
+{
+	color:white;
+}
+
+ul.ul_class_table_colonne li
+{
+	line-height: 400%;
+}
+
+ul.ul_class_table_colonne li a
+{
+	font-size: 14pt;
+	color:white;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li a
+{
+
+	background: url('/images/img_general/applications/style_2/other_colonne.png');
+	font-size: 12pt;
+	text-decoration: none;
+	color: white;
+	padding: 6px;
+	border-right: 1px outset silver;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li a.liens_menu_bar_bis
+{
+	background: url('/images/img_general/applications/style_2/tab_colonne_serial.png');
+	font-size: 12pt;
+	text-decoration: none;
+	color: white;
+	padding: 6px;
+	border-right: 1px outset silver;
+}
+
+div.div_menu_connect ul.ul_class_menu_connect li a:hover
+{
+	color: #DFE985;
+}
+
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: black; }
+a:visited { color: black; }
+a:hover { color: black; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+#flash .message {
+  padding:3px 0;
+  font-size:12px;
+  font-weight:bold;
+  position:fixed !important;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:100;
+  text-align:center;
+}
+
+#flash .message p {
+  margin:8px;
+  color:#000;
+}
+#flash .error {
+  border:1px solid #fbb;
+  background-color:#fdd;
+}
+#flash .warning {
+  border:1px solid#fffaaa;
+  background-color:#ffffcc;
+}
+#flash .notice {
+  border:1px solid #1FDF00;
+  background-color:#BBFFB6;
+}

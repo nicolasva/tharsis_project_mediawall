@@ -1,0 +1,14 @@
+	<p>
+		<%= f.label(:name, t("editfilepublic.name_translate")) %><br>
+		<%= f.text_field :name, :value=>@name.nil? ? "" : @name %>
+	</p>
+
+	<p>
+		<%= f.label(:text0, t("editfilepublic.name_french_translate")) %> <br>
+		<%= f.text_field :text0, :value=>@text0.nil? ? "" : @text0 %>
+	</p>
+
+	<p>
+		<%= f.label(:text1, t("editfilepublic.name_english_translate")) %> <br>
+		<%= f.text_field :text1, :value=>@text1.nil? ? "" : @text1 %>
+	</p>

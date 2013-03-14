@@ -1,0 +1,55 @@
+<% form_for(@role) do |f| %>
+  <div class='div_class_user'>
+    <%= f.error_messages %>
+    <p class='p_class_first_form_user'>
+	<%= f.label(:name, t("activerecord.attributes.role.name")) %><br>
+	<%= f.text_field :name %>
+    </p> 
+
+    <p>
+	<%= f.hidden_field :request_uri, :value=>(%x[hostname].chop.to_s == "tharsis" ? request.request_uri.split("/")[1] : request.request_uri.split("/")[2]) %>
+        <% if (%x[hostname].chop.to_s == "tharsis" ? request.request_uri.split("/")[1] : request.request_uri.split("/")[2]) == "roles" %>	
+    	<%= f.label(:roles_idsoeur, t("activerecord.attributes.role.roles_idsoeur")) %><br>
+
+	<% 
+		#f.select(:role_id, Role.all.collect{ |u| [u.name, u.id]}, {:include_blank => true}) 
+	%>
+	<ol style='list-style-type:none;'>
+		<li>
+			<% if @role.id != 1 %>
+			    <%= 
+				"#{f.radio_button(:role_id, current_user.role_id)} #{current_user.role.name}" 
+			     %>
+			<% end %>
+			<%= get_roles_form(f,current_user.role_id) %>
+		</li>
+	</ol>
+    </p>
+    <p class='p_class_select_acces_controllersdroit'>
+        <%= label_tag(t("roles.select_acces_group")) %>
+    	<ul class='ul_class_controllersdroit_roles'>
+		<% Controllersdroit.all.collect { |controllerdroit| %>
+		     <% content_tag_for :li, controllerdroit do %>
+			<%= check_box_tag("role[controllersdroit_ids][]", controllerdroit.id, @role.controllersdroits.include?(controllerdroit)) %> <%= label_tag(controllerdroit.name) %>
+		     <% end %>
+		<% } %>	
+	</ul>
+    </p>
+   <% end %>
+
+   <p>
+   	<%= label_tag(t("roles.selection_type_apps_acces")) %><br>
+	<ul class='ul_class_list_groupapps'>
+		<% Groupapp.all.collect { |groupapp| %>
+			<% content_tag_for :li, groupapp do %>
+				<%= check_box_tag("role[groupapp_ids][]", groupapp.id, @role.groupapps.include?(groupapp)) %> <%= label_tag(groupapp.name) %>
+			<% end %>
+		<% } %>
+	</ul>
+   </p>
+  </div>
+
+  <p class='p_class_bouton_valid_register_roles'>
+    <%= f.submit t("general.submit") %>
+  </p>
+<% end %>

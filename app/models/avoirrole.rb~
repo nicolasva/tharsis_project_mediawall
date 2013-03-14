@@ -1,0 +1,3 @@
+class Avoirrole < ActiveRecord::Base
+	belongs_to :role
+end

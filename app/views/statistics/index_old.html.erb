@@ -1,0 +1,118 @@
+<%= javascript_include_tag "multiplecheckboxjs/js" %>
+<ul class='ul_class_table_colonne' id='ul_id_table_colonne'>
+  <li>
+  	<div class='div_class_roles_apps_by_type'>
+  		Séléctionné le groupe d'application<br>
+  		<ul class='ul_class_roles_applications_by_type'>
+			<% tab_roles_statistics_general = get_url_roles_statistics_general(current_user.role_id) %> 
+				<% 0.upto(tab_roles_statistics_general.length-1){ |i| %>
+					<li>
+					<%= link_to  Role.find(tab_roles_statistics_general[i]).name, :controller=>"statistics", :action=>"index", :role_id=>tab_roles_statistics_general[i] %>
+					</li>	
+				<% } %>
+		</ul>
+     	</div>
+  </li>
+  <li>
+	<%= get_stat_global_apps_type_apps(params[:role_id].nil? ? current_user.role_id : params[:role_id]) %>
+  </li>
+  <li>
+	<%= get_stat_machines_actives_desactives(params[:role_id].nil? ? current_user.role_id : params[:role_id]) %>
+  </li>
+   <% unless @tab_categorieindex.empty? %>
+     <% @tab_categorieindex.each{ |categorieindex| %>
+     		<li>
+			<%= link_to categorieindex.name, "#", :id=>categorieindex.id, :class=>"liens_info_colonne" %>
+			<div id='id_donne_demande_<%= categorieindex.id %>' class='div_choix_stat' style='display:none;height:480px;'>
+				<% categorieindex.posseders.each{ |posseder| %>
+
+					<p>
+						<% if posseder.categoriecolonnetable.table_id.nil? %>
+						    <% posseder.categoriecolonnetable.colonnes.each{ |colonne| %>
+							  <% #=-=-=-=-=-=-=-=-=-Camembert-=-=-=-=-=-=-=-=# %>
+				   			  <%
+								stat_graph_global_pie = StatGlobalPie.new(colonne.id,@time_24h,@time_now)
+								tab_hash_total = stat_graph_global_pie.get_stat
+
+							%>
+						   <% if posseder.statistic %> 
+						       <% unless tab_hash_total.empty? %>
+							  <%
+								g = Gruff::Pie.new
+								g.title = posseder.titregraphique
+								compteur = 0
+								0.upto(tab_hash_total.length-1){ |i|
+									if compteur < 10
+										g.data("#{tab_hash_total[i][0]}", tab_hash_total[i][1])
+									else
+									i = tab_hash_total.length - 1
+                        						end
+									compteur += 1
+								} 
+								g.write("#{RAILS_ROOT}/public/images/img_graphique/graphique_camembert_topics_#{@time_24h.to_i}_#{@time_now.to_i}.png") 
+							  %>
+						       <% end %>
+					 	    <% end %>
+
+
+							<% if posseder.affichagenombrestatglobal %>
+								Total : <%= stat_graph_global_pie.nb_total %><br>
+							<% end %>
+							<% if posseder.statistic %>
+								    <%= image_tag("/images/img_graphique/graphique_camembert_topics_#{@time_24h.to_i}_#{@time_now.to_i}.png", :size=>posseder.imagegrand ? "450x400" : "250x200") unless tab_hash_total.empty? %>
+								    <%= "Il n'y a aucune donnée concernant cette période" if tab_hash_total.empty? %>
+							<% end %>
+  						    <% } %>
+						 <% else %>
+							<% colonne_time = Statistic::Colonne.find(:first, :conditions=>"table_id=#{posseder.categoriecolonnetable.table_id} and time_column=1") %>
+							<% table_path = Statistic::Table.find(posseder.categoriecolonnetable.table_id) %>
+							<% traitglobalstatdate = TraitGlobalStatDate.new(table_path,@time_24h,@time_now,current_user.role_id,colonne_time.id) %>
+							<%= 
+								#traitglobalstatdate.trait_stat_total 
+							%>
+							<%
+							   if posseder.statistic
+							      unless traitglobalstatdate.trace_graph_total.empty?
+								g = Gruff::Line.new
+								g.title = posseder.titregraphique
+								g.data(posseder.categoriecolonnetable.titrelegendestatglobal, traitglobalstatdate.trace_graph_total)
+								g.labels = traitglobalstatdate.get_label_time
+								g.write("#{RAILS_ROOT}/public/images/img_graphique/graphique_graph_path_#{@time_now.to_i}_#{@time_24h.to_i}_donnee_recu_general.png")
+							      end  
+							    end
+							%>
+							<%= traitglobalstatdate.nb_total %>
+						      <% if posseder.statistic %>
+							   <%= image_tag("/images/img_graphique/graphique_graph_path_#{@time_now.to_i}_#{@time_24h.to_i}_donnee_recu_general.png", :size=>posseder.imagegrand ? "450x400" : "250x200") unless traitglobalstatdate.statistic.empty? %>
+							   <%= "Il n'y a aucune donnée concernant cette période" if traitglobalstatdate.trace_graph_total.empty? %>
+						      <% end %>
+						 <% end %>	
+					  </p>
+				<% } %>	
+			</div>
+		</li>
+     <% } %>
+   <% else %>
+	<li>
+		<%= t("statistiquesprincipal.absencecategorieindex") %>	
+	</li>
+   <% end %>
+
+     <li>
+	<%= link_to t("statistics.statistiques_search"), "#", :id=>"p", :class=>"liens_info_colonne" %>
+	<div id='id_donne_demande_p' class='div_choix_stat' style='display:<%= @tab_result_graph.nil? ? 'none' : 'block' %>;'>
+		<% form_for :visugraph, :url=>{:controller=>"statistics", :action=>"visugraph"} do |visugraph| %>
+			<%= render(:partial => "form", :locals => { :visugraph => visugraph}) %>
+			<%= render(:partial=>"/statistics/templates/period", :locals => {:visugraph => visugraph}) %> 	
+		
+			<%= visugraph.submit t("statistics.bouton_visualiser") %>
+		<% end %>
+	</div>
+     </li>
+</ul>
+
+<% if current_user.role_id == 1 %>
+	<%= 
+		render :partial=>"/statistics/templates/dock" 
+	%>
+<% end %>

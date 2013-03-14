@@ -1,0 +1,10 @@
+<html>
+	<head>
+	<title>Confirmation de l'inscription à l'enchère <%= @order.galerieimage.title %></title>
+	</head>
+	<body>
+		L'inscription à l'enchère concernant ce produit <%= @order.galerieimage.title %>, se trouvant dans la catégorie <%= @order.galerieimage.category.name %>.
+		<br>
+		La début de l'enchère pour ce produit aura lieux le <%= @order.galerieimage.timerestant.strftime("%d/%m/%Y %H:%M") %> 
+	</body>
+</html>

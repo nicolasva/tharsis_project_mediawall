@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
+         'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd'>
+<svg xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'
+  version='1.1' width='1000' height='800'>
+  <defs>
+    <marker id="marker-arrowhead" markerWidth="6" markerHeight="8"
+      refX="4" refY="3" orient="auto">
+      <path d="M 0 0 L 4 3 0 6" style="fill: none; stroke: black;"/>
+    </marker>
+  </defs>
+<circle cx='300' cy='300' r='100' stroke-width="4" fill="none" stroke="black"/>
+<text x='270' y='300' font-size="30">circle1</text>
+<text x='100' y='100' font-size="30">text1</text>
+<line x1='130' y1='110' x2='229.289321881345' y2='229.289321881345' stroke-width="4" marker-end="url(#marker-arrowhead)" stroke="black"/>
+<text x='180' y='150' fill="#008800" font-weight="bold" font-size="20" font-family="sans-serif">arrow1</text>
+<circle cx='150' cy='700' r='50' stroke-width="4" fill="none" stroke="black"/>
+<text x='110' y='700' font-size="30">circle2</text>
+<line x1='185.355339059327' y1='664.644660940673' x2='300' y2='400' stroke-width="4" marker-end="url(#marker-arrowhead)" stroke="black"/>
+<text x='130' y='500' fill="#008800" font-weight="bold" font-size="20" font-family="sans-serif">arrow2</text>
+<circle cx='700' cy='350' r='80' stroke-width="4" fill="none" stroke="black"/>
+<text x='670' y='350' font-size="30">circle3</text>
+<line x1='400' y1='300' x2='620' y2='350' stroke-width="4" marker-end="url(#marker-arrowhead)" stroke="black"/>
+<text x='500' y='280' fill="#008800" font-weight="bold" font-size="20" font-family="sans-serif">arrow3</text>
+</svg>

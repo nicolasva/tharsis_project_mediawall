@@ -1,0 +1,75 @@
+class ZipsController < ApplicationController
+  before_filter :verif_acces_user_controller
+  def index
+    @zips = Zip.paginate(:per_page => 10, :page => params[:page])
+  end
+
+  # GET /zips/1
+  # GET /zips/1.xml
+  def show
+    @zip = Zip.find(params[:id])
+  end
+
+  # GET /zips/new
+  # GET /zips/new.xml
+  def new
+   if flash[:zip].nil?
+    	   @zip = Zip.new
+   else
+	   @zip = flash[:zip]
+   end
+  end
+
+  # GET /zips/1/edit
+  def edit
+   if flash[:zip].nil?
+    	@zip = Zip.find(params[:id])
+   else
+	@zip = flash[:zip]
+   end
+  end
+
+  # POST /zips
+  # POST /zips.xml
+  def create
+    @zip = Zip.new(params[:zip])
+
+      if @zip.save
+        flash[:notice] = 'Ce fichier a correctement été uploadé'
+        redirect_to(zips_url)
+      else
+	flash[:zip] = @zip
+        render :action => "new"
+      end
+  end
+
+  # PUT /zips/1
+  # PUT /zips/1.xml
+  def update
+    @zip = Zip.find(params[:id])
+
+      if @zip.update_attributes(params[:zip])
+        flash[:notice] = 'Ce fichier a correctement été mis à jour.'
+        redirect_to(zips_url)
+      else
+	flash[:zip] = @zip
+        render :action => "edit"
+      end
+  end
+
+  # DELETE /zips/1
+  # DELETE /zips/1.xml
+  def destroy
+    @zip = Zip.find(params[:id])
+    @zip.destroy
+
+      redirect_to(zips_url)
+  end
+
+  def validate_version_actuelle
+	Zip.update_all("currentversion=0")
+	Zip.update(params[:zips_version][:currentversion], :currentversion=>1)
+
+	redirect_to(:back)
+  end
+end

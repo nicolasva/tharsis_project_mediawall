@@ -1,0 +1,2 @@
+	<%= f.label(:name, t("activerecord.attributes.application.name")) %>	
+	<%= f.text_field :name %>

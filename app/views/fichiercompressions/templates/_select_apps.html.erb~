@@ -1,0 +1,9 @@
+ <p>
+	    <div class='class_choix_applications' id='id_choix_applications'>
+	    </div>
+  </p>
+
+		<p>
+			<%= t("statistics.check_all_apps") %> : 
+			<%= check_box_tag("check_all_checkboxes", 'yes', false, :id => 'check_all_checkboxes', :class => 'class_check_all_checkboxes_apps_update') %>
+		</p>

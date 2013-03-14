@@ -1,0 +1,10 @@
+<%= javascript_include_tag "multiplecheckboxjs/js.js" %>
+<h1>Editer ce controlleur</h1>
+
+<% form_for(@controllersdroit) do |f| %>
+	<%= render(:partial => "form", :locals => { :f => f}) %>
+
+  <p>
+    <%= f.submit t("general.update") %>
+  </p>
+<% end %>

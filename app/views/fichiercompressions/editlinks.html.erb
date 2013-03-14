@@ -1,0 +1,17 @@
+<table border='1'>
+	<% 0.upto(@tab_resulteditlogoscategories.length-1){ |i| %>
+		<% content_tag_for :tr, @tab_resulteditlogoscategories[i] do %>
+		    <% 0.upto(@tab_resulteditlogoscategories[i].length-1){ |e| %>
+		        <% if @tab_affichagetable.include?(e) %> 
+			     <td>
+			       <% if @tab_lienscolonne.include?(e) %>
+				     <%= link_to @tab_resulteditlogoscategories[i][e], :controller=>"fichiercompressions", :action=>"editname", :id=>@tab_resulteditlogoscategories[i][1] %>
+			       <% else %>
+					<%= @tab_resulteditlogoscategories[i][e] %>	
+			       <% end %>
+			     </td>
+		        <% end %>
+		   <% } %>
+		<% end %>
+	<% } %>
+</table>

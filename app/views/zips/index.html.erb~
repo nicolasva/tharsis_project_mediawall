@@ -1,0 +1,31 @@
+<h1>Listing des zips</h1>
+
+<%= will_paginate @zips %>
+<% form_for :zips_version, :url=>{:controller=>"zips", :action=>"validate_version_actuelle"} do |f| %>
+<table border='0'>
+  <tr style='background-color:black;color:white;'>
+	<td>Version</td>
+	<td>Description</td>
+	<td>Version actuelle</td>
+	<td>Téléchargement</td>
+	<td>Supression</td>
+  </tr>
+
+<% @zips.each do |zip| %>
+  <tr>
+    <td><%= zip.id %></td>
+    <td><%= zip.description %></td>
+    <td>
+	    <%= f.radio_button("currentversion", zip.id, :checked=>zip.currentversion) %>
+    </td>
+    <td><%= link_to "Télécharger", zip.file.url %></td>
+    <td><%= link_to 'Supprimer', zip, :confirm => 'Es-tu sûr?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+<%= f.submit "Mettre à jour les versions actuelles" %>
+<% end %>
+
+<br />
+<%= will_paginate @zips %>
+<%= link_to 'Nouveau zip', new_zip_path %>

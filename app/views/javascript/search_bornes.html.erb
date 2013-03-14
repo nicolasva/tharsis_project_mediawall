@@ -1,0 +1,7 @@
+<ul>
+	<% @applications.each{ |application| %>
+		<% content_tag_for :li, application do %>
+			<%= application.name %>
+		<% end %>
+	<% } %>	
+</ul>

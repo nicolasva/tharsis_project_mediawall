@@ -1,0 +1,20 @@
+<% form_for :application, @application, :url=>{:controller=>"application", :action=>"valid_update_all_application"} do |application| %>
+	<% @application.each do |info_application| %>
+		<div style='margin-top:40px;background-color:<%= @val == 1 ? "silver": "white" %>'>
+		<strong><%= info_application.name %></strong>	
+		<p>
+		<% application.fields_for :info_application, info_application do |application_fields| %>
+			<%= application_fields.label(:name, "Nom de l'application") %><br /> <%= application_fields.text_field :name, "index"=>info_application.id %>
+		<% end %>
+		   <ul>
+			<% Role.all.collect{ |role| %>
+				<li>
+				<%= check_box_tag("application[info_application][#{info_application.id}][role_ids][]", role.id, info_application.roles.include?(role)) %> <%= label_tag(role.name) %>
+				</li>
+			<% } %>
+		   </ul>
+		</p>
+		<% @val = (@val == 1 ? 0 : 1) %>
+	<% end %>
+	<%= application.submit "Modifier" %>
+<% end %>

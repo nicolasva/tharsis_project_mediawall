@@ -1,0 +1,3 @@
+<% @groupapp.applications.each{ |application| %>
+		
+<% } %>

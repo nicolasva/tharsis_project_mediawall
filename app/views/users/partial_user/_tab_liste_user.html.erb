@@ -1,0 +1,18 @@
+<div class='class_liste_user'>
+<table class='tab_class_user' cellpadding='0' width='370' cellspacing='0'>
+  <tr class='colonne_titre'>
+	<td class='colonne_general_first' width='200'><%= t("user.identifiant") %></td>
+	<td class='colonne_general' width='150'><%= t("user.groupe") %></td>
+        <td class='colonne_general_last' width='20'><%= image_tag("img_general/bin.png") %></td>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr class='class_contenu_colonne_user'>
+    <td class='contenu_colonne_user'><%= user.username %> <%= link_to image_tag("controllersdroits/plus.png", :class=>"class_liens_plus"), edit_user_path(user) %></td>
+    <td class='contenu_colonne_general'><%= link_to user.role.name, edit_role_path(user.role) %></td>
+    <td class='contenu_colonne_general'><%= link_to image_tag("img_general/close.gif", :class=>"class_liens_drop"), user, :confirm => t("general.confirmation_sup"), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+</div>
+<%= will_paginate @users %>

@@ -1,0 +1,9 @@
+<% form_for :translations, :url=>{:controller=>"javascript", :action=>"valid_add_new_translations"}, :html=>{:multipart=>true} do |f| %>
+	<%= f.hidden_field :add_block, :value=>true %>
+	<%= render(:partial => "javascript/partial_javascript/form_add_namestranslations", :locals =>{:f =>f}) %>
+	<p>
+		<%= f.label(:picture, "Image à Uploader") %><br>
+		<%= f.file_field :picture %>
+	</p>
+	<%= f.submit "Enregistrer ce nouveau block" %>
+<% end %>

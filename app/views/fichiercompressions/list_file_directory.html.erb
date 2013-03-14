@@ -1,0 +1,9 @@
+<ul>
+<% @tab_list_file.each_line{ |line_list_file| %>
+      <% if control_affiche_info(line_list_file) %>
+	<% content_tag_for :li, line_list_file do %>
+		<%= link_to line_list_file.strip.chomp.to_s.split(" ")[7].to_s, :controller=>"fichiercompressions", :action=>get_dossier_or_file?(line_list_file), :id=>params[:id], :file=>"#{params[:file]}/#{line_list_file.strip.chomp.to_s.split(" ")[7].to_s}" %> <%= link_to edit_or_parcourir(line_list_file), :controller=>"fichiercompressions", :action=>get_dossier_or_file?(line_list_file), :id=>params[:id], :file=>"#{params[:file]}/#{line_list_file.strip.chomp.to_s.split(" ")[7].to_s}" %>	
+	<% end %>
+      <% end %>
+<% } %>
+</ul>

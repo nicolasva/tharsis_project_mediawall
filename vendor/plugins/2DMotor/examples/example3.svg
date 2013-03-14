@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
+         'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd'>
+<svg xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'
+  version='1.1' width='1000' height='800'>
+  <defs>
+    <marker id="marker-arrowhead" markerWidth="6" markerHeight="8"
+      refX="4" refY="3" orient="auto">
+      <path d="M 0 0 L 4 3 0 6" style="fill: none; stroke: black;"/>
+    </marker>
+  </defs>
+<rect width='200' height='100' x='100' y='200' stroke-width="4" fill="none" stroke="black" transform=""/>
+<text x='130' y='260' font-size="30">students.c</text>
+<text x='30' y='90' font-size="30">stdio.h</text>
+<line x1='50' y1='100' x2='100' y2='200' stroke-width="4" stroke="black" marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='70' y='130' font-weight="bold" fill="#008800" font-family="sans-serif" font-size="20">#include &lt;stdio.h></text>
+<rect width='200' height='100' x='100' y='400' stroke-width="4" fill="none" stroke="black" transform=""/>
+<text x='130' y='460' font-size="30">students.o</text>
+<line x1='200' y1='300' x2='200' y2='400' stroke-width="4" stroke="black" marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='180' y='180' font-weight="bold" fill="#008800" font-family="sans-serif" font-size="20">#include &quot;digits.h&quot;</text>
+<rect width='200' height='100' x='400' y='100' stroke-width="4" fill="none" stroke="black" transform=""/>
+<text x='450' y='160' font-size="30">digits.h</text>
+<line x1='400' y1='150' x2='300' y2='200' stroke-width="4" stroke="black" marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='660' y='180' font-weight="bold" fill="#008800" font-family="sans-serif" font-size="20">#include &quot;digits.h&quot;</text>
+<rect width='200' height='100' x='700' y='200' stroke-width="4" fill="none" stroke="black" transform=""/>
+<text x='750' y='260' font-size="30">digits.c</text>
+<line x1='600' y1='150' x2='700' y2='200' stroke-width="4" stroke="black" marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='220' y='360' font-weight="bold" fill="#008800" font-family="sans-serif" font-size="20">gcc -c students.c</text>
+<rect width='200' height='100' x='700' y='400' stroke-width="4" fill="none" stroke="black" transform=""/>
+<text x='750' y='460' font-size="30">digits.o</text>
+<line x1='800' y1='300' x2='800' y2='400' stroke-width="4" stroke="black" marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='640' y='360' font-weight="bold" fill="#008800" font-family="sans-serif" font-size="20">gcc -c digits.c</text>
+<rect width='200' height='100' x='400' y='600' stroke-width="4" fill="none" stroke="black" transform=""/>
+<text x='420' y='660' font-size="30">students.exe</text>
+<line x1='200' y1='500' x2='400' y2='600' stroke-width="4" stroke="black" marker-end="url(#marker-arrowhead)" transform=""/>
+<line x1='800' y1='500' x2='600' y2='600' stroke-width="4" stroke="black" marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='340' y='560' font-weight="bold" fill="#008800" font-family="sans-serif" font-size="20">gcc -o students students.o digits.o</text>
+</svg>

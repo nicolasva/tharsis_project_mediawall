@@ -1,0 +1,18 @@
+<%= Groupapp.find(params[:type]).name %>
+<table border='0' class='class_tab_recap_update' cellpadding='0' cellspacing='0' width='330'>
+	<tr class='tr_titre_recap_update'><td width='150' class='class_titre_first'>Nom</td><td width='80'>Version</td><td width='100' class='class_titre_last'>Mise à jour le</td></tr>
+<% 0.upto(@tab_roles.length-1) { |i| %>
+
+	<% applications = Application.find(:all, :conditions=>"role_id=#{@tab_roles[i]} and groupapp_id=#{@type}") %>
+       <% unless applications.empty? %>
+	<% applications.each { |application| %>
+		<% avoir = application.avoirs.find(:last) %>
+				<tr class='class_contenu_recap_apps'>
+					<td class='td_class_contenu_recap_apps_first'><%= application.name %></td>
+					<td><%= avoir.fichiercompressions.id %></td>
+					<td class='td_class_contenu_recap_apps_last'><%= avoir.fichiercompression.updated_at.strftime(I18n.locale == "fr" ? '%d-%m-%Y' : '%Y-%m-%d').to_s %></td>
+				</tr>
+	<% } %>
+      <% end %>
+<% } %>
+</table>

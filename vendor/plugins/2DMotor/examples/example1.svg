@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
+         'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd'>
+<svg xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'
+  version='1.1' width='600' height='600'>
+<rect width='200' height='200' x='0' y='0' fill="none" stroke-width="3" stroke="black"/>
+<rect width='40' height='80' x='200' y='100' fill="yellow" stroke-width="5" stroke="blue"/>
+<rect width='20' height='400' x='-100' y='200'/>
+<rect width='40' height='80' x='100' y='150' transform=""/>
+<g fill="none" stroke-width="10" stroke="#ff0000" transform="">
+<rect width='200' height='200' x='400' y='200'/>
+<rect width='200' height='200' x='300' y='300'/>
+<line x1='300' y1='300' x2='100' y2='500' id="myline" transform=""/>
+</g>
+<line x1='140' y1='230' x2='300' y2='300' stroke-width="5" stroke="blue" transform=""/>
+</svg>

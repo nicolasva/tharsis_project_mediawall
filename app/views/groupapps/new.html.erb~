@@ -1,0 +1,11 @@
+<h1>Nouveau groupe d'applications</h1>
+
+<% form_for(@groupapp) do |f| %>
+
+  <%= render(:partial => "form", :locals =>{ :f => f}) %>
+
+  <p>
+    <%= f.submit 'Creer ce groupe pour les applications' %>
+  </p>
+<% end %>
+

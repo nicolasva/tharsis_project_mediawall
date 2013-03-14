@@ -1,0 +1,50 @@
+<div class='class_title_appssharing_zips'><%= t("tab_zip.title_apps_appartenant_fichier") %> <%= link_to @zips.description, @zips.file.url %> <%= t("tab_zip.title_suite_apps_appartenant_fichier") %></div>
+<div class='div_class_apps_file'>
+<% form_for :applicationzips, :url=>{:controller=>"applications", :action=>"editapplicationszips"} do |f| %>
+<%= f.hidden_field :zip_id, :value=>params[:id] %>
+<table border='0' width='490' class='tab_class_apps_files' cellpadding='0' cellspacing='0'>
+	<tr class='colonne_titre'>
+		<td class='colonne_general_files_first' width='200'>
+			<%= t("tab_app.nom_application") %>
+		</td>
+
+		<td class='colonne_general' width='90'>
+			<%= t("tab_app.serial") %>
+		</td>
+
+		<td class='colonne_general' width='120'>
+			<%= t("tab_app.editmultiple") %>
+		</td>
+
+                <td class='colonne_general_files_last'>
+                        <%= image_tag("img_general/bin.png") %>
+                </td>
+	</tr>
+	<% @zips.avoirs.find(:all).each{ |avoir| %>
+		<tr class='class_contenu_colonne_user'>
+			<td class='contenu_colonne_general'>
+				<%= link_to image_tag("applications/plus.png", :size=>"20x20"), :controller=>"zips", :action=>"index", :id=>avoir.application.id %>
+				<%= avoir.application.name %>
+			</td>
+
+			<td class='contenu_colonne_general'>
+				<span class='class_align_right'><%= avoir.application.serial %></span>
+			</td>
+
+			<td class='contenu_colonne_general'>
+				<%= check_box_tag("applicationzips[application_id][]", avoir.application.id, avoir.currentversion) %>
+			</td>
+
+                        <td class='contenu_colonne_general'>
+                                <%= link_to image_tag("img_general/close.gif", :style=>'border:0px;', :class=>"class_img_link_sup_file"), {:controller=>"applications", :action=>"destroy_zip", :id=>avoir.application.id} %>
+			</td>
+
+		</tr>	
+	<% } %>
+</table>
+	<%= 
+		#f.submit t("tab_zip.bouton_sup_selection_apps"), :name=>"sup_apps_select", :confirm=>t("tab_zip.confirmation_sup_fichier_apps") 
+	%>
+	<%= f.submit "Editer", :name=>"fichiers_courants_apps" %>
+<% end %>
+</div>

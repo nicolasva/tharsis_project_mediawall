@@ -1,0 +1,18 @@
+<h1>Nouvelle statistique</h1>
+<% form_for :statistic, :url=>{:controller=>"statistics", :action=>"create"}, :html=>{:multipart=>true} do |f| %>
+	<%= f.error_messages %>
+
+	<p>
+		Nom de l'utilisateur : <%= text_field(:users, :username) %>			
+	</p>
+
+	<p>
+		Mot de passe : <%= text_field(:users, :password) %>
+	</p>
+
+	<p>
+		<%= f.label(:file, "Fichier de statistiques ( base 'sqlite' )") %><br>	
+		<%= f.file_field :file %>
+	</p>
+		<%= f.submit("Envoyer") %>
+<% end %>

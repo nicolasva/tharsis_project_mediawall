@@ -1,0 +1,19 @@
+<% form_for :addnameshapes, :url=>{:controller=>"fichiercompressions", :action=>"valid_add_fichiercompressions"} do |nameshapes| %>
+        <%= nameshapes.hidden_field :id, :value=>params[:shapes_id] %>	
+	<p>
+		Nom général de la shape: <br>
+		<%= nameshapes.text_field :name %>
+	</p>
+
+	<p>
+		Nom de la shape en Français : <br>
+		<%= nameshapes.text_field :text0 %>
+	</p>
+
+	<p>
+		Nom de la shape en Anglais : <br>
+		<%= nameshapes.text_field :text1 %>
+	</p>
+
+	<%= nameshapes.submit "Enregistrer cette shape", :onclick=>"window.location.replace('http://localhost:3000/fichiercompressions/editfilepublic/187?imgflooractuel=0')" %>
+<% end %>

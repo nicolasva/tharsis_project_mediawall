@@ -1,0 +1,66 @@
+		<p>
+			<%= t("statistics.select_apps") %> :
+			<div class='class_choix_applications'>
+				<ul class='ul_class_liste_application'>
+					<% Role.find(current_user.role_id).groupapps.each{ |groupapp| %>
+						<% content_tag_for :li, groupapp do %>
+							<%= check_box_tag("fichiercompression_groupapps", groupapp.id, false, :class=>"checkbox_groupapps") %> <%= link_to groupapp.name, '#', :class=>"class_liens_name_group", :id=>"id_link_name_group_#{groupapp.id}" %>
+							<ol id='ol_id_applications_<%= groupapp.id %>' style='display:none;'>
+
+							<% groupapp.applications.each{ |application| %>
+								<% content_tag_for :li, application do %>
+								<%= 
+								#check_box_tag("fichiercompression_avoir[application_id][]",u.id, (@tab_apps_select.nil? ? (params[:id].nil? ? false : u.id.to_i.equal?(params[:id].to_i)) : @tab_apps_select.include?(u.id.to_s)) , {:class => "application_cb"}) 
+								%>
+								<%= check_box_tag("visugraph[application_id][]", application.id, @tab_application.nil? ? false : @tab_application.include?(application.id.to_s), {:class => "application_cb"}) %> <%= application.name %> <%= application.serial %>
+							
+							<% end %>
+						      <% } %>
+							
+						      </ol>
+						<% end %>
+					<% } %>	
+				</ul>
+			</div>
+		</p>
+
+		<p>
+			<%= t("statistics.check_all_apps") %> : 
+			<%= check_box_tag("check_all_checkboxes", {:id => 'check_all_checkboxes'}) %>
+		</p>
+
+		<p>
+			<%= t("statistics.moyenne_global") %> : 
+			<%= check_box_tag("check_average_apps", true, @check_average_apps.nil? ? false : @check_average_apps) %>
+		</p>
+
+		<p>
+			Total des applications séléctionnées :
+			<%= check_box_tag("check_total_apps", true, @check_total_apps.nil? ? false : @check_total_apps) %>	
+		</p>
+
+		<p>
+			<%= t("statistics.categorie") %> : <br>
+			<%= visugraph.select(:categoriecolonnetables, options_from_collection_for_select(Statistic::Categoriecolonnetable.find(:all, :conditions=>"role_id=#{current_user.role_id}", :joins=>[:roles], :order=>:position), 'id', (I18n.locale == 'fr' ? 'name' : 'nameen'), @choix_category.to_i)) %>			
+		</p>
+		
+		<p>
+		     <% t("statistics.stat_affichage") %>
+		     <div class='class_choix_applications' style='display:none;'>
+			   <ul>	
+				<% Statistic::Table.all.collect{ |table| %>
+					<li><%= table.affichagetable.nil? ? table.name : table.affichagetable %></li>
+					<%= hidden_field_tag("visugraph[table_id][]", table.id) %>
+					<% table_colonne = table.colonnes.find :all, :conditions=>"choixaffichage=1" %>
+			   		<ul class='ul_class_liste_application'>	
+					<% table_colonne.each{ |colonne| %>
+						<li>
+						<%= check_box_tag("visugraph[choix_colonne][#{table.id}][]", colonne.id, @tab_colonne.nil? ? false : @tab_colonne.include?(colonne.id.to_s)) %> <%= colonne.affichagecolonne.empty? ? colonne.name : colonne.affichagecolonne %>
+						</li>
+					<% } %>
+					</ul>
+				<% } %>
+			  </ul>
+		     </div>
+		</p>
+		

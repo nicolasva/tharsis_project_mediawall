@@ -1,0 +1,10 @@
+<%= javascript_include_tag "multiplecheckboxjs/js" %>
+<%= render :partial=>"formstatistics" %>
+
+		<% 0.upto(@tab_result_graph.length-1){ |i| %>
+			<a href='<%= @tab_result_graph[i] %>' onclick="window.open(this.href,'Detail','height=500,width=680,scrollbars=yes');return false;"><%= image_tag(@tab_result_graph[i], :width => "150") %></a>		
+		<% } %>
+
+<% if current_user.role_id == 1 %>
+	<%= render :partial=>"/statistics/templates/dock" %>
+<% end %>

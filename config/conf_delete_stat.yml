@@ -1,0 +1,3 @@
+#supression en mois
+supstat:
+   {delete: 6, unite: "month"}

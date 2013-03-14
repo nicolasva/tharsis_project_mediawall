@@ -1,0 +1,25 @@
+<ul class='ul_class_dock_menu'>
+		<li>
+		   <% if params[:id].nil? %>
+			<%= link_to t("tab_app.liens_voir_ensemble_app"), :controller=>"applications", :action=>"index", :id=>"page" %> 
+		   <% else %>
+			<%= link_to t("tab_app.liens_app_by_page"), :controller=>"applications", :action=>"index" %>
+		   <% end %>
+		</li>
+
+		<li>
+			<%= link_to t("tab_app.search_apps"), "#", :id=>"id_search_apps" %>
+		</li>
+
+		<li>
+			<%= link_to t("tab_app.liens_add_many_app"), {:controller=>"javascript", :action=>"add_many_applications"}, :class=>"id_liens_box" %>
+		</li>
+
+		<li>
+			<%= link_to t("tab_app.new_application"), new_application_path %>
+		</li>
+
+		<li>
+			<%= link_to t("tab_app.edit_many_apps"), {:controller=>"javascript", :action=>"edit_all"}, :class=>"id_liens_box" %>
+		</li>
+</ul>

@@ -1,0 +1,11 @@
+<h1>Edition du groupe d'applications</h1>
+
+<% form_for(@groupapp) do |f| %>
+ 
+  <%= render(:partial => "form", :locals =>{ :f => f}) %>
+
+  <p>
+    <%= f.submit 'Mettre à jour' %>
+  </p>
+<% end %>
+<%= link_to "Nouveau groupe d'applications", new_groupapp_path %>

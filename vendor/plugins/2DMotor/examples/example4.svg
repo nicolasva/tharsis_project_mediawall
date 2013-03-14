@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'
+         'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dtd'>
+<svg xmlns='http://www.w3.org/2000/svg'
+  xmlns:xlink='http://www.w3.org/1999/xlink'
+  version='1.1' width='200' height='200'>
+  <defs>
+    <marker id="marker-arrowhead" markerWidth="6" markerHeight="8"
+      refX="4" refY="3" orient="auto">
+      <path d="M 0 0 L 4 3 0 6" style="fill: none; stroke: black;"/>
+    </marker>
+  </defs>
+<g font-size="18" fill="none" stroke="black" stroke-width="1" transform="">
+<g id="stateS" transform="">
+<circle cx='30' cy='30' r='15' transform=""/>
+<text x='22.5' y='37.5' font-size="21" fill="black" stroke-width="0">S</text>
+</g>
+<g id="stateA" transform="">
+<circle cx='170' cy='30' r='15' transform=""/>
+<text x='162.5' y='37.5' font-size="21" fill="black" stroke-width="0">A</text>
+</g>
+<circle cx='170' cy='30' r='12'/>
+<g id="stateB" transform="">
+<circle cx='170' cy='170' r='15' transform=""/>
+<text x='162.5' y='177.5' font-size="21" fill="black" stroke-width="0">B</text>
+</g>
+<g id="stateC" transform="">
+<circle cx='30' cy='170' r='15' transform=""/>
+<text x='22.5' y='177.5' font-size="21" fill="black" stroke-width="0">C</text>
+</g>
+<g id="stateD" transform="">
+<circle cx='100' cy='100' r='15' transform=""/>
+<text x='92.5' y='107.5' font-size="21" fill="black" stroke-width="0">D</text>
+</g>
+<line x1='0' y1='0' x2='19.3933982822018' y2='19.3933982822018' marker-end="url(#marker-arrowhead)" transform=""/>
+<line x1='45' y1='30' x2='155' y2='30' marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='100' y='25'>0</text>
+<line x1='30' y1='45' x2='30' y2='155' marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='20' y='100'>1</text>
+<line x1='40.6066017177982' y1='159.393398282202' x2='89.3933982822018' y2='110.606601717798' marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='60' y='130'>1</text>
+<line x1='110.606601717798' y1='89.3933982822018' x2='159.393398282202' y2='40.6066017177982' marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='130' y='60'>1</text>
+<line x1='110.606601717798' y1='110.606601717798' x2='159.393398282202' y2='159.393398282202' marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='160' y='100'>1</text>
+<line x1='45' y1='170' x2='155' y2='170' marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='100' y='185'>1</text>
+<line x1='170' y1='45' x2='170' y2='155' marker-end="url(#marker-arrowhead)" transform=""/>
+<text x='140' y='130'>0</text>
+<line x1='174.60817687569' y1='43.0597149997093' x2='170' y2='45' transform=""/>
+<line x1='173.152963125472'   y1='48.8805700005813' x2='170' y2='45' transform=""/>
+<text x='190' y='100'>0</text>
+</g>
+</svg>

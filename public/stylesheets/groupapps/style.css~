@@ -1,0 +1,57 @@
+ul.ul_class_groupapps_roles
+{
+	border: 1px solid black;
+	list-style-type: none;
+	overflow: auto;
+	height: 200px;
+	width: 200px;
+}
+
+div.class_liste_groupapp table.tab_class_groupapp
+{
+	border: 1px solid #aaa;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+}
+
+div.class_liste_groupapp table.tab_class_groupapp tr.colonne_titre
+{
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+        border-radius: 8px;	
+	color: white;
+}
+
+div.class_liste_groupapp table.tab_class_groupapp tr.colonne_titre td
+{
+	background-color: #404040;
+}
+
+div.class_liste_groupapp table.tab_class_groupapp tr.colonne_titre td.colonne_general_first
+{
+	-moz-border-radius-topleft: 8px;
+	-webkit-border-top-left-radius: 8px;
+        border-top-left-radius: 8px;
+	padding-left: 10px;
+        padding-right: 10px;	
+}
+
+div.class_liste_groupapp table.tab_class_groupapp tr.colonne_titre td.colonne_general_last
+{
+	-moz-border-radius-topright: 8px;
+	-webkit-border-top-right-radius: 8px;
+        border-top-right-radius: 8px;	
+}
+
+div.class_liste_groupapp table.tab_class_groupapp tr.class_contenu_colonne_groupapp td.contenu_general_first
+{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+div.class_liste_groupapp table.tab_class_groupapp tr.class_contenu_colonne_groupapp td img.class_liens_drop
+{
+	margin-left: 15px;
+}
+
